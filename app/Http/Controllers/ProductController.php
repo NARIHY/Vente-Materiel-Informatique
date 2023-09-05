@@ -31,7 +31,7 @@ class ProductController extends Controller
      */
     public function create() : View
     {
-        $category = Category::pluck('name');
+        $category = Category::pluck('id','name');
         return view($this->viewPath().'action.random', [
             'category' => $category
         ]);
@@ -53,8 +53,8 @@ class ProductController extends Controller
             $picture = $request->validated('picture');
             if ($picture !== null && !$picture->getError()) {
                 $data['picture'] = $picture->store('product', 'public');
+                $product->update($data);
             }
-            $product->update($data);
             return redirect()->route($this->routes().'listing')->with('success', 'Félicitation, le produit a bien été ajouter');
         } catch (\Exception $e){
             return redirect()->route($this->routes().'create')->with('error', 'Oups, il y a eu une erreur'.$e->getMessage());
@@ -85,7 +85,7 @@ class ProductController extends Controller
      */
     public function edit(string $id): View
     {
-        $category = Category::pluck('name');
+        $category = Category::pluck('id','name');
         $product = Product::findOrFail($id);
         return view($this->viewPath().'action.random', [
             'category' => $category,

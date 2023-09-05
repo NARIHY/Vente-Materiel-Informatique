@@ -9,7 +9,7 @@
 
 
   <!-- Favicons -->
-  
+
 
   <!-- Vendor CSS Files -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -33,12 +33,12 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">E-service informatique</span>
+        <span class="d-none d-lg-block">Accentic</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    
+
 
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
@@ -268,67 +268,19 @@
           <i class="bi bi-menu-button-wide"></i><span>Gestion de produit</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          
+
           <li>
             <a href="{{route('Admin.Product.listing')}}">
               <i class="bi bi-circle"></i><span>Nos produits</span>
             </a>
           </li>
+
           <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Breadcrumbs</span>
+            <a href="{{route('Admin.Category.listing')}}">
+              <i class="bi bi-circle"></i><span>Liste de tous nos categorie</span>
             </a>
           </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Buttons</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Cards</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Carousel</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>List group</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Modal</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Tabs</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Pagination</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Progress</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Spinners</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-circle"></i><span>Tooltips</span>
-            </a>
-          </li>
+
         </ul>
       </li><!-- End Components Nav -->
 
@@ -481,7 +433,7 @@
 
   <main id="main" class="main">
 
-    
+
 
     <section class="section dashboard">
       @yield('content')
@@ -494,7 +446,7 @@
     <div class="copyright">
       &copy; Copyright <strong><span> Mahenina Randrianarisoa</span></strong>
     </div>
-    
+
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

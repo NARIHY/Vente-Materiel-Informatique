@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,19 @@ Route::prefix('/Administration')->name('Admin.')->group( function() {
         Route::put('/{id}/edition-d-un-produit', [ProductController::class, 'update'])->name('update');
         //delete
         Route::delete('/{id}/suppression-d-un-nouveau-produit', [ProductController::class, 'delete'])->name('delete');
+    });
+
+
+    //Routes of our product
+    Route::prefix('/categorie')->name('Category.')->group( function () {
+        Route::get('/Liste-de-tous-les-categories', [CategoryController::class, 'listing'])->name('listing');
+        Route::get('/Liste-de-tous-les-categories/ajout-d-un-category', [CategoryController::class, 'create'])->name('create');
+        Route::post('/Liste-de-tous-les-categories/ajout-d-un-category', [CategoryController::class, 'store'])->name('store');
+        //edition
+        Route::get('/Liste-de-tous-les-categories/{id}/edition-d-un-category', [CategoryController::class, 'edit'])->name('edit');
+        Route::put('/Liste-de-tous-les-categories/{id}/edition-d-un-category', [CategoryController::class, 'update'])->name('update');
+
+
     });
 
 });

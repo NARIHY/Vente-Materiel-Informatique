@@ -4,7 +4,7 @@
     if(request()->routeIS('Admin.Product.create')){
         $title = 'Ajout \'un nouveau produit';
     } else {
-        $title = 'Edition \'un nouveau produit';
+        $title = 'Edition \'un produit';
     }
 @endphp
 @section('title', $title)
@@ -80,8 +80,8 @@
             <label for="categoryId">Selectionner une category</label>
             <select name="categoryId" id="categoryId" class="form-control @error('categoryId') is-invalid @enderror">
                 <option value="">Choisir une catégorie</option>
-                @foreach ($category as $cat)
-                <option value="{{$cat}}">{{$cat}}</option>
+                @foreach ($category as $k => $v)
+                <option value="{{$v}}">{{$k}}</option>
                 @endforeach
             </select>
 
@@ -133,7 +133,7 @@
             <p style="color: rgb(190, 4, 4)">{{$message}}</p>
         @enderror
 
-        <div class="row mb-3">
+        <div class="row mb-3" style="margin-top: 20px">
             <div class="col-6">
                 <label for="picture">Enter une photo du produit</label>
                 <input type="file" name="picture" id="picture" class="form-control @error('picture') is-invalid @enderror">
@@ -155,8 +155,9 @@
         <label for="categoryId">Selectionner une category</label>
         <select name="categoryId" id="categoryId" class="form-control @error('categoryId') is-invalid @enderror">
             <option value="">Choisir une catégorie</option>
-            @foreach ($category as $cat)
-            <option value="{{$cat}}" @if ($cat === $product->categoryId) selected @endif>{{$cat}}</option>
+            @foreach ($category as $k => $v)
+
+            <option value="{{$v}}" @if ($v == $product->categoryId) selected @endif>{{$k}}</option>
             @endforeach
         </select>
 
