@@ -3,7 +3,9 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use Intervention\Image\Facades\Image;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,4 +63,24 @@ Route::prefix('/Administration')->name('Admin.')->group( function() {
 
     });
 
+    Route::prefix('/Visual-Interface')->name('Interface.')->group( function () {
+        //for home
+        Route::prefix('/Acceuil-interface')->name('Home.')->group( function () {
+            Route::get('/', [HomeController::class, 'listing'])->name('listing');
+            //Routes for adding a new information in the homePage
+            Route::get('/ajouter-des-information', [HomeController::class, 'create'])->name('create');
+            Route::post('/ajouter-des-information', [HomeController::class, 'store'])->name('store');
+            //Routes for updating a new information in the homePage
+            Route::get('/{id}/modification',[HomeController::class, 'edit'])->name('edit');
+            Route::put('/{id}/modification',[HomeController::class, 'update'])->name('update');
+
+            //deleting
+            Route::delete('/{id}/suppression',[HomeController::class, 'delete'])->name('delete');
+        });
+    });
+
+
+
 });
+
+

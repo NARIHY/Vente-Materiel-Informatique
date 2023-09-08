@@ -1,0 +1,7 @@
+.wrap {
+    width: 300px;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+
+}
