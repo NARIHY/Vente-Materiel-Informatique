@@ -6,7 +6,9 @@ use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Intervention\Image\Facades\Image;
 
 class CategoryController extends Controller
 {
@@ -41,7 +43,25 @@ class CategoryController extends Controller
     {
         try {
             $data = $request->validated();
-            $categroy = Category::create($data);
+            $category = Category::create($data);
+            if ($request->hasFile('picture') && $request->file('picture')->isValid()) {
+                $image = $request->file('picture');
+
+                // Générez un nom unique pour l'image en fonction de l'ID de la catégorie
+                $imageName = 'category_' . $category->id . '.' . $image->getClientOriginalExtension();
+
+                // Chemin de stockage de l'image
+                $imagePath = public_path('storage/category/' . $imageName);
+
+                // Redimensionnez et sauvegardez l'image en utilisant Intervention Image
+                Image::make($image->getRealPath())
+                    ->resize(450, 200) // Redimensionnez selon vos besoins
+                    ->save($imagePath);
+
+                // Mettez à jour la colonne 'picture' dans le modèle Category avec le chemin relatif de la nouvelle image
+                $category->update(['picture' => 'category/' . $imageName]);
+            }
+
             return redirect()->route($this->routes().'listing')->with('success', 'Ajout de la catégory réussi');
         } catch (\Exception $e) {
             return redirect()->route($this->routes().'create')->with('error', 'Oupss, il y a eu une erreur'.$e->getMessage());
@@ -70,10 +90,36 @@ class CategoryController extends Controller
         try {
             $category = Category::findOrFail($id);
             $data = $request->validated();
-            return redirect()->route($this->routes().'edit')->with('success', 'Modification réussi');
+            if ($request->hasFile('picture') && $request->file('picture')->isValid()) {
+                // Redimensionnez et stockez la nouvelle image ici
+                // Supprimez l'image précédente s'il en existe une
+
+                $newImage = $request->file('picture');
+                if(!empty($newImage)){
+                    if (!empty($category->picture)) {
+                        Storage::disk('public')->delete($category->picture);
+                    }
+                }
+
+                $newImageName = 'category_' . $category->id . '.' . $newImage->getClientOriginalExtension();
+
+                $path = public_path('storage/category/' . $newImageName); // Chemin de stockage
+
+                // Redimensionnez l'image en utilisant Intervention Image
+                Image::make($newImage->getRealPath())
+                    ->resize(450, 200) // Redimensionnez selon vos besoins
+                    ->save($path);
+
+
+
+                // Mettez à jour la colonne 'picture' dans votre modèle Product avec le chemin relatif de la nouvelle image
+                $category->picture = 'category/' . $newImageName;
+                $category->save();
+            }
+            return redirect()->route($this->routes().'edit',['id'=>$category->id])->with('success', 'Modification réussi');
 
         } catch(\Exception $e) {
-            return redirect()->route($this->routes().'edit')->with('error', 'Oupss, il y a une erreur'.$e->getMessage());
+            return redirect()->route($this->routes().'edit',['id'=>$category->id])->with('error', 'Oupss, il y a une erreur'.$e->getMessage());
         }
     }
 

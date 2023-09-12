@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+}
+.bloc {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* getting video */
+
+.bloc video {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -100;
+}
+
+/* Site information*/
+
+.information {
+    background-color: white;
+    color: black;
+}
+
+.carrousel_text {
+    margin-top: 20px;
+}
+
+
+/* animated text */
+.animated-text {
+    font-size: 46px;
+    margin-top: 50vh;
+    color: rgb(255, 1, 1);
+    margin-left: 20px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+/*text-small**/
+
+.text_small {
+    color: white;
+    text-align: justify;
+    padding: 20px;
+    font-size: 20px;
+}
+
+/* Categories */
+.category {
+    background-color: white;
+}
+
+.category .card-text {
+    color: rgb(40, 18, 164);
+}
+
+.third-title {
+    color:rgb(236, 61, 61);
+    margin-left: 30px;
+}
+/* Contact video */
+.contact {
+    position: relative; /* Changez la position en relative */
+}
+
+.myContactVideo {
+    width: 100%; /* Ajustez la largeur au besoin */
+    height: auto; /* Ajustez la hauteur au besoin */
+}
+
+.contact form {
+    color: white;
+    background-color: transparent;
+    position: relative; /* Changez la position en relative */
+    z-index: 100;
+    margin-top: -100vh;
+}
+
+.form-nary {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 3px solid white;
+    width: 100%;
+    color: rgb(205, 199, 255);
+    transition: border-bottom 0.3s ease;
+}
+
+
+
+.form-nary:hover {
+    border-bottom: 3px solid rgb(81, 0, 254);
+}
+.form-nary::placeholder {
+    color: rgb(205, 199, 255);
+}
+/*bouton clicked*/
+.form-nary.clicked {
+    border-bottom: 3px solid rgb(81, 0, 254);
+}
+
+.button {
+    width: 80%;
+}
+
+/* Caroussel */
+/* Ajoutez le CSS nécessaire pour styliser le slider ici */
+/* Conteneur du carrousel */
+.hidden_container {
+    overflow: hidden; /* Masquer tout contenu dépassant du conteneur */
+    white-space: nowrap; /* Empêcher le contenu de revenir à la ligne */
+    position: relative; /* Position relative pour les boutons de navigation */
+}
+
+/* Barre de défilement personnalisée pour Firefox (si nécessaire) */
+.hidden_container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.hidden_container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+.hidden_container::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+/* Carrousel lui-même */
+.slider-container {
+    display: flex;
+    transition: transform 0.5s ease; /* Animation fluide lors du changement de diapositives */
+    margin: 0; /* Supprimer la marge par défaut */
+    padding: 0; /* Supprimer le rembourrage par défaut */
+}
+
+/* Cartes dans le carrousel */
+.card {
+    flex: 0 0 50%; /* Deux cartes par ligne */
+    transition: transform 0.5s ease; /* Animation fluide lors du survol */
+    margin: 10px; /* Espace entre les cartes */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère pour les cartes */
+    border-radius: 5px; /* Coins arrondis pour les cartes */
+    overflow: hidden; /* Masquer tout contenu dépassant de la carte */
+}
+
+/* Styles pour les boutons de navigation */
+.slider-buttons {
+    text-align: center;
+    margin-top: 10px; /* Espacement par rapport au carrousel */
+}
+
+.prev-button,
+.next-button {
+    margin: 5px;
+    padding: 5px 10px;
+
+    background-color:transparent; /* Couleur du bouton */
+    color: #c40000; /* Couleur du texte */
+    border: none; /* Pas de bordure */
+    cursor: pointer; /* Curseur en forme de main au survol */
+    border-radius: 5px; /* Coins arrondis pour les boutons */
+    position: absolute; /* Position absolue par rapport au conteneur du carrousel */
+    top: 50%; /* Alignement vertical au milieu */
+    transform: translateY(-50%); /* Décalage vertical pour aligner au milieu */
+    z-index: 1; /* Placez les boutons au-dessus des diapositives */
+    transition: background-color 0.3s ease; /* Animation de transition */
+}
+
+.prevnext {
+    width: 250px;
+}
+
+.prev-button {
+    left: 10px; /* Position à gauche */
+}
+
+.next-button {
+    right: 10px; /* Position à droite */
+}
+
+.prev-button:hover,
+.next-button:hover {
+    color: #c40000; /* Couleur du bouton au survol */
+}
+
+
+

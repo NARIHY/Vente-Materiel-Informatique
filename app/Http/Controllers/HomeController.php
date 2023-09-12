@@ -148,13 +148,7 @@ class HomeController extends Controller
         }
     }
 
-    public function resize($img)
-    {
-        // usage inside a laravel route
-        $img = Image::make($img)->resize(600, 350);
-        return $img->response('jpg');
 
-    }
 
     public function delete(string $id): RedirectResponse
     {

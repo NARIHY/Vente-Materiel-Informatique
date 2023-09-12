@@ -1,0 +1,256 @@
+@extends('public')
+
+@section('title', 'Acceuil du site')
+
+@section('content')
+<section id="hero">
+<div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="bloc">
+        <video id="myVideo" autoplay loop muted>
+            <source src="{{asset('public/assets/video/fond.mp4')}}" type="video/mp4" muted="">
+
+        </video>
+        <h1 class="animated-text">Technology Accentic</h1>
+        <p class="text_small">Bienvenue chez Accentix Solutions, votre destination de confiance pour les besoins en matériel informatique. Nous sommes fiers de vous offrir une gamme complète de produits informatiques de haute qualité, conçus pour répondre à vos besoins professionnels et personnels.</p>
+
+    </div>
+</div>
+</section>
+
+<main id="main">
+    @php
+
+
+    $mediaCollection = Spatie\MediaLibrary\MediaCollections\Models\Media::where('collection_name', 'collection_home')
+            ->where('model_type', App\Models\Home::class)
+            ->where('model_id', $home)
+            ->get();
+
+
+            $count = $mediaCollection->count();
+                    //We were going to count element
+                    if ($count == 1) {
+                        $first = $mediaCollection->get(0);
+                        $type = $mediaCollection->get(0)
+                                                ->value('mime_type');
+                        $f = $first->getUrl();
+                    } else if ($count == 2) {
+                        //get the second picture
+                        $first = $mediaCollection->get(0);
+                        $f = $first->getUrl();
+                        $second = $mediaCollection->get(1);
+                        $s = $second->getUrl();
+                    } else if ($count == 3) {
+                        //get the second picture
+
+                        $first = $mediaCollection->get(0);
+                        $f = $first->getUrl();
+                        $second = $mediaCollection->get(1);
+                        $s = $second->getUrl();
+                        //get the third picture
+                        $third = $mediaCollection->get(2);
+                        $t = $third->getUrl();
+                    } else {
+                        return null;
+                    }
+                    //get posted home
+                    $acceuil = App\Models\Home::findOrFail($home);
+    @endphp
+
+    <section class="information">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    @if ($count == 1)
+                        @if ($type == 'image/jpeg' || $type == 'image/jpg' || $type = 'image/png')
+                            <img src="{{$f}}" class="d-block w-100" alt="...">
+                        @else
+                        <video controls>
+                            <source src="{{$f}}" type="video/mp4" width="100%">
+                    </video>
+                        @endif
+
+                    @elseif($count == 2)
+                    <section id="image-carousel" class="splide" aria-label="Belles images">
+                        <div class="splide__track">
+                              <ul class="splide__list">
+                                  <li class="splide__slide">
+                                      <img width="100%" height="400px" src="{{$f}}" alt="caroussel_1">
+                                  </li>
+                                  <li class="splide__slide">
+                                      <img width="100%" height="400px" src="{{$s}}" alt="caroussel_2">
+                                  </li>
+
+                              </ul>
+                        </div>
+                    </section>
+                    @else
+                    <section id="image-carousel" class="splide" aria-label="Belles images">
+                        <div class="splide__track">
+                              <ul class="splide__list">
+                                  <li class="splide__slide">
+                                      <img width="100%" height="400px" src="{{$f}}" alt="caroussel_1">
+                                  </li>
+                                  <li class="splide__slide">
+                                      <img width="100%" height="400px" src="{{$s}}" alt="caroussel_2">
+                                  </li>
+                                  <li class="splide__slide">
+                                      <img width="100%" height="400px" src="{{$t}}" alt="caroussel_3">
+                                  </li>
+                              </ul>
+                        </div>
+                    </section>
+                    @endif
+
+                </div>
+                <div class="col-md-6">
+                    <section class="carrousel_text">
+                        <h1 style="color: blue">{{$acceuil->title}}</h1>
+                        <p style="text-align: justify; font-family:'Times New Roman', Times, serif; font-size:20px">{{$acceuil->content}}</p>
+                    </section>
+
+
+                </div>
+
+              </div>
+        </div>
+    </section>
+
+    <section id="clients" class="clients section-bg">
+        <div class="container">
+            <h1 style="color:red;">Nos sponsors</h1>
+
+          <div class="row">
+
+            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+              <img src="{{asset('public/assets/img/clients/client-1.png')}}" class="img-fluid" alt="">
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+              <img src="{{asset('public/assets/img/clients/client-2.png')}}" class="img-fluid" alt="">
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+              <img src="{{asset('public/assets/img/clients/client-3.png')}}" class="img-fluid" alt="">
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+              <img src="{{asset('public/assets/img/clients/client-4.png')}}" class="img-fluid" alt="">
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+              <img src="{{asset('public/assets/img/clients/client-5.png')}}" class="img-fluid" alt="">
+            </div>
+
+            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+              <img src="{{asset('public/assets/img/clients/client-6.png')}}" class="img-fluid" alt="">
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+      <section class="category">
+        <h3 class="third-title">Voici tous nos catégorie de nos produits:</h3>
+        <div class="container">
+            <div class="row mb-3 hidden_container">
+                <div class="slider-container">
+                    @foreach ($category as $cat)
+                        <div class="card shadow-sm col-md-6">
+                            <img src="/storage/{{$cat->picture}}" width="100%" height="100%" class="bd-placeholder-img card-img-top" alt="{{$cat->name}}">
+                            <div class="card-body">
+                                <h2 class="card-text">{{$cat->name}}</h2>
+                            </div>
+                        </div>
+                        <!-- decommenter pour avoir une aperçu lors du slide
+                        <div class="card shadow-sm col-md-6">
+                            <img src="/storage/category/category_4.jpg" width="100%" height="100%" class="bd-placeholder-img card-img-top" alt="sssssssssss">
+                            <div class="card-body">
+                                <h2 class="card-text">sssssssssss</h2>
+                            </div>
+                        </div>
+                        -->
+                    @endforeach
+                </div>
+                <div class="slider-buttons">
+                    <button class="prev-button" >
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAACXBIWXMAAAsTAAALEwEAmpwYAAABfElEQVR4nO3cbUrEMBSF4W5C0WXdQDasuAHnh2tJ/xyJKAxI0jb3TgfN+8CAqBU59PVrapcFAABgmMwe62P8I0xMOT+sKb2vZh8ye7735/M3x0tJXw9G3K8mu6Z0+R7vcv0yOR858+pZl/PTr9eR8/7xmm9jxH62P6kWs7eS0mvvfaanzjB1vGL2sjX0tNTJdvcxs+asHdkeOW4qOpDt3uOmoYFsPcf9KyLbcWTrQLYOZOtAtg5k60C2DmTrGS/zQ3L4mVf43XYb2TqIbB3jGdmGj1fxJ6kNZOsgso0fryLbDeK77TiRbfx4FdluENmOE9neaMDUft62d9yUNHgZBZdfXGHEADqQJZekOUcsXJLWORP5mugncj5vxELObeQcQOR83oiFnNvIOYDI+bwRCzm3kXMAkbMfOQcg5wDkHICcA5BzAHIOQM4ByDkAOd8pZ564d+TMP107RmQ8x4iM5xiR8Q7i5mO3uv3djHfpCLsBI+ON4RagAAAsE/oE4iIkkOSR0NEAAAAASUVORK5CYII=">
+                    </button>
+                    <button class="next-button" >
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAACXBIWXMAAAsTAAALEwEAmpwYAAABgElEQVR4nO2cUWrDMBAFfYmG9lgr0IVbeoHmo2eRf7aotGAotiPts0OqGTCEJAIzaEhiK5omAAAAGAA3u9Tj3ufxkHjOT3NKH7PZp5u93Pt8HlNeSv59ILFBntllTun6I++6fEzOLTOvzrqcn/88R863y1t9DYnb2f6mWszeS0pvW+8ZHt8QU+UVs9c90cPiG9nePGbknL1hRpFzUGIh542Z2JklOS8gZwFOzgKJmZxPm4kVPp1XIGcBTs4CiUbOp0ksfNleh5wFODnHIWcB5CyAnAWQswByFkDOAshZADkLIGcB5CyAnAWQ85kCF5fCWEIy9S0biYz7Vzjyjl0q1zJuKLxhqdyt44bBybYfsg1AtgHINgDZBiDbAGQbgGwDkG1EXubCgHzmFX7b7kO2AZxsA/KMbOXyKlyS2oFsAzjZ6uVVyHYH59O2HyfbgwQmbgAd8ncu56Z3v0TkBSQ6M69foiOvDWfzsYO2v8sDrpKSbcCYkdcn0dgCFAAAACYRX4CaJJ6XLrD8AAAAAElFTkSuQmCC">
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+      </section>
+
+      <section class="contact">
+
+
+                <video id="myContactVideo" autoplay loop muted>
+                    <source src="{{asset('public/assets/video/telecom.mp4')}}" type="video/mp4" muted="">
+
+                </video>
+
+
+                <div class="container">
+
+
+                        <form action="" method="post">
+                            <h1 class="text-center" style="color: blue" style="margin-top: -15px">Nous contacter</h1>
+                            @csrf
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="name">Votre nom:</label>
+                                    <input type="text" name="name" id="name" class="form-nary" placeholder="Joseph" value="{{@old('name')}}">
+                                    @error('name')
+                                    <p style="color:rgb(158, 0, 0)">{{$message}}</p>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="last_name">Votre prénon:</label>
+                                    <input type="text" name="last_name" id="last_name" class="form-nary" placeholder="Jean" value="{{@old('last_name')}}">
+                                    @error('last_name')
+                                    <p style="color:rgb(158, 0, 0)">{{$message}}</p>
+                                    @enderror
+                                </div>
+                            </div>
+
+
+                            <label for="email">Votre addresse email:</label>
+                            <input type="email" name="email" id="email" class="form-nary" placeholder="Exemple@gmail.com" value="{{@old('email')}}">
+                            @error('email')
+                            <p style="color:rgb(158, 0, 0)">{{$message}}</p>
+                            @enderror
+                            <label for="content">Votre sujet de conversation</label>
+                            <textarea name="content" id="content"  class="form-nary" placeholder="Un petit message">
+                                {{@old('content')}}
+                            </textarea>
+                            @error('content')
+                            <p style="color:rgb(158, 0, 0)">{{$message}}</p>
+                            @enderror
+
+                            <div class="d-grid gap-2">
+                                <input type="submit" value="Nous contacter" class="btn btn-primary">
+                            </div>
+                        </form>
+
+                </div>
+
+
+      </section>
+
+</main>
+
+
+
+
+@endsection

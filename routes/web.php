@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomeInterfaceController;
 use Illuminate\Support\Facades\Route;
 use Intervention\Image\Facades\Image;
 
@@ -18,9 +19,7 @@ use Intervention\Image\Facades\Image;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -33,6 +32,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+//Route for public users
+Route::prefix('/')->name('Public.')->group( function(){
+    //home view
+    Route::get('/', [HomeInterfaceController::class, 'index'])->name('home');
+});
 
 //Route for administration
 Route::prefix('/Administration')->name('Admin.')->group( function() {
