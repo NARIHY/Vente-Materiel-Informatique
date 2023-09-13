@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ContactRequest extends FormRequest
 {
@@ -25,7 +26,8 @@ class ContactRequest extends FormRequest
             'name' => ['required', 'min:3'],
             'last_name' => ['required', 'min:3'],
             'email' => ['required', 'email'],
-            'content' => ['required', 'content']
+            'subject' => ['required', 'min:3', 'max:200'],
+            'content' => ['required', 'min:3']
         ];
     }
 }

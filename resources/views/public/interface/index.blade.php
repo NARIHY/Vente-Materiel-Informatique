@@ -193,7 +193,16 @@
       </section>
 
       <section class="contact">
-
+                @if(session('success'))
+                    <div class="alert alert-success" style="text-align: center">
+                        {{session('success')}}
+                    </div>
+                @endif
+                @if(session('error'))
+                    <div class="alert alert-success" style="text-align: center">
+                        {{session('error')}}
+                    </div>
+                @endif
 
                 <video id="myContactVideo" autoplay loop muted>
                     <source src="{{asset('public/assets/video/telecom.mp4')}}" type="video/mp4" muted="">
@@ -204,19 +213,19 @@
                 <div class="container">
 
 
-                        <form action="" method="post">
+                        <form action="{{route('Public.contact.store')}}" method="post">
                             <h1 class="text-center" style="color: blue" style="margin-top: -15px">Nous contacter</h1>
                             @csrf
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <label for="name">Votre nom:</label>
+                                    <label for="name">Votre nom: (*)</label>
                                     <input type="text" name="name" id="name" class="form-nary" placeholder="Joseph" value="{{@old('name')}}">
                                     @error('name')
                                     <p style="color:rgb(158, 0, 0)">{{$message}}</p>
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="last_name">Votre prénon:</label>
+                                    <label for="last_name">Votre prénon: (*)</label>
                                     <input type="text" name="last_name" id="last_name" class="form-nary" placeholder="Jean" value="{{@old('last_name')}}">
                                     @error('last_name')
                                     <p style="color:rgb(158, 0, 0)">{{$message}}</p>
@@ -225,12 +234,18 @@
                             </div>
 
 
-                            <label for="email">Votre addresse email:</label>
+                            <label for="subject">Votre sujet de conversation: (*)</label>
+                            <input type="text" name="subject" id="subject" class="form-nary" placeholder="Sujet de conversation" value="{{@old('subject')}}">
+                            @error('subject')
+                                <p style="color:rgb(158, 0, 0)">{{$message}}</p>
+                            @enderror
+
+                            <label for="email">Votre addresse email: (*)</label>
                             <input type="email" name="email" id="email" class="form-nary" placeholder="Exemple@gmail.com" value="{{@old('email')}}">
                             @error('email')
                             <p style="color:rgb(158, 0, 0)">{{$message}}</p>
                             @enderror
-                            <label for="content">Votre sujet de conversation</label>
+                            <label for="content">Votre message (*)</label>
                             <textarea name="content" id="content"  class="form-nary" placeholder="Un petit message">
                                 {{@old('content')}}
                             </textarea>

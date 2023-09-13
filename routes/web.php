@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
@@ -36,6 +37,7 @@ require __DIR__.'/auth.php';
 Route::prefix('/')->name('Public.')->group( function(){
     //home view
     Route::get('/', [HomeInterfaceController::class, 'index'])->name('home');
+    Route::post('/', [ContactController::class, 'store'])->name('contact.store');
 });
 
 //Route for administration
@@ -83,6 +85,11 @@ Route::prefix('/Administration')->name('Admin.')->group( function() {
         });
     });
 
+    //Route for contact
+    Route::prefix('/Contact')->name('Contact.')->group( function () {
+        Route::get('/Liste-de-tous-les-messages-recu', [ContactController::class, 'listing'])->name('listing');
+        Route::get('/2365Aki8/Pmo{id}25sa587Auz/Message', [ContactController::class, 'view'])->name('view');
+     });
 
 
 });

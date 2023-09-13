@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Home;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+//
+
 
 class HomeInterfaceController extends Controller
 {

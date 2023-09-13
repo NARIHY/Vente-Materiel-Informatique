@@ -380,9 +380,9 @@
       </li><!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="">
+        <a class="nav-link collapsed" href="{{route('Admin.Contact.listing')}}">
           <i class="bi bi-envelope"></i>
-          <span>Contact</span>
+          <span>Message</span>
         </a>
       </li><!-- End Contact Page Nav -->
 
