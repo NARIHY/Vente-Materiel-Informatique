@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\SaleInformation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -33,8 +34,10 @@ class ProductController extends Controller
     public function create() : View
     {
         $category = Category::pluck('id','name');
+        $sales = SaleInformation::pluck('id','description');
         return view($this->viewPath().'action.random', [
-            'category' => $category
+            'category' => $category,
+            'sales' => $sales
         ]);
     }
 
@@ -100,9 +103,11 @@ class ProductController extends Controller
     {
         $category = Category::pluck('id','name');
         $product = Product::findOrFail($id);
+        $sales = SaleInformation::pluck('id','description');
         return view($this->viewPath().'action.random', [
             'category' => $category,
-            'product' => $product
+            'product' => $product,
+            'sales' => $sales
         ]);
     }
 
@@ -144,6 +149,19 @@ class ProductController extends Controller
         } catch (\Exception $e) {
             return redirect()->route($this->routes().'edit',['id' =>$product->id])->with('error', 'Oups, il y a eu une erreur'.$e->getMessage());
         }
+    }
+    /**
+     * Interface views
+     * @return View
+     */
+
+    public function index(): View
+    {
+        $category = Category::orderBy('created_at', 'desc')
+                                    ->get();
+        return view('public.product.index', [
+            'category' => $category
+        ]);
     }
     /**
      * path directory

@@ -201,5 +201,158 @@
     color: #c40000; /* Couleur du bouton au survol */
 }
 
+/* Linked categories */
+#linked:hover {
+    animation: rotations 1.5s linear;
+}
+
+@keyframes rotations
+{
+    0% {
+        transform: rotate(0deg);
+    }
+    33% {
+        transform: rotate(15deg);
+    }
+    66% {
+        transform: rotate(-15deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+
+}
+
+/* Product Content */
+.content {
+    left: 0;
+    padding: -60px 0;
+    color: black;
+}
+
+/* Caroussel product */
+.carousel {
+    width: 100%;
+
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-container {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-wrapper {
+    display: flex;
+    width: 300%; /* 100% x nombre de diapositives */
+    animation: scroll 10s linear infinite; /* Ajustez la vitesse de défilement selon vos préférences */
+}
+
+.carousel-slide {
+    flex: 1;
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background-color: #ccc; /* Couleur de fond de chaque diapositive */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+/* Cards products */
+
+.card {
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0; /* Assurez-vous d'utiliser 'solid' pour définir un bord solide */
+    width: calc(33.33% - 20px); /* 1/3 de la largeur de l'écran avec une marge de 10px à gauche et à droite */
+    margin: 10px; /* Ajoute une marge extérieure de 10px autour de la carte */
+    float: left; /* Pour disposer les cartes côte à côte */
+    box-sizing: border-box; /* Inclut les marges et les bordures dans le calcul de la largeur */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-15px);
+}
+/* About Product*/
+
+/* Style pour l'image */
+.card-img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+/* card-title style*/
+.card-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+    overflow: hidden; /* Masquer le texte excédentaire */
+    white-space: nowrap; /* Empêcher le retour à la ligne */
+    text-overflow: ellipsis; /* Afficher des points de suspension (...) si le texte est tronqué */
+}
+/*Product title*/
+.title-product {
+    font-size: 24px;
+    color: #421fee;
+    margin-bottom: 10px;
+}
+/* Style pour le texte du produit */
+.product-text {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+/* Style pour la quantité en stock */
+.quantity {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.quantity b {
+    color: green;
+}
+
+/* Style pour le prix */
+.price {
+    font-size: 18px;
+    color:#333;
+}
+.price b{
+    font-size: 18px;
+    color: #ff9900; /* Couleur dorée pour un look luxueux */
+}
 
 
+/*Form dans la page contact*/
+
+.form-nary-contact {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 3px solid white;
+    width: 100%;
+    color: rgb(205, 199, 255);
+    transition: border-bottom 0.3s ease;
+}
+
+
+
+.form-nary-contact:hover {
+    border-bottom: 3px solid rgb(81, 0, 254);
+}
+.form-nary-contact::placeholder {
+    color: rgb(25, 0, 255);
+}

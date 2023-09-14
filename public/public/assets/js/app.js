@@ -51,5 +51,28 @@ formElements.forEach(element => {
     });
 });
 
+// Product carroussel infinie defilement
+const carouselWrapper = document.querySelector('.carousel-wrapper');
+const carouselSlides = document.querySelectorAll('.carousel-slide');
+
+let currentIndex = 0;
+
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % carouselSlides.length;
+    updateCarousel();
+}
+
+function prevSlide() {
+    currentIndex = (currentIndex - 1 + carouselSlides.length) % carouselSlides.length;
+    updateCarousel();
+}
+
+function updateCarousel() {
+    const translateValue = -currentIndex * 100;
+    carouselWrapper.style.transform = `translateX(${translateValue}%)`;
+}
+
+setInterval(nextSlide, 5000); // Changez l'intervalle de défilement en millisecondes (ici, toutes les 5 secondes)
+
 
 

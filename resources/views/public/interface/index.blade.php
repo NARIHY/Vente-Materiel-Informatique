@@ -159,12 +159,14 @@
             <div class="row mb-3 hidden_container">
                 <div class="slider-container">
                     @foreach ($category as $cat)
-                        <div class="card shadow-sm col-md-6">
-                            <img src="/storage/{{$cat->picture}}" width="100%" height="100%" class="bd-placeholder-img card-img-top" alt="{{$cat->name}}">
-                            <div class="card-body">
-                                <h2 class="card-text">{{$cat->name}}</h2>
+
+                            <div class="card shadow-sm col-md-6" id="linked">
+                                <img src="/storage/{{$cat->picture}}" width="100%" height="100%" class="bd-placeholder-img card-img-top" alt="{{$cat->name}}">
+                                <div class="card-body">
+                                    <h2 class="card-text">{{$cat->name}}</h2>
+                                </div>
                             </div>
-                        </div>
+
                         <!-- decommenter pour avoir une aperçu lors du slide
                         <div class="card shadow-sm col-md-6">
                             <img src="/storage/category/category_4.jpg" width="100%" height="100%" class="bd-placeholder-img card-img-top" alt="sssssssssss">

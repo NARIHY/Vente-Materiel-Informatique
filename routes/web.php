@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeInterfaceController;
+use App\Http\Controllers\SalesInformationController;
 use Illuminate\Support\Facades\Route;
 use Intervention\Image\Facades\Image;
 
@@ -38,6 +39,13 @@ Route::prefix('/')->name('Public.')->group( function(){
     //home view
     Route::get('/', [HomeInterfaceController::class, 'index'])->name('home');
     Route::post('/', [ContactController::class, 'store'])->name('contact.store');
+    Route::prefix('/Products')->name('Product.')->group( function() {
+        Route::get('/', [ProductController::class, 'index'])->name('listing');
+    });
+    Route::prefix('/Nous-contacter')->name('Contact.')->group( function () {
+        Route::get('/', [ContactController::class, 'interface'])->name('contacts');
+        Route::post('/', [ContactController::class, 'interfaceSave'])->name('contactsSave');
+    });
 });
 
 //Route for administration
@@ -67,6 +75,18 @@ Route::prefix('/Administration')->name('Admin.')->group( function() {
         Route::put('/Liste-de-tous-les-categories/{id}/edition-d-un-category', [CategoryController::class, 'update'])->name('update');
 
 
+    });
+    //Route for information sales
+    Route::prefix('/Sales-Information')->name('Sales.')->group( function () {
+        Route::get('/', [SalesInformationController::class, 'listing'])->name('listing');
+        //creation route
+        Route::get('/creation', [SalesInformationController::class, 'create'])->name('create');
+        Route::post('/creation', [SalesInformationController::class, 'store'])->name('store');
+        //creation route
+        Route::get('/52{id}Za125/edit', [SalesInformationController::class, 'edit'])->name('edit');
+        Route::put('/52{id}Za125/edit', [SalesInformationController::class, 'update'])->name('update');
+        //delete
+        Route::delete('/zik54{id}apoi1ps85/delete', [SalesInformationController::class, 'delete'])->name('delete');
     });
 
     Route::prefix('/Visual-Interface')->name('Interface.')->group( function () {

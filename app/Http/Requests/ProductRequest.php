@@ -29,7 +29,8 @@ class ProductRequest extends FormRequest
             'Price' => ['required', 'numeric', 'min:0'],
             'quantityInStock' => ['required', 'numeric', 'min:1'], // Changement ici
             'categoryId' => ['required', 'exists:categories,id'],
-            'picture' => ['image', 'max:10000']
+            'picture' => ['image', 'max:10000'],
+            'sales_information' => ['exists:sale_information,id']
         ];
 
     }

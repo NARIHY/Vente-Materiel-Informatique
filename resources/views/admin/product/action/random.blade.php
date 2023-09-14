@@ -84,11 +84,23 @@
                 <option value="{{$v}}">{{$k}}</option>
                 @endforeach
             </select>
+            @error('categoryId')
+            <p style="color: rgb(190, 4, 4)">{{$message}}</p>
+            @enderror
 
+            <label for="sales_information">Selectionner l'information adéquat pour l'article</label>
+            <select name="sales_information" id="sales_information" class="form-control @error('sales_information') is-invalid @enderror">
+                <option value="">Choisir ...</option>
+                @foreach ($sales as $s => $i)
+                <option value="{{$i}}">{{$s}}</option>
+                @endforeach
+            </select>
+            @error('sales_information')
+            <p style="color: rgb(190, 4, 4)">{{$message}}</p>
+            @enderror
             <div class="d-grid gap-2" style="margin-top: 20px">
                 <input type="submit" value="Enregistrer" class="btn btn-primary">
             </div>
-
 
 
         </form>
@@ -160,6 +172,19 @@
             <option value="{{$v}}" @if ($v == $product->categoryId) selected @endif>{{$k}}</option>
             @endforeach
         </select>
+        @error('categoryId')
+            <p style="color: rgb(190, 4, 4)">{{$message}}</p>
+            @enderror
+        <label for="sales_information">Selectionner l'information adéquat pour l'article</label>
+            <select name="sales_information" id="sales_information" class="form-control @error('sales_information') is-invalid @enderror">
+                <option value="">Choisir ...</option>
+                @foreach ($sales as $s => $i)
+                <option value="{{$i}}" @if ($i == $product->sales_information) selected @endif>{{$s}}</option>
+                @endforeach
+            </select>
+            @error('sales_information')
+            <p style="color: rgb(190, 4, 4)">{{$message}}</p>
+            @enderror
 
         <div class="d-grid gap-2" style="margin-top: 20px">
             <input type="submit" value="Enregistrer" class="btn btn-primary">

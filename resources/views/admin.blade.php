@@ -281,6 +281,11 @@
               <i class="bi bi-circle"></i><span>Liste de tous nos categorie</span>
             </a>
           </li>
+          <li>
+            <a href="{{route('Admin.Sales.listing')}}">
+              <i class="bi bi-circle"></i><span>Information sur les produits</span>
+            </a>
+          </li>
 
         </ul>
       </li><!-- End Components Nav -->

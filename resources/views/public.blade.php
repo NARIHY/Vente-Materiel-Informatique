@@ -34,10 +34,10 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="{{route('Public.home')}}" class="@if(request()->routeIS('Public.home')) active @endif">Acceuil</a></li>
-          <li><a href="" class="">Nos produits</a></li>
+          <li><a href="{{route('Public.Product.listing')}}" class="@if(request()->routeIS('Public.Product.listing')) active @endif">Nos produits</a></li>
           <li><a href="" class="">Nos services</a></li>
-          <li><a href="" class="">Nos produits</a></li>
-          <li><a href="" class="">Contact</a></li>
+
+          <li><a href="{{route('Public.Contact.contacts')}}" class="@if(request()->routeIS('Public.Contact.contacts')) active @endif">Contact</a></li>
           <li><a href="" class="">Information</a></li>
 
 
@@ -65,7 +65,7 @@
               <h3>Briqueweb</h3>
               <p>
                 Lot III A 97 A Tsimialonjafy Mahamasina <br>
-                Antananarivo,101><br>
+                Antananarivo,101<br>
                 <strong>Téléphone:</strong> +261 05 891 97<br>
                 <strong>Email:</strong> contact@briqueweb.com<br>
               </p>
