@@ -27,6 +27,7 @@
                 @php
 
                     $product = App\Models\Product::where('categoryId', $categories->id)
+                                                        ->where('quantityInStock', '>=', 1)
                                                         ->orderBy('created_at')
                                                         ->get();
                     $count = App\Models\Product::where('categoryId', $categories->id)

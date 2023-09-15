@@ -356,3 +356,53 @@
 .form-nary-contact::placeholder {
     color: rgb(25, 0, 255);
 }
+
+/* Service */
+#Service {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 300;
+    color: #fff;
+    background-color: #000000;
+}
+/*Titre H6*/
+
+#Service .title-6 {
+    text-align: justify;
+}
+
+#Service h3 {
+    font-size: 36px;
+    letter-spacing: 2px;
+    color: #c40000;
+}
+
+/* Service Animation left right */
+
+#left {
+    animation: leftTransition 2s linear;
+}
+
+@keyframes leftTransition {
+    0% {
+        transform: translateX(-800px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+#right {
+    animation: rightTransition 2s linear;
+}
+@keyframes rightTransition {
+    0% {
+        transform: translateX(800px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

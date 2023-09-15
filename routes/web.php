@@ -46,6 +46,10 @@ Route::prefix('/')->name('Public.')->group( function(){
         Route::get('/', [ContactController::class, 'interface'])->name('contacts');
         Route::post('/', [ContactController::class, 'interfaceSave'])->name('contactsSave');
     });
+    //Service View
+    Route::prefix('/Nos-service')->name('Service.')->group( function (){
+        Route::get('/', [HomeInterfaceController::class, 'service'])->name('index');
+    });
 });
 
 //Route for administration

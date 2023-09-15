@@ -35,8 +35,7 @@
         <ul>
           <li><a href="{{route('Public.home')}}" class="@if(request()->routeIS('Public.home')) active @endif">Acceuil</a></li>
           <li><a href="{{route('Public.Product.listing')}}" class="@if(request()->routeIS('Public.Product.listing')) active @endif">Nos produits</a></li>
-          <li><a href="" class="">Nos services</a></li>
-
+          <li><a href="{{route('Public.Service.index')}}" class="@if(request()->routeIS('Public.Service.index')) active @endif">Nos services</a></li>
           <li><a href="{{route('Public.Contact.contacts')}}" class="@if(request()->routeIS('Public.Contact.contacts')) active @endif">Contact</a></li>
           <li><a href="" class="">Information</a></li>
 
