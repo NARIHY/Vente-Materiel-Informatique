@@ -75,4 +75,66 @@ function updateCarousel() {
 setInterval(nextSlide, 5000); // Changez l'intervalle de défilement en millisecondes (ici, toutes les 5 secondes)
 
 
+//supression de name of product ou les produit sont empty
+    // Sélectionnez tous les éléments avec la classe "slider-container"
+    const sliderContainers = document.querySelectorAll('.slider-container');
+
+    // Parcourez chaque élément "slider-container"
+    sliderContainers.forEach(container => {
+        // Vérifiez si l'élément parent a la classe "empty"
+        if (container.parentElement.classList.contains('empty')) {
+            // Trouvez le h3 avec la classe "name-category"
+            const nameCategory = container.querySelector('.name-category');
+            if (nameCategory) {
+                // Supprimez le h3
+                nameCategory.remove();
+            }
+        }
+    });
+//caroussel product
+
+$(document).ready(function () {
+    const $slider = $('.slider-container');
+    // Récupérer chaque enfant dans la classe parent
+    const classesArray = [];
+
+    $slider.children().each(function(index, child) {
+        const classes = $(child).attr('class');
+
+        // Vérifiez si la classe n'est pas égale à "empty" et ajoutez-la au tableau
+        if (classes !== "empty") {
+            classesArray.push(classes);
+        }
+    });
+
+    const $cards = $slider.children();
+    const cardWidth = $cards.first().outerWidth();
+    let currentIndex = 0;
+
+    function updateSliderPosition() {
+        $cards.css('transform', `translateX(-${currentIndex * cardWidth}px)`);
+    }
+
+    $('.next-button').click(function () {
+        // Défilement vers la droite (suivant)
+        if (currentIndex < $cards.length - 1) {
+            currentIndex += 1; // Avance d'un élément par clic
+        } else {
+            currentIndex = 0; // Revenir au début du carrousel si nous atteignons la fin
+        }
+        updateSliderPosition();
+    });
+
+    $('.prev-button').click(function () {
+        // Défilement vers la gauche (précédent)
+        if (currentIndex > 0) {
+            currentIndex -= 1; // Recule d'un élément par clic
+        } else {
+            currentIndex = $cards.length - 1; // Revenir à la fin du carrousel si nous sommes au début
+        }
+        updateSliderPosition();
+    });
+});
+
+
 

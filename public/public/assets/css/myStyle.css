@@ -146,6 +146,7 @@
 /* Carrousel lui-même */
 .slider-container {
     display: flex;
+
     transition: transform 0.5s ease; /* Animation fluide lors du changement de diapositives */
     margin: 0; /* Supprimer la marge par défaut */
     padding: 0; /* Supprimer le rembourrage par défaut */
@@ -157,6 +158,7 @@
     transition: transform 0.5s ease; /* Animation fluide lors du survol */
     margin: 10px; /* Espace entre les cartes */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère pour les cartes */
+    width: calc(33.33% - 20px);
     border-radius: 5px; /* Coins arrondis pour les cartes */
     overflow: hidden; /* Masquer tout contenu dépassant de la carte */
 }
@@ -270,7 +272,7 @@
 }
 /* Cards products */
 
-.card {
+.cards {
     background-color: #ffffff;
     padding: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -405,4 +407,27 @@
         transform: translateX(0);
         opacity: 1;
     }
+}
+
+/* Style pour cache un contenu vide */
+.hidden {
+    display: none;
+}
+
+/* Product message introduction */
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fc6969;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.message {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+    text-align: justify;
+    max-width: 800px;
+    margin: 0 auto;
 }
