@@ -57,7 +57,7 @@
                     <div class="row mb-3 hidden_container">
                         <div class="slider-container">
                             @forelse ($product as $products)
-                            <div class="cards{{$products->id}}">
+                            <div class="cards">
                                 @php
                                     $sales = "";
                                     //get sale_information
