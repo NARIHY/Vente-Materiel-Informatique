@@ -160,7 +160,7 @@
                 <div class="slider-container">
                     @foreach ($category as $cat)
 
-                            <div class="card shadow-sm col-md-6" id="linked">
+                            <div class="card" >
                                 <img src="/storage/{{$cat->picture}}" width="100%" height="100%" class="bd-placeholder-img card-img-top" alt="{{$cat->name}}">
                                 <div class="card-body">
                                     <h2 class="card-text">{{$cat->name}}</h2>

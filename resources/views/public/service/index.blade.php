@@ -66,7 +66,7 @@
                 <div class="slider-container">
 
                     @forelse ($product as $products)
-                    <div class="card">
+                    <div class="card" style="padding: 10px">
                         @php
                             $sales = "";
                             //get sale_information
