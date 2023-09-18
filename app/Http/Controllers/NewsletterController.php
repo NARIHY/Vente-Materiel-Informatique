@@ -1,0 +1,101 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\NewsletterRequest;
+use App\Models\Newsletter;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
+
+class NewsletterController extends Controller
+{
+    /**
+     * Return listing newsletter who are not send
+     * @return \Illuminate\View\View
+     */
+    public function listing(): View
+    {
+        $newsletter = Newsletter::orderBy('created_at', 'desc')
+                                    ->where('info', 0)
+                                    ->paginate(15);
+        return view($this->viewPath().'index', [
+            'newsletter' => $newsletter
+        ]);
+    }
+
+    /**
+     * Create newsletter
+     * @return \Illuminate\View\View
+     */
+    public function create(): View
+    {
+        return view($this->viewPath().'action.random');
+    }
+
+    /**
+     * Store the newsletter given
+     * @param \App\Http\Requests\NewsletterRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(NewsletterRequest $request): RedirectResponse
+    {
+        try {
+            $data = $request->validated();
+            $newsletter = Newsletter::create($data);
+            $newsletter->update(['info' => 0]);
+            return redirect()->route($this->routes().'listing')->with('success', 'ajout de la lettre réussi');
+        } catch (\Exception $e) {
+            return redirect()->route($this->routes().'create')->with('error', 'oups il y a eu une erreur');
+        }
+    }
+
+    /**
+     * Edition view of one newsletter already posted
+     * @param string $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function edit(string $id)
+    {
+        $newsletter = Newsletter::findOrFail($id);
+        return view($this->viewPath().'action.random', [
+            'newsletter' => $newsletter
+        ]);
+    }
+
+    /**
+     * Update letter
+     * @param string $id
+     * @param \App\Http\Requests\NewsletterRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(string $id, NewsletterRequest $request) : RedirectResponse
+    {
+        try {
+            $data = $request->validated();
+            $newsletter = Newsletter::findOrFail($id);
+            $newsletter->update($data);
+            return redirect()->route($this->routes().'edit', ['id' => $newsletter->id])->with('success', 'modification de la lettre réussi');
+        } catch (\Exception $e) {
+            return redirect()->route($this->routes().'edit', ['id' => $newsletter->id])->with('error', 'oups il y a eu une erreur');
+        }
+    }
+    /**
+     * return view path of newsletter
+     * @return string
+     */
+    private function viewPath(): string
+    {
+        $view = "admin.page.newsletter.";
+        return $view;
+    }
+    /**
+     * Route path
+     * @return string
+     */
+    private function routes(): string
+    {
+        $routes = "Admin.Newsletter.";
+        return $routes;
+    }
+}

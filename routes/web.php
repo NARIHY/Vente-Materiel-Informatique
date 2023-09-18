@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeInterfaceController;
 use App\Http\Controllers\SalesInformationController;
+use App\Http\Controllers\SubscriberController;
 use Illuminate\Support\Facades\Route;
 use Intervention\Image\Facades\Image;
 
@@ -50,6 +52,8 @@ Route::prefix('/')->name('Public.')->group( function(){
     Route::prefix('/Nos-service')->name('Service.')->group( function (){
         Route::get('/', [HomeInterfaceController::class, 'service'])->name('index');
     });
+    //Route for subscriber
+    Route::post('/Abonement-newsletter', [SubscriberController::class, 'subscribe'])->name('subscribe');
 });
 
 //Route for administration
@@ -115,6 +119,16 @@ Route::prefix('/Administration')->name('Admin.')->group( function() {
         Route::get('/2365Aki8/Pmo{id}25sa587Auz/Message', [ContactController::class, 'view'])->name('view');
      });
 
+     //route for newsletter
+     Route::prefix('/Newsletter')->name('Newsletter.')->group( function () {
+        Route::get('/', [NewsletterController::class, 'listing'])->name('listing');
+        Route::get('/creation', [NewsletterController::class, 'create'])->name('create');
+        Route::post('/creation', [NewsletterController::class, 'store'])->name('store');
+
+        //update
+        Route::get('/{id}/edition', [NewsletterController::class, 'edit'])->name('edit');
+        Route::put('/{id}/edition', [NewsletterController::class, 'update'])->name('update');
+     });
 
 });
 

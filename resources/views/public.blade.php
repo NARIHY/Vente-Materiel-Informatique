@@ -92,7 +92,14 @@
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Notre newsletter</h4>
             <p>Restez à jour avec nos dernières actualités, offres exclusives et informations passionnantes en vous abonnant à notre newsletter mensuelle. Ne manquez jamais une mise à jour importante !</p>
-            <form action="" method="post">
+            @if (session('good'))
+                <p style="color: green">{{session('good')}}</p>
+            @endif
+            @if (session('bad'))
+            <p style="color: red">{{session('bad')}}</p>
+            @endif
+            <form action="{{route('Public.subscribe')}}" method="post">
+                @csrf
               <input type="email" name="email"><input type="submit" value="Subscribe">
             </form>
 

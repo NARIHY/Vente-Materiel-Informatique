@@ -74,3 +74,19 @@ La création d'un site vitrine pour la vente de matériel avec Laravel implique 
     - Utilisation d'outils d'analyse pour suivre le comportement des utilisateurs et les performances du site.
 
 N'oubliez pas de mettre en place des mesures de sécurité robustes, de tester régulièrement votre site et de suivre les meilleures pratiques en matière de développement web. Laravel offre de nombreuses fonctionnalités et packages qui peuvent faciliter la création de ces fonctionnalités. Assurez-vous également de respecter les lois locales et les réglementations en matière de vente en ligne.
+
+## systeme de newletter
+Abonné
+- ID (PK)
+- Adresse e-mail
+- Date d'inscription
+
+Article de Newsletter
+- ID (PK)
+- Titre de l'article
+- info (INTEGER)
+- Contenu de l'article
+- Date de publication
+
+Chaque newsletter sera publié par email au abonnée
+
