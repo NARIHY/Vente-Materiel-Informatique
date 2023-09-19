@@ -91,7 +91,7 @@ setInterval(nextSlide, 5000); // Changez l'intervalle de défilement en millisec
             }
         }
     });
-//caroussel product
+
 
 
 

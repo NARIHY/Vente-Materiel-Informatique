@@ -207,7 +207,7 @@
                 @endif
 
                 <video id="myContactVideo" autoplay loop muted>
-                    <source src="{{asset('public/assets/video/telecom.mp4')}}" type="video/mp4" muted="">
+                    <source src="{{asset('public/assets/video/aze.mp4')}}" type="video/mp4" muted="">
 
                 </video>
 

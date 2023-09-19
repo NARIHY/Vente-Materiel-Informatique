@@ -77,20 +77,29 @@
 }
 /* Contact video */
 .contact {
-    position: relative; /* Changez la position en relative */
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
 }
 
 .myContactVideo {
-    width: 100%; /* Ajustez la largeur au besoin */
-    height: auto; /* Ajustez la hauteur au besoin */
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -100;
 }
 
 .contact form {
     color: white;
     background-color: transparent;
-    position: relative; /* Changez la position en relative */
+    position: relative;
     z-index: 100;
     margin-top: -100vh;
+
 
 }
 
@@ -106,7 +115,10 @@
 
 
 
+
+
 .form-nary:hover {
+
     border-bottom: 3px solid rgb(81, 0, 254);
 }
 .form-nary::placeholder {
