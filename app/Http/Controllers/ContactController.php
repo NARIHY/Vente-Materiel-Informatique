@@ -106,6 +106,53 @@ class ContactController extends Controller
     }
 
     /**
+     * contact in one product
+     * @param string $id
+     * @return \Illuminate\View\View
+     */
+    public function product(string $id): View
+    {
+        return view('public.contact.index', [
+            'id' => $id
+        ]);
+    }
+/**
+     * For stock information given by users interface when users click on one product
+     * @param ContactRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function productSave(string $id, ContactRequest $request): RedirectResponse
+    {
+        try {
+
+            //get all of information validated
+            $data = $request->validated();
+            // Get the validated email address from the request
+            $email = $request->validated('email');
+            // Create an instance of the email validator
+            $validator = new EmailValidator();
+            // Configure multiple validations to apply (RFCValidation and DNSCheckValidation)
+            $multipleValidations = new MultipleValidationWithAnd([
+                new RFCValidation(),
+                new DNSCheckValidation()
+            ]);
+
+            if ($validator->isValid($email, $multipleValidations)) {
+                // The email address is valid
+                // Create an instance of the contact model with the validated data
+                $contact = Contact::create($data);
+                //insert product id in the table
+                $contact->update(['product' => $id]);
+                return redirect()->route('Public.Contact.interface')->with('success', 'Merci, de nous avoir contacter');
+            } else {
+                // The email address is not valid
+                return redirect()->route('Public.Contact.product', ['id' => $id])->with('Oups', 'Votre email n\'existe pas ou n\'est pas valide');
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('Public.Contact.product', ['id' => $id])->with('Oups', 'il y a eu une erreur lors de l\'envoie du message');
+        }
+    }
+    /**
      * View of one information
      * @param string $id
      * @return \Illuminate\View\View

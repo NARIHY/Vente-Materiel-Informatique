@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsletterController;
@@ -9,6 +10,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeInterfaceController;
 use App\Http\Controllers\SalesInformationController;
 use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\CompteControllers;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ParticipantController;
 use Illuminate\Support\Facades\Route;
 use Intervention\Image\Facades\Image;
 
@@ -23,7 +28,7 @@ use Intervention\Image\Facades\Image;
 |
 */
 
-
+/*
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -34,7 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+*/
 require __DIR__.'/auth.php';
 //Route for public users
 Route::prefix('/')->name('Public.')->group( function(){
@@ -47,6 +52,8 @@ Route::prefix('/')->name('Public.')->group( function(){
     Route::prefix('/Nous-contacter')->name('Contact.')->group( function () {
         Route::get('/', [ContactController::class, 'interface'])->name('contacts');
         Route::post('/', [ContactController::class, 'interfaceSave'])->name('contactsSave');
+        Route::get('/8{id}8-7z45',[ContactController::class, 'product'])->name('product');
+        Route::post('/8{id}8-7z45',[ContactController::class, 'productSave'])->name('productSave');
     });
     //Service View
     Route::prefix('/Nos-service')->name('Service.')->group( function (){
@@ -57,8 +64,9 @@ Route::prefix('/')->name('Public.')->group( function(){
 });
 
 //Route for administration
-Route::prefix('/Administration')->name('Admin.')->group( function() {
-
+Route::prefix('/Administration')->middleware(['auth', 'verified','checkRole:1'])->name('Admin.')->group( function() {
+    //Admin
+    Route::get('/', [AdminController::class, 'index'])->name('index');
     //gestion of product
     Route::prefix('/Produit')->name('Product.')->group( function() {
         Route::get('/Liste-de-tous-les-produit', [ProductController::class, 'listing'])->name('listing');
@@ -128,6 +136,38 @@ Route::prefix('/Administration')->name('Admin.')->group( function() {
         //update
         Route::get('/{id}/edition', [NewsletterController::class, 'edit'])->name('edit');
         Route::put('/{id}/edition', [NewsletterController::class, 'update'])->name('update');
+     });
+
+      //Route for personale users
+    Route::prefix('/UtilisateurX')->name('Utilisateur.')->group( function () {
+        Route::get('/Mon-profile', [UsersController::class, 'profile'])->name('profile');
+        Route::get('/Edition-de-mon-profile', [UsersController::class, 'edit'])->name('edit');
+        Route::put('/Edition-de-mon-profile', [UsersController::class, 'update'])->name('update');
+    });
+
+    //Routes for compte management
+    Route::prefix('/Gestion-des-compte')->name('Compte.')->group( function () {
+        Route::get('/', [CompteControllers::class, 'listing'])->name('listing');
+        Route::get('/edition/125{id}7954', [CompteControllers::class, 'edit'])->name('edit');
+        Route::put('/edition/125{id}7954', [CompteControllers::class, 'updateRole'])->name('updateRole');
+        Route::delete('/supression/125{id}7954', [CompteControllers::class, 'deleteUser'])->name('deleteUser');
+        //forbiden error
+        Route::get('/acces-refuser', [CompteControllers::class, 'forbiden'])->name('forbiden');
+    });
+    //Routes for message
+    Route::prefix('/Message')->name('Message.')->group( function (){
+        Route::get('/', [MessageController::class, 'allMessage'])->name('allMessage');
+        // get discution One to One
+        Route::get('/az8-z{participant}54sa58-89/message', [MessageController::class, 'discution'])->name('discution');
+        // post discution One to One
+        Route::post('/az8-z{participant}54sa58-89/message', [MessageController::class, 'send'])->name('send');
+        //Get conversation
+        Route::get('/az8-z{participant}54sa58-89/conversation', [MessageController::class, 'discutionOneOne'])->name('discutionOneOne');
+    });
+    //Routes for creation of new message
+    Route::prefix('/Message-Création')->name('Message.Creation.')->group( function (){
+        Route::get('/',[ParticipantController::class, 'index'])->name('index');
+        Route::post('/',[ParticipantController::class, 'create'])->name('create');
      });
 
 });

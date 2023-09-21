@@ -41,6 +41,17 @@
                     <p style="text-align: justify; margin-bottom:5px">Je vous écris pour exprimer mon intérêt à établir un contact et à discuter d'opportunités de collaboration ou d'autres sujets d'intérêt mutuel. J'ai récemment eu l'occasion de découvrir votre entreprise Accentic Technology et j'ai été impressionné par  vos produits innovants/votre engagement envers la durabilité/votre réputation dans le secteur informatique, et divers encore.</p>
                     <p style="text-align: justify; margin-bottom:5px">En tant que fanatique de l'informatique, je crois que nos chemins pourraient se croiser de manière bénéfique. Je suis passionné(e) par tous vos produit, et offres et je serais ravi(e) de discuter de la manière dont nous pourrions collaborer ou partager des idées.</p>
                     <p style="text-align: justify; margin-bottom:5px">{{$contact->content}}</p>
+                    @if (!empty($contact->product))
+                        <p style="text-align: justify; margin-bottom:5px">
+                            @php
+                                $product = App\Models\Product::findOrFail($contact->product);
+                                $categ = App\Models\Category::findOrFail($product->categoryId);
+                            @endphp
+                            Je désire obtenir davantage d'informations concernant votre produit {{$product->name}}, dans la catégorie {{$categ->name}}.
+                            Je suis enthousiastes à l'idée d'échanger en profondeur sur la manière dont votre produit peut être adapté à mes besoins spécifiques.
+                        </p>
+                    @endif
+
                     <p style="text-align: justify; margin-bottom:5px">En attendant, je vous remercie de prendre le temps de lire ma lettre et j'espère que nous pourrons échanger plus en détail dans un proche avenir. Si vous avez des questions ou si vous souhaitez discuter de cette opportunité, vous pouvez me joindre  par e-mail à <b style="text-decoration: underline; color:blue;">{{$contact->email}}</b>.</p>
                     <p style="text-align: justify">Je vous adresse, Cher(e) Madame/Monsieur le responsable de l'accentic technology, l'expression de mes salutations distinguées. <br> Cordialement,</p>
                     <h4 style="color: rgb(0, 0, 0); text-align:left; margin-left:15px">{{$contact->last_name}} {{$contact->name}}</h4>

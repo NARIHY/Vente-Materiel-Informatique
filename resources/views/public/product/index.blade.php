@@ -73,7 +73,8 @@
 
                                     <div class="card-body">
                                         <img src="/storage/{{$products->picture}}" alt="Product" class="card-img">
-                                        <h3 class="title-product">{{$products->name}}</h3>
+                                        <a href="{{route('Public.Contact.product', ['id' => $products->id])}}"><h3 class="title-product">{{$products->name}}</h3></a>
+
                                         @php
                                         $text = new Nari\Text();
                                         @endphp
