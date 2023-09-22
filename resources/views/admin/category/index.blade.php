@@ -49,7 +49,7 @@
                     <a href="{{route('Admin.Category.edit', ['id' => $c->id])}}" class="btn btn-primary"> Editer</a>
                 </div>
                 <div class="col-6">
-                    <form action="" method="post">
+                    <form action="{{route('Admin.Category.delete', ['id' => $c->id])}}" method="post">
                         @csrf
                         @method('DELETE')
                         <input type="submit" class="btn btn-danger" value="Suprimer">

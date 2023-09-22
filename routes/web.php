@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductInterfaceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeInterfaceController;
@@ -48,6 +49,8 @@ Route::prefix('/')->name('Public.')->group( function(){
     Route::post('/', [ContactController::class, 'store'])->name('contact.store');
     Route::prefix('/Products')->name('Product.')->group( function() {
         Route::get('/', [ProductController::class, 'index'])->name('listing');
+        Route::get('/Liste/a{id}z/produit', [ProductInterfaceController::class, 'listing'])->name('listOfProduct');
+        Route::get('/Produit/az5{id}2za/view', [ProductInterfaceController::class, 'view'])->name('view');
     });
     Route::prefix('/Nous-contacter')->name('Contact.')->group( function () {
         Route::get('/', [ContactController::class, 'interface'])->name('contacts');
@@ -89,7 +92,7 @@ Route::prefix('/Administration')->middleware(['auth', 'verified','checkRole:1'])
         //edition
         Route::get('/Liste-de-tous-les-categories/{id}/edition-d-un-category', [CategoryController::class, 'edit'])->name('edit');
         Route::put('/Liste-de-tous-les-categories/{id}/edition-d-un-category', [CategoryController::class, 'update'])->name('update');
-
+        Route::delete('/Liste-de-tous-les-categories/{id}/edition-d-un-category', [CategoryController::class, 'delete'])->name('delete');
 
     });
     //Route for information sales

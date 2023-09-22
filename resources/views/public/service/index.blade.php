@@ -93,7 +93,7 @@
                             </p>
                             <p class="quantity">Quantité en stock: <b class="quantity-stock" @if ($products->quantityInStock < 5) style="color: red" @endif>{{$products->quantityInStock}}</b></p>
                             <h4 class="price">Prix: <b class="price-price">{{number_format($products->Price, 0, '.', ' ')}} Ar</b></h4>
-                            <a href="#" class="btn btn-primary" style="float: right; margin-right:10px;"><i class="bi bi-plus-circle-dotted"></i></a>
+                            <a href="{{route('Public.Product.view', ['id' => $products->id])}}" class="btn btn-primary" style="float: right; margin-right:10px;"><i class="bi bi-plus-circle-dotted"></i></a>
                         </div>
 
                     </div>

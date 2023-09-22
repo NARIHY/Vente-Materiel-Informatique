@@ -28,8 +28,8 @@
         <div class="container" style="margin-top: 20vh ; text-align:left">
 
 
-                @if (request()->routeIS('Public.Contact.store'))
-                <form action="{{route('Public.Contact.store')}}" method="post">
+                @if (request()->routeIS('Public.Contact.contacts'))
+                <form action="{{route('Public.Contact.contactsSave')}}" method="post">
                     <h1 class="text-center" style="color: blue" style="margin-top: -15px">Nous contacter</h1>
                     @csrf
                     <div class="row mb-3">

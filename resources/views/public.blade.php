@@ -38,7 +38,27 @@
           <li><a href="{{route('Public.Service.index')}}" class="@if(request()->routeIS('Public.Service.index')) active @endif">Nos services</a></li>
           <li><a href="{{route('Public.Contact.contacts')}}" class="@if(request()->routeIS('Public.Contact.contacts')) active @endif">Contact</a></li>
           <li><a href="" class="">Information</a></li>
+          @if (!Illuminate\Support\Facades\Auth::check())
+          <li><a class="" href="{{route('register')}}">S'inscrire</a></li>
+          <li><a class="" href="{{route('login')}}">Se connecter</a></li>
+        @else
+            @php
+                $user = Illuminate\Support\Facades\Auth::user();
+            @endphp
+            @if ($user->role != 1)
+            <li><a class="" href="{{route('Admin.index')}}">Administration</a></li>
+            @endif
+          <li>
+              <form action="{{route('logout')}}" method="post">
+                  @csrf
+                  <div class="">
 
+                    <input type="submit" value="Déconnexion" style="background: transparent; border:transparent; color:rgb(38, 38, 38); margin-left:5px">
+                  </div>
+
+              </form>
+          </li>
+        @endif
 
 
         </ul>

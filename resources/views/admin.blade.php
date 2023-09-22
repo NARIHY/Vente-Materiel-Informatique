@@ -8,7 +8,7 @@ $roli->redirect();
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
+<head> <script src="{{asset('bootstrap/js/color-modes.js')}}"></script>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -327,7 +327,7 @@ $roli->redirect();
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="{{route('Admin.index')}}">
+        <a class="nav-link collapsed" href="{{route('Admin.index')}}">
           <i class="bi bi-grid"></i>
           <span>Tableau de bord</span>
         </a>

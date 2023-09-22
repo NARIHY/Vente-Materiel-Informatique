@@ -33,87 +33,118 @@
 
 
             @forelse ($category as $categories)
-                @php
-
-                    $product = App\Models\Product::where('categoryId', $categories->id)
-                                                        ->where('quantityInStock', '>=', 1)
-                                                        ->orderBy('created_at')
-                                                        ->get();
-                    $count = App\Models\Product::where('categoryId', $categories->id)
-                                                        ->where('quantityInStock', '>=', 1)
-                                                        ->orderBy('created_at')
-                                                        ->count();
-                @endphp
-                @if (!empty($count))
-
-                    <h2 class="name-category">{{$categories->name}}</h2>
-                @endif
 
 
 
 
 
-                <div class="container">
-                    <div class="row mb-3 hidden_container">
+            @php
+            $product = App\Models\Product::where('categoryId', $categories->id)
+                                            ->where('quantityInStock', '>=', 1)
+                                            ->orderBy('created_at')
+                                            ->limit(3)
+                                            ->get();
+            $count = App\Models\Product::where('categoryId', $categories->id)
+                                            ->where('quantityInStock', '>=', 1)
+                                            ->orderBy('created_at')
+                                            ->count();
+            @endphp
 
-                            @forelse ($product as $products)
+                    @if (!empty($count))
 
-                                    <div class="cards">
-                                    @php
-                                        $sales = "";
-                                        //get sale_information
-                                        if(!empty($products->sales_information)) {
-                                            $sales = App\Models\SaleInformation::findOrFail($products->sales_information);
-                                        }
+                        <h2 class="name-category">{{$categories->name}}</h2>
+                    @endif
 
-                                    @endphp
-                                    @if (!empty($sales))
-                                    <h4 class="card-title" @if($sales->description == "Promotions") style="color:red" @endif>{{$sales->description}}</h4>
-                                    @endif
+                    <section class="splide" aria-label="Exemple HTML de base de Splide">
 
-                                    <div class="card-body">
-                                        <img src="/storage/{{$products->picture}}" alt="Product" class="card-img">
-                                        <a href="{{route('Public.Contact.product', ['id' => $products->id])}}"><h3 class="title-product">{{$products->name}}</h3></a>
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                             @php
 
-                                        @php
-                                        $text = new Nari\Text();
-                                        @endphp
-                                        <p class="product-text" >
+                             @endphp
 
-                                            {{ $text->excerpt($products->Description, 40)}}
-                                        </p>
-                                        <p class="quantity">Quantité en stock: <b class="quantity-stock" @if ($products->quantityInStock < 5) style="color: red" @endif>{{$products->quantityInStock}}</b></p>
-                                        <h4 class="price">Prix: <b class="price-price">{{number_format($products->Price, 0, '.', ' ')}} Ar</b></h4>
-                                        <a href="#" class="btn btn-primary" style="float: right; margin-right:10px;">Voir plus</a>
-                                    </div>
-
-                                </div>
+                              @foreach ($product as $products)
 
 
 
-                            @empty
-                            <div class="empty">
+                                <li class="splide__slide">
+                                  <div class="cardz">
+                                      @php
+                                          $sales = "";
+                                          //get sale_information
+                                          if(!empty($products->sales_information)) {
+                                              $sales = App\Models\SaleInformation::findOrFail($products->sales_information);
+                                          }
 
-                            </div>
-                            @endforelse
-                            @if(!empty($count))
+                                      @endphp
+                                      @if (!empty($sales))
+                                      <h4  class="card-title" @if($sales->description == "Promotions") style="color:red" @else style="color: black" @endif>{{$sales->description}}</h4>
+                                      @endif
+
+                                      <div class="card-body">
+                                          <img src="/storage/{{$products->picture}}" alt="Product" class="card-img">
+                                          <a href="{{route('Public.Contact.product', ['id' => $products->id])}}"><h3 class="title-product">{{$products->name}}</h3></a>
+
+                                          @php
+                                          $text = new Nari\Text();
+                                          @endphp
+                                          <p class="product-text" >
+
+                                              {{ $text->excerpt($products->Description, 40)}}
+                                          </p>
+                                          <p class="quantity">Quantité en stock: <b class="quantity-stock" @if ($products->quantityInStock < 5) style="color: red" @endif>{{$products->quantityInStock}}</b></p>
+                                          <h4 class="price">Prix: <b class="price-price">{{number_format($products->Price, 0, '.', ' ')}} Ar</b></h4>
+                                          <a href="{{route('Public.Product.view', ['id' => $products->id])}}" class="btn btn-primary" style="float: right; margin-right:10px;">Voir plus</a>
+                                      </div>
+
+                                  </div>
+
+                                </li>
+                              @endforeach
+                            </ul>
+                      </div>
+                        @if(!empty($products))
                             <div class="text-center">
-                                <a href="#" style="text-align: center">Voir plus</a>
+                                <a href="{{route('Public.Product.listOfProduct', ['id' => $categories->id])}}" style="text-align: center">Voir plus</a>
                             </div>
-                            @endif
+                        @endif
+                </section>
 
-                    </div>
 
 
-                </div>
+
+
+
+
             @empty
 
             @endforelse
         </div>
 
     </section>
+
 </main>
 
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elements = document.querySelectorAll('.splide');
+    var elementsLength = elements.length;
 
+    for (var i = 0; i < elementsLength; i++) {
+        var additionalClass = 'splide-' + (i + 1); // Ajoute 'splide-1', 'splide-2', 'splide-3', ...
+
+        new Splide(elements[i], {
+            type: 'loop', // Pour le défilement en boucle
+            perPage: 3,   // Affiche 3 éléments à la fois
+            autoplay: true, // Défilement automatique
+            pauseOnHover: false, // Ne pas mettre en pause en survol
+            interval: 2000, // Intervalle de défilement en millisecondes (par exemple, toutes les 2 secondes)
+        }).mount();
+
+        // Ajoute la classe supplémentaire à l'élément
+        elements[i].classList.add(additionalClass);
+    }
+});
+  </script>
 @endsection

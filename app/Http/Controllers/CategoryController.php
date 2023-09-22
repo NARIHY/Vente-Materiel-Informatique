@@ -123,7 +123,13 @@ class CategoryController extends Controller
         }
     }
 
+    public function delete(string $id): RedirectResponse
+    {
+        $home = Category::findOrFail($id);
 
+        $home->delete();
+        return redirect()->route($this->routes().'listing')->with('success', 'Supréssion réussi');
+    }
 
     //Private function
     /**
