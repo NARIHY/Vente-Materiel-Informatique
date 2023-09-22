@@ -217,7 +217,7 @@
 
 /* Linked categories */
 .card:hover {
-    animation: rotations 1.5s linear;
+    transform: translateY(-15px);
 }
 
 @keyframes rotations

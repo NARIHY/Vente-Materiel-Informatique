@@ -10,7 +10,13 @@
                     <img src="/storage/{{$prod->picture}}" alt="">
                 </div>
                 <div class="col-md-6">
+                    <a href="{{route('Public.Contact.product', ['id' => $prod->id])}}"><h3 style="color: blue">{{$prod->name}}</h3></a>
 
+                    <p style="color: black; text-align: justify">
+                        {{$prod->Description}}
+                    </p>
+                    <p style="color: black">Quantité en stock: <b style="color: orange">{{$prod->quantityInStock}}</b></p>
+                    <p style="color: black">Prix: <b style="color: orange">{{$prod->quantityInStock}}</b></p>
                 </div>
             </div>
 
@@ -67,7 +73,7 @@
                 perPage: 3,   // Affiche 3 éléments à la fois
                 autoplay: true, // Défilement automatique
                 pauseOnHover: false, // Ne pas mettre en pause en survol
-                interval: 2000, // Intervalle de défilement en millisecondes (par exemple, toutes les 2 secondes)
+                interval: 4000, // Intervalle de défilement en millisecondes (par exemple, toutes les 2 secondes)
             }).mount();
         });
       </script>
