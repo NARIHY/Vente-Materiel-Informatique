@@ -2,7 +2,7 @@
 namespace Nari;
 use Nari\Interface\TextInterface;
 
-class Text implements TextInterface
+class Text
 {
 
     /**

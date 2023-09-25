@@ -5,7 +5,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Nari\Interface\RoleInterface;
 
-class Role implements RoleInterface
+class Role
 {
     public $user;
 

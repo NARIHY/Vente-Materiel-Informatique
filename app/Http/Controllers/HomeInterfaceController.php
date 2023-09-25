@@ -47,6 +47,8 @@ class HomeInterfaceController extends Controller
     }
 
 
+
+
     /**
      * View public path directory
      * @return string
