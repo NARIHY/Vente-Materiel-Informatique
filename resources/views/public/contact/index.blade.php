@@ -30,19 +30,19 @@
 
                 @if (request()->routeIS('Public.Contact.contacts'))
                 <form action="{{route('Public.Contact.contactsSave')}}" method="post">
-                    <h1 class="text-center" style="color: blue" style="margin-top: -15px">Nous contacter</h1>
+                    <h1 class="text-center" style="color: rgb(0, 0, 0)" style="margin-top: -15px">Nous contacter</h1>
                     @csrf
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="name" style="color: #333; text-align:left">Votre nom: (*)</label>
-                            <input type="text" name="name" id="name" class="form-nary-contact" placeholder="Joseph" value="{{@old('name')}}">
+
+                            <input type="text" name="name" id="name" class="form-nary-contact" placeholder="Votre nom*" value="{{@old('name')}}">
                             @error('name')
                             <p style="color:rgb(158, 0, 0)">{{$message}}</p>
                             @enderror
                         </div>
                         <div class="col-md-6">
-                            <label for="last_name" style="color: #333; text-align:left">Votre prénon: (*)</label>
-                            <input type="text" name="last_name" id="last_name" class="form-nary-contact" placeholder="Jean" value="{{@old('last_name')}}">
+
+                            <input type="text" name="last_name" id="last_name" class="form-nary-contact" placeholder="Votre prénon*" value="{{@old('last_name')}}">
                             @error('last_name')
                             <p style="color:rgb(158, 0, 0)">{{$message}}</p>
                             @enderror
@@ -50,18 +50,18 @@
                     </div>
 
 
-                    <label for="subject" style="color: #333; text-align:left">Votre sujet de conversation: (*)</label>
-                    <input type="text" name="subject" id="subject" class="form-nary-contact" placeholder="Sujet de conversation" value="{{@old('subject')}}">
+
+                    <input type="text" name="subject" id="subject" class="form-nary-contact" placeholder="Votre sujet de conversation*" value="{{@old('subject')}}">
                     @error('subject')
                         <p style="color:rgb(158, 0, 0)">{{$message}}</p>
                     @enderror
 
-                    <label for="email" style="color: #333; text-align:left">Votre addresse email: (*)</label>
-                    <input type="email" name="email" id="email" class="form-nary-contact" placeholder="Exemple@gmail.com" value="{{@old('email')}}">
+
+                    <input type="email" name="email" id="email" class="form-nary-contact" placeholder="Votre addresse email" value="{{@old('email')}}">
                     @error('email')
                     <p style="color:rgb(158, 0, 0)">{{$message}}</p>
                     @enderror
-                    <label for="content" style="color: #333; text-align:left">Votre message (*)</label>
+                    <label for="content" style="color: #ffffff; text-align:left">Votre message*</label>
                     <textarea name="content" id="content"  class="form-nary-contact" placeholder="Un petit message">
                         {{@old('content')}}
                     </textarea>
@@ -70,7 +70,7 @@
                     @enderror
 
                     <div class="d-grid gap-2" style="margin-top: 20px">
-                        <input type="submit" value="Nous contacter" class="btn btn-primary">
+                        <input type="submit" value="Nous contacter" width="100%" class="btn btn-danger">
                     </div>
                 </form>
                 @endif

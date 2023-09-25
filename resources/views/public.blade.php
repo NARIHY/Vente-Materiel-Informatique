@@ -81,7 +81,7 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
-              <h3>Briqueweb</h3>
+              <h3 style="color: white">Briqueweb</h3>
               <p>
                 Lot III A 97 A Tsimialonjafy Mahamasina <br>
                 Antananarivo,101<br>
@@ -110,8 +110,8 @@
 
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Notre newsletter</h4>
-            <p>Restez à jour avec nos dernières actualités, offres exclusives et informations passionnantes en vous abonnant à notre newsletter mensuelle. Ne manquez jamais une mise à jour importante !</p>
+            <h4 style="color: white">Notre newsletter</h4>
+            <p style="color: white">Restez à jour avec nos dernières actualités, offres exclusives et informations passionnantes en vous abonnant à notre newsletter mensuelle. Ne manquez jamais une mise à jour importante !</p>
             @if (session('good'))
                 <p style="color: green">{{session('good')}}</p>
             @endif

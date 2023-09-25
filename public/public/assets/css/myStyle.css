@@ -109,7 +109,9 @@
     outline: none;
     border-bottom: 3px solid white;
     width: 100%;
-    color: rgb(205, 199, 255);
+    height: 50px;
+    margin-bottom: 15px;
+    color: rgb(255, 255, 255);
     transition: border-bottom 0.3s ease;
 }
 
@@ -119,14 +121,14 @@
 
 .form-nary:hover {
 
-    border-bottom: 3px solid rgb(81, 0, 254);
+    border-bottom: 3px solid rgb(254, 0, 0);
 }
 .form-nary::placeholder {
-    color: rgb(205, 199, 255);
+    color: rgb(255, 255, 255);
 }
 /*bouton clicked*/
 .form-nary.clicked {
-    border-bottom: 3px solid rgb(81, 0, 254);
+    border-bottom: 3px solid rgb(254, 0, 0);
 }
 
 .button {
@@ -398,17 +400,19 @@
     outline: none;
     border-bottom: 3px solid white;
     width: 100%;
-    color: rgb(25, 0, 255);
+    height: 50px;
+    margin-bottom: 15px;
+    color: rgb(255, 255, 255);
     transition: border-bottom 0.3s ease;
 }
 
 
 
 .form-nary-contact:hover {
-    border-bottom: 3px solid rgb(81, 0, 254);
+    border-bottom: 3px solid rgb(254, 0, 0);
 }
 .form-nary-contact::placeholder {
-    color: rgb(25, 0, 255);
+    color: rgb(255, 255, 255);
 }
 
 /* Service */
