@@ -94,6 +94,25 @@ setInterval(nextSlide, 5000); // Changez l'intervalle de défilement en millisec
 
 
     //for carous
+document.addEventListener('DOMContentLoaded', () => {
+        // Votre code JavaScript ici
+
+// Sélectionnez la vidéo et ajoutez un gestionnaire d'événements pour la souris
+const video = document.querySelector('.bloc video');
+
+// Ajoutez un gestionnaire d'événements pour lorsque la souris entre dans la vidéo
+video.addEventListener('mouseenter', () => {
+    // Supprimez le filtre de désaturation pour restaurer la couleur
+    video.style.filter = 'none';
+});
+
+// Ajoutez un gestionnaire d'événements pour lorsque la souris quitte la vidéo
+video.addEventListener('mouseleave', () => {
+    // Réappliquez le filtre de désaturation
+    video.style.filter = 'grayscale(100%)';
+});
+    });
+
 
 
 

@@ -665,6 +665,22 @@ section {
   margin-bottom: 0;
 }
 
+@media (max-width: 768px) {
+    .about .content h2 {
+        font-size: 24px; /* Ajustez la taille de la police pour les écrans plus petits */
+        line-height: 36px; /* Ajustez la hauteur de ligne pour les écrans plus petits */
+    }
+
+    .about .content h3 {
+        font-size: 18px; /* Ajustez la taille de la police pour les écrans plus petits */
+        line-height: 24px; /* Ajustez la hauteur de ligne pour les écrans plus petits */
+    }
+
+    .about .content ul i {
+        font-size: 14px; /* Ajustez la taille de la police pour les écrans plus petits */
+    }
+}
+
 /*--------------------------------------------------------------
 # Clients
 --------------------------------------------------------------*/

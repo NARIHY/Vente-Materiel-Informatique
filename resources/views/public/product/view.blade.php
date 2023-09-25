@@ -7,7 +7,7 @@
         <div class="container" style="margin-top: 80px">
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <img src="/storage/{{$prod->picture}}" alt="">
+                    <img src="/storage/{{$prod->picture}}" alt="" width="100%">
                 </div>
                 <div class="col-md-6">
                     <a href="{{route('Public.Contact.product', ['id' => $prod->id])}}"><h3 style="color: blue">{{$prod->name}}</h3></a>
@@ -67,14 +67,44 @@
 
     </main>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            new Splide('.splide', {
-                type: 'loop', // Pour le défilement en boucle
-                perPage: 3,   // Affiche 3 éléments à la fois
-                autoplay: true, // Défilement automatique
-                pauseOnHover: false, // Ne pas mettre en pause en survol
-                interval: 4000, // Intervalle de défilement en millisecondes (par exemple, toutes les 2 secondes)
-            }).mount();
-        });
+    document.addEventListener('DOMContentLoaded', function() {
+    // Sélectionnez la classe splide
+    const splideElement = document.querySelector('.splide');
+
+    // Fonction pour mettre à jour le nombre d'éléments par slide en fonction de la largeur de l'écran
+    function updatePerPage() {
+        const screenWidth = window.innerWidth;
+        let perPage = 3; // Par défaut, affiche 3 éléments par slide
+
+        if (screenWidth <= 456) {
+            perPage = 1; // Si la largeur de l'écran est inférieure ou égale à 456px, affiche 1 élément par slide
+        } else if (screenWidth >= 457 && screenWidth <= 600) {
+            perPage = 2; // Si la largeur de l'écran est entre 457px et 600px, affiche 2 éléments par slide
+        }
+
+        return perPage;
+    }
+
+    // Créez l'instance Splide en utilisant la fonction updatePerPage
+    const splide = new Splide(splideElement, {
+        type: 'loop', // Pour le défilement en boucle
+        perPage: updatePerPage(), // Utilisez la fonction pour définir le nombre initial d'éléments par slide
+        autoplay: true, // Défilement automatique
+        pauseOnHover: false, // Ne pas mettre en pause en survol
+        interval: 4000, // Intervalle de défilement en millisecondes (par exemple, toutes les 2 secondes)
+    });
+
+    // Mettez à jour le nombre d'éléments par slide lors du redimensionnement de la fenêtre
+    window.addEventListener('resize', function() {
+        splide.options.perPage = updatePerPage();
+        splide.destroy(); // Détruisez l'instance actuelle
+        splide.mount(); // Remontez-la avec les nouvelles options
+    });
+
+    // Montez l'instance Splide
+    splide.mount();
+});
+
+
       </script>
 @endsection

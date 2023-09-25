@@ -18,6 +18,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: -100;
+    filter: grayscale(100%);
 }
 
 /* Site information*/
@@ -60,6 +61,26 @@
     text-align: justify;
     padding: 20px;
     font-size: 20px;
+}
+
+/* CSS pour les écrans de largeur 375px (par exemple, mobile en mode portrait) */
+@media (max-width: 500px) {
+    .animated-text {
+        font-size: 24px; /* Ajustez la taille de police pour une largeur de 375px */
+    }
+
+    .text_small {
+        font-size: 16px; /* Ajustez la taille de police pour une largeur de 375px */
+    }
+}
+@media (min-width: 500px) and (max-width: 600px) {
+    .animated-text {
+        font-size: 30px; /* Ajustez la taille de police pour une largeur de 375px */
+    }
+
+    .text_small {
+        font-size: 18px; /* Ajustez la taille de police pour une largeur de 375px */
+    }
 }
 
 /* Categories */

@@ -134,9 +134,23 @@
     for (var i = 0; i < elementsLength; i++) {
         var additionalClass = 'splide-' + (i + 1); // Ajoute 'splide-1', 'splide-2', 'splide-3', ...
 
+        // Fonction pour mettre à jour le nombre d'éléments par slide en fonction de la largeur de l'écran
+        function updatePerPage() {
+            const screenWidth = window.innerWidth;
+            let perPage = 3; // Par défaut, affiche 3 éléments par slide
+
+            if (screenWidth <= 456) {
+                perPage = 1; // Si la largeur de l'écran est inférieure ou égale à 456px, affiche 1 élément par slide
+            } else if (screenWidth >= 457 && screenWidth <= 700) {
+                perPage = 2; // Si la largeur de l'écran est entre 457px et 600px, affiche 2 éléments par slide
+            }
+
+            return perPage;
+        }
+
         new Splide(elements[i], {
             type: 'loop', // Pour le défilement en boucle
-            perPage: 3,   // Affiche 3 éléments à la fois
+            perPage: updatePerPage(), // Utilisez la fonction pour définir le nombre initial d'éléments par slide
             autoplay: true, // Défilement automatique
             pauseOnHover: false, // Ne pas mettre en pause en survol
             interval: 2000, // Intervalle de défilement en millisecondes (par exemple, toutes les 2 secondes)
@@ -145,6 +159,17 @@
         // Ajoute la classe supplémentaire à l'élément
         elements[i].classList.add(additionalClass);
     }
+
+    // Mettez à jour le nombre d'éléments par slide lors du redimensionnement de la fenêtre
+    window.addEventListener('resize', function() {
+        for (var i = 0; i < elementsLength; i++) {
+            var splideInstance = Splide.get(elements[i]);
+            splideInstance.options.perPage = updatePerPage();
+            splideInstance.destroy(); // Détruisez l'instance actuelle
+            splideInstance.mount(); // Remontez-la avec les nouvelles options
+        }
+    });
 });
+
   </script>
 @endsection

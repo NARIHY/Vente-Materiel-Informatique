@@ -416,7 +416,12 @@ $roli->redirect();
           <span>Newsletter</span>
         </a>
       </li><!-- End Register Page Nav -->
-
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('Public.home')}}">
+            <i class="bi bi-globe"></i>
+            <span>Site</span>
+        </a>
+      </li>
 
 
     </ul>
