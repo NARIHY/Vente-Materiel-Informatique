@@ -15,6 +15,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CompteControllers;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ParticipantController;
+use App\Http\Middleware\VisitCounter;
 use Illuminate\Support\Facades\Route;
 use Intervention\Image\Facades\Image;
 
@@ -43,7 +44,7 @@ Route::middleware('auth')->group(function () {
 */
 require __DIR__.'/auth.php';
 //Route for public users
-Route::prefix('/')->name('Public.')->group( function(){
+Route::prefix('/')->middleware([VisitCounter::class])->name('Public.')->group( function(){
     //home view
     Route::get('/', [HomeInterfaceController::class, 'index'])->name('home');
     Route::post('/', [ContactController::class, 'store'])->name('contact.store');
@@ -175,4 +176,8 @@ Route::prefix('/Administration')->middleware(['auth', 'verified','checkRole:1'])
 
 });
 
+//fall back
+Route::fallback(function () {
+    return view('error.404');
+});
 
