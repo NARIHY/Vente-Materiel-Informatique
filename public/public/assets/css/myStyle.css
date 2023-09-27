@@ -124,6 +124,12 @@
 
 }
 
+@media screen and (max-width:400px) and (max-height: 700px) {
+    .contact form {
+        margin-top: -150vh;
+    }
+}
+
 .form-nary {
     background-color: transparent;
     border: none;
