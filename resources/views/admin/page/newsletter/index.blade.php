@@ -46,7 +46,11 @@
           <td>
             <div class="row mb-3">
                 <div class="col-6">
-                    <a href="#" class="btn btn-secondary">Poster</a>
+
+                    <form action="{{route('Admin.Newsletter.send', ['id' => $c->id])}}" method="post">
+                    @csrf
+                    <input type="submit" class="btn btn-secondary" value="Poster">
+                    </form>
                 </div>
                 <div class="col-6">
                     <a href="{{route('Admin.Newsletter.edit', ['id' => $c->id])}}" class="btn btn-primary"> Editer</a>

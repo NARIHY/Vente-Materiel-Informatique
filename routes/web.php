@@ -140,6 +140,9 @@ Route::prefix('/Administration')->middleware(['auth', 'verified','checkRole:1'])
         //update
         Route::get('/{id}/edition', [NewsletterController::class, 'edit'])->name('edit');
         Route::put('/{id}/edition', [NewsletterController::class, 'update'])->name('update');
+
+        //send
+        Route::post('/{id}/Poster-le-newsletter', [NewsletterController::class, 'sendEmail'])->name('send');
      });
 
       //Route for personale users

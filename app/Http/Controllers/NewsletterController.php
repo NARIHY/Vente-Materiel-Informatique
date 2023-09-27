@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\NewsletterRequest;
+use App\Mail\NewsLetterMail;
 use App\Models\Newsletter;
+use App\Models\Subscriber;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class NewsletterController extends Controller
@@ -79,6 +82,18 @@ class NewsletterController extends Controller
         } catch (\Exception $e) {
             return redirect()->route($this->routes().'edit', ['id' => $newsletter->id])->with('error', 'oups il y a eu une erreur');
         }
+    }
+
+    public function sendEmail(string $id): RedirectResponse
+    {
+        $notification = new NewsLetterMail($id);
+        $subscriber = Subscriber::get();
+        foreach ($subscriber as $subscribers) {
+            Mail::to($subscribers->email)->send($notification);
+        }
+        $newsletter = Newsletter::findOrFail($id);
+        $newsletter->update(['info' => '1']);
+        return redirect()->route($this->routes().'listing')->with('success', 'envoye des email aux abonné réussi');
     }
     /**
      * return view path of newsletter
