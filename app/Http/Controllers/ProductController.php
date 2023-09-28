@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
+use App\Mail\NewProductMail;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\SaleInformation;
+use App\Models\Subscriber;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 use Intervention\Image\Facades\Image;
@@ -44,6 +47,7 @@ class ProductController extends Controller
 
     /**
      *  with intervention Image who resize our picture uploaded
+     *  Adding mail to subscriber
      * @param ProductRequest $request //validate the information given
      * @return RedirectResponse
      */
@@ -70,6 +74,12 @@ class ProductController extends Controller
                 // Mettez à jour la colonne 'picture' dans votre modèle Product
                 $product->picture = 'product/' . $imageName;
                 $product->save();
+                //mail to subscriber
+                $productLetter = new NewProductMail($product->id);
+                $subscriber = Subscriber::get();
+                foreach ($subscriber as $subscribers) {
+                    Mail::to($subscribers->email)->send($productLetter);
+                }
             }
             return redirect()->route($this->routes().'listing')->with('success', 'Félicitation, le produit a bien été ajouter');
         } catch (\Exception $e){

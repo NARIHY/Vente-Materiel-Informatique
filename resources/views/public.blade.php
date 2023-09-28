@@ -101,7 +101,7 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('Public.home')}}">Acceuil</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Information</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Nos services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('Public.Service.index')}}">Nos services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
