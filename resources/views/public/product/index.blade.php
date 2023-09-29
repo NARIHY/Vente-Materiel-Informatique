@@ -3,23 +3,8 @@
 
 @section('content')
 <main id="main">
-    <section class="carrousel">
-        <div class="carousel-container">
-            <div class="carousel-wrapper">
-                <div class="carousel-slide">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFDtgZs31Fe6HJsP1KfLw-vHkaCLt6cgjQOg&usqp=CAU" alt="" width="100%" height="450px">
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSahc6j6CI99zhRaeQT7AHtzGfC2PQAl0Gbug&usqp=CAU" alt="" width="100%" height="450px">
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZK-1h7IvsqlqWD855KQEcoOju1gBJ_Y9jrw&usqp=CAU" alt="" width="100%" height="450px">
-                </div>
 
-            </div>
-        </div>
-    </section>
-    <section class="ecriture">
+    <section class="ecriture" style="margin-top: 100px">
         <div class="container">
             <h2 class="title">Explorez le Futur de la Technologie Informatique avec Nos Produits de Pointe!</h2>
             <p class="message" >

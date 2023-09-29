@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RolesUserRequest;
+use App\Models\Message;
+use App\Models\Participant;
 use App\Models\Roles;
+use App\Models\Subscriber;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -67,6 +70,24 @@ class CompteControllers extends Controller
     public function deleteUser(string $id): RedirectResponse
     {
         $user = User::findOrFail($id);
+        $userId = $user->id;
+        $participant = Participant::where(function ($query) use ($userId) {
+            $query->where('expediteur', $userId)
+                ->orWhere('destinataire', $userId);
+        })
+        ->get();
+        foreach ($participant as $participants) {
+            $participants->delete();
+        }
+        $message = Message::where(function ($query) use ($userId) {
+            $query->where('expediteur', $userId)
+                ->orWhere('destinataire', $userId);
+        })
+        ->get();
+
+        foreach ($message as $messages) {
+            $messages->delete();
+        }
         $user->delete();
         return redirect()->route($this->routes().'listing')->with('success', 'Suppréssion de l\'utilisateur réussi');
     }
