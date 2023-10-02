@@ -22,9 +22,10 @@ class UsersUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:users,name,'. auth()->id(),
             'email' => 'required|string|email|max:255|unique:users,email,' . auth()->id(),
-            'picture' => ['image', 'max:20000']
+            'picture' => ['image', 'max:20000'],
+            'password' => ['required']
         ];
     }
 

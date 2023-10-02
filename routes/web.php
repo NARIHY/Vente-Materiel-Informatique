@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ConfidentialController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProductController;
@@ -65,6 +66,8 @@ Route::prefix('/')->middleware([VisitCounter::class])->name('Public.')->group( f
     });
     //Route for subscriber
     Route::post('/Abonement-newsletter', [SubscriberController::class, 'subscribe'])->name('subscribe');
+    //Routes for politique
+    Route::get('/Politique', [ConfidentialController::class, 'politique'])->name('politique');
 });
 
 //Route for administration

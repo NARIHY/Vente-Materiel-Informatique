@@ -102,8 +102,7 @@
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('Public.home')}}">Acceuil</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Information</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('Public.Service.index')}}">Nos services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('Public.politique')}}">Terme de notre service</a></li>
             </ul>
           </div>
 
@@ -135,7 +134,7 @@
       </div>
       <div class="credits">
 
-        Designed by mahenina RANDRIANARISOA
+        Designed by Narihy
       </div>
     </div>
   </footer><!-- End Footer -->

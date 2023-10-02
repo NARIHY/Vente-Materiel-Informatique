@@ -1,6 +1,6 @@
 La création d'un site vitrine pour la vente de matériel avec Laravel implique le développement de plusieurs fonctionnalités clés pour offrir une expérience utilisateur optimale. Voici une liste de fonctionnalités que vous pourriez envisager d'implémenter :
 
-1. **Gestion des produits** :
+1. **Gestion des produits** : x
    - Ajout, modification et suppression de produits.
    - Catégorisation des produits (par exemple, électronique, mode, maison, etc.).
    - Gestion des stocks et des niveaux de disponibilité.
@@ -9,17 +9,17 @@ La création d'un site vitrine pour la vente de matériel avec Laravel implique 
    - Barre de recherche pour permettre aux utilisateurs de trouver rapidement des produits.
    - Filtres de recherche avancée (par prix, catégorie, etc.).
 
-3. **Panier d'achat** :
+3. **Panier d'achat** : (Pour retour en vrai site)
    - Ajout et suppression de produits dans le panier.
    - Calcul du total du panier.
    - Gestion des quantités de produits dans le panier.
 
-4. **Passer commande** :
+4. **Passer commande** : (Pour retour en vrai site)
    - Processus de commande en plusieurs étapes (sélection d'adresse de livraison, paiement, confirmation).
    - Intégration de passerelles de paiement sécurisées (comme Stripe, PayPal, etc.).
    - Génération de factures pour les commandes.
 
-5. **Comptes utilisateur** :
+5. **Comptes utilisateur** : x
    - Inscription et connexion des utilisateurs.
    - Profils utilisateur avec informations personnelles.
    - Historique des commandes pour les utilisateurs enregistrés.
@@ -27,19 +27,19 @@ La création d'un site vitrine pour la vente de matériel avec Laravel implique 
 6. **Système de notation et de commentaires** :
    - Permettre aux clients de noter et de laisser des commentaires sur les produits.
 
-7. **Page d'accueil personnalisée** :
+7. **Page d'accueil personnalisée** : x
    - Affichage des produits populaires, des nouveautés, des offres spéciales, etc.
 
-8. **Gestion des images** :
+8. **Gestion des images** : x
    - Téléchargement et gestion d'images pour les produits.
 
-9. **Pages d'information** :
+9. **Pages d'information** : x
    - Pages de contact, d'informations sur l'entreprise, FAQ, etc.
 
-10. **Système de newsletter** :
+10. **Système de newsletter** : x
     - Inscription à une newsletter pour les mises à jour, les promotions, etc.
 
-11. **Système de sécurité** :
+11. **Système de sécurité** : x
     - Authentification et autorisation des utilisateurs.
     - Protection contre les attaques CSRF et XSS.
     - Sécurité des paiements en ligne.
@@ -51,17 +51,17 @@ La création d'un site vitrine pour la vente de matériel avec Laravel implique 
 13. **SEO (Optimisation pour les moteurs de recherche)** :
     - Gestion des balises meta, des URL conviviales, etc.
 
-14. **Langues et localisation** :
+14. **Langues et localisation** : x
     - Prise en charge de plusieurs langues et devises si nécessaire.
 
-15. **Tableau de bord administrateur** :
+15. **Tableau de bord administrateur** : x
     - Gestion des produits, des commandes, des utilisateurs, etc.
     - Possibilité de gérer les catégories et les sous-catégories de produits.
 
-16. **Système de rapports** :
+16. **Système de rapports** : (Pour retour vrai site)
     - Générer des rapports sur les ventes, les produits les plus populaires, etc.
 
-17. **Système de notifications** :
+17. **Système de notifications** : x
     - Notifications par e-mail pour les commandes, les mises à jour de compte, etc.
 
 18. **Intégration de médias sociaux** :
