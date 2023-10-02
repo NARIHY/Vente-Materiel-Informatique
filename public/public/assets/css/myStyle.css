@@ -165,13 +165,14 @@
 /* Caroussel */
 /* Ajoutez le CSS nécessaire pour styliser le slider ici */
 /* Conteneur du carrousel */
+/* Conteneur caché pour le carrousel */
 .hidden_container {
-    overflow: hidden; /* Masquer tout contenu dépassant du conteneur */
+    overflow: hidden; /* Masquer le contenu dépassant du conteneur */
     white-space: nowrap; /* Empêcher le contenu de revenir à la ligne */
     position: relative; /* Position relative pour les boutons de navigation */
 }
 
-/* Barre de défilement personnalisée pour Firefox (si nécessaire) */
+/* Styles pour la barre de défilement personnalisée (Firefox) */
 .hidden_container::-webkit-scrollbar {
     width: 6px;
 }
@@ -184,10 +185,9 @@
     background-color: transparent;
 }
 
-/* Carrousel lui-même */
+/* Conteneur principal du carrousel */
 .slider-container {
-    display: flex;
-
+    display: flex; /* Afficher les éléments en ligne */
     transition: transform 0.5s ease; /* Animation fluide lors du changement de diapositives */
     margin: 0; /* Supprimer la marge par défaut */
     padding: 0; /* Supprimer le rembourrage par défaut */
@@ -214,18 +214,18 @@
 .next-button {
     margin: 5px;
     padding: 5px 10px;
-
-    background-color:transparent; /* Couleur du bouton */
+    background-color: transparent; /* Fond transparent */
     color: #c40000; /* Couleur du texte */
     border: none; /* Pas de bordure */
     cursor: pointer; /* Curseur en forme de main au survol */
     border-radius: 5px; /* Coins arrondis pour les boutons */
     position: absolute; /* Position absolue par rapport au conteneur du carrousel */
     top: 50%; /* Alignement vertical au milieu */
-    transform: translateY(-50%); /* Décalage vertical pour aligner au milieu */
+    transform: translateY(-25%); /* Décalage vertical pour aligner au milieu */
     z-index: 1; /* Placez les boutons au-dessus des diapositives */
     transition: background-color 0.3s ease; /* Animation de transition */
 }
+
 
 .prevnext {
     width: 250px;

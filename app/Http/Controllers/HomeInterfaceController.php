@@ -24,9 +24,12 @@ class HomeInterfaceController extends Controller
                         ->value('id');
         $category = Category::orderBy('created_at', 'desc')
                                 ->get();
+        $categoryCount = Category::orderBy('created_at', 'desc')
+                                ->count();
         return view($this->viewPath().'interface.index',[
             'home' => $home,
-            'category' => $category
+            'category' => $category,
+            'categoryCount' => $categoryCount
         ]);
     }
 

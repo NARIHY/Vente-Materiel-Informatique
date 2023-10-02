@@ -50,7 +50,7 @@ class MessageController extends Controller
         $message = Message::orderBy('id', 'asc')
                                 ->where('participant', $participant)
                                 ->get();
-        // Récupérer les participants
+        // Get All of participant
         $participants = Participant::where(function ($query) use ($userId) {
             $query->where('expediteur', $userId)
                 ->orWhere('destinataire', $userId);

@@ -16,7 +16,10 @@
                         {{$prod->Description}}
                     </p>
                     <p style="color: black">Quantité en stock: <b style="color: orange">{{$prod->quantityInStock}}</b></p>
-                    <p style="color: black">Prix: <b style="color: orange">{{$prod->quantityInStock}}</b></p>
+                    <p style="color: black">Prix: <b style="color: orange">{{number_format($prod->Price, 0, '.', ' ')}} Ar</b></p>
+                    <p style="color: black">
+                        {{$prod->Description}}
+                    </p>
                 </div>
             </div>
 

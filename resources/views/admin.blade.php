@@ -323,12 +323,7 @@ $roli->redirect();
       </li>
       @endif
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-          <i class="bi bi-question-circle"></i>
-          <span>F.A.Q</span>
-        </a>
-      </li><!-- End F.A.Q Page Nav -->
+
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('Admin.Contact.listing')}}">
