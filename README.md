@@ -90,3 +90,20 @@ Article de Newsletter
 
 Chaque newsletter sera publié par email au abonnée
 
+## Manuelle installation
+Pour l'installation:
+1) **Cloner le depots**
+2) **Installer les dépendances**
+3) **Migrer la base de données, en cas d'erreur contacter moi via email**
+4) **lancer votre server**
+**Enjoy**
+
+@NARIHY Malagasy develloper
+
+## Pour les dévelloper
+Si vous avez des suggestion ou des améliorations, n'hésitez pas à me contacter
+Contact:
+- Tel: **+261-34-12-751-02**
+- email: **maheninarandrianarisoa@gmail.com**
+
+

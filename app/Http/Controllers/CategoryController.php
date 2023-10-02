@@ -12,7 +12,6 @@ use Intervention\Image\Facades\Image;
 
 class CategoryController extends Controller
 {
-
     /**
      * Listing view of all category of product
      * @return View
@@ -36,7 +35,8 @@ class CategoryController extends Controller
     }
 
     /**
-     * Action to do when user give information
+     * To do when users give information validated
+     * @param CategoryRequest $request //Infromation validated by validator
      * @return RedirectResponse
      */
     public function store(CategoryRequest $request): RedirectResponse
@@ -46,22 +46,17 @@ class CategoryController extends Controller
             $category = Category::create($data);
             if ($request->hasFile('picture') && $request->file('picture')->isValid()) {
                 $image = $request->file('picture');
-
-                // Générez un nom unique pour l'image en fonction de l'ID de la catégorie
+                // Generate a unique name for the image based on the category ID
                 $imageName = 'category_' . $category->id . '.' . $image->getClientOriginalExtension();
-
-                // Chemin de stockage de l'image
+                // Image storage path
                 $imagePath = public_path('storage/category/' . $imageName);
-
-                // Redimensionnez et sauvegardez l'image en utilisant Intervention Image
+                // Resize and save the image using Intervention Image
                 Image::make($image->getRealPath())
-                    ->resize(450, 200) // Redimensionnez selon vos besoins
+                    ->resize(450, 200)
                     ->save($imagePath);
-
-                // Mettez à jour la colonne 'picture' dans le modèle Category avec le chemin relatif de la nouvelle image
+                // Update the 'picture' column in the Category model with the relative path of the new image
                 $category->update(['picture' => 'category/' . $imageName]);
             }
-
             return redirect()->route($this->routes().'listing')->with('success', 'Ajout de la catégory réussi');
         } catch (\Exception $e) {
             return redirect()->route($this->routes().'create')->with('error', 'Oupss, il y a eu une erreur'.$e->getMessage());
@@ -82,7 +77,9 @@ class CategoryController extends Controller
     }
 
     /**
-     * Controllers to update an information
+     * To do when users need to update informations
+     * @param string $id //get the id of category
+     * @param CategoryRequest $request //for validating information given by users
      * @return RedirectResponse
      */
     public function update(string $id, CategoryRequest $request): RedirectResponse
@@ -91,38 +88,36 @@ class CategoryController extends Controller
             $category = Category::findOrFail($id);
             $data = $request->validated();
             if ($request->hasFile('picture') && $request->file('picture')->isValid()) {
-                // Redimensionnez et stockez la nouvelle image ici
-                // Supprimez l'image précédente s'il en existe une
-
+                //get the picture validated
                 $newImage = $request->file('picture');
                 if(!empty($newImage)){
                     if (!empty($category->picture)) {
                         Storage::disk('public')->delete($category->picture);
                     }
                 }
-
+                //giving unique pictures names
                 $newImageName = 'category_' . $category->id . '.' . $newImage->getClientOriginalExtension();
-
+                // store in a public path
                 $path = public_path('storage/category/' . $newImageName); // Chemin de stockage
-
-                // Redimensionnez l'image en utilisant Intervention Image
+                // Resizing picture with intervention image
                 Image::make($newImage->getRealPath())
-                    ->resize(450, 200) // Redimensionnez selon vos besoins
+                    ->resize(450, 200)
                     ->save($path);
-
-
-
-                // Mettez à jour la colonne 'picture' dans votre modèle Product avec le chemin relatif de la nouvelle image
+                // Update 'picture' collumn in our models with relatives path
                 $category->picture = 'category/' . $newImageName;
                 $category->save();
             }
             return redirect()->route($this->routes().'edit',['id'=>$category->id])->with('success', 'Modification réussi');
-
         } catch(\Exception $e) {
-            return redirect()->route($this->routes().'edit',['id'=>$category->id])->with('error', 'Oupss, il y a une erreur'.$e->getMessage());
+            return redirect()->route($this->routes().'edit',['id'=>$category->id])->with('error', 'Oupss, il y a une erreur'. $e->getMessage());
         }
     }
 
+    /**
+     * To do when user need to delete an information
+     * @param string $id // id of the information to delete
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function delete(string $id): RedirectResponse
     {
         $home = Category::findOrFail($id);

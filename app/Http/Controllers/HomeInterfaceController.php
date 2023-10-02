@@ -40,7 +40,6 @@ class HomeInterfaceController extends Controller
                                 ->orderBy('created_at', 'desc')
                                 ->take(6)
                                 ->get();
-
         return view($this->viewPath().'service.index', [
             'product' => $product
         ]);

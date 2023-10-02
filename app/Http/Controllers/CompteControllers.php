@@ -69,8 +69,10 @@ class CompteControllers extends Controller
      */
     public function deleteUser(string $id): RedirectResponse
     {
+        //geting user
         $user = User::findOrFail($id);
         $userId = $user->id;
+        //deleting everythings in participant where users are here
         $participant = Participant::where(function ($query) use ($userId) {
             $query->where('expediteur', $userId)
                 ->orWhere('destinataire', $userId);
@@ -79,12 +81,12 @@ class CompteControllers extends Controller
         foreach ($participant as $participants) {
             $participants->delete();
         }
+        // It's the same to the message table
         $message = Message::where(function ($query) use ($userId) {
             $query->where('expediteur', $userId)
                 ->orWhere('destinataire', $userId);
         })
         ->get();
-
         foreach ($message as $messages) {
             $messages->delete();
         }
@@ -92,6 +94,10 @@ class CompteControllers extends Controller
         return redirect()->route($this->routes().'listing')->with('success', 'Suppréssion de l\'utilisateur réussi');
     }
 
+    /**
+     * To do when users doesn't have role to an action
+     * @return \Illuminate\View\View
+     */
     public function forbiden(): View
     {
         return view('admin.403.403');

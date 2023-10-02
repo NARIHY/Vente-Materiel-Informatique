@@ -23,7 +23,7 @@ class ProductController extends Controller
      */
     public function listing(): View
     {
-
+        // get every product
         $product = Product::orderBy('created_at', 'desc')
                     ->paginate(15);
         return view($this->viewPath().'index', [
@@ -36,7 +36,9 @@ class ProductController extends Controller
      */
     public function create() : View
     {
+        //pluck catgory to have an array of id and name => [name => id]
         $category = Category::pluck('id','name');
+        // It's the same to the sales information
         $sales = SaleInformation::pluck('id','description');
         return view($this->viewPath().'action.random', [
             'category' => $category,
@@ -54,27 +56,23 @@ class ProductController extends Controller
     public function store(ProductRequest $request): RedirectResponse
     {
         try {
-
             //instance the information validated by users
             $validated = $request->validated();
             $product = Product::create($validated);
-
             if ($request->hasFile('picture') && $request->file('picture')->isValid()) {
-                // Redimensionnez l'image ici
+                // Resizing picture
                 $image = $request->file('picture');
                 $imageName = 'product_' . $product->id . '.' . $image->getClientOriginalExtension();
-
-                $path = public_path('storage/product/' . $imageName); // Chemin de stockage
-
-                // Redimensionnez l'image en utilisant Intervention Image
+                //store in a public path
+                $path = public_path('storage/product/' . $imageName);
+                // Resizing picture with Intervention image
                 Image::make($image->getRealPath())
-                    ->resize(450, 200) // Redimensionnez selon vos besoins
-                    ->save($path);
-
-                // Mettez à jour la colonne 'picture' dans votre modèle Product
+                            ->resize(450, 200)
+                            ->save($path);
+                // Update 'picture' collumn in our models
                 $product->picture = 'product/' . $imageName;
                 $product->save();
-                //mail to subscriber
+                //Send mail to subscriber
                 $productLetter = new NewProductMail($product->id);
                 $subscriber = Subscriber::get();
                 foreach ($subscriber as $subscribers) {
@@ -135,23 +133,20 @@ class ProductController extends Controller
                 $product = Product::findOrFail($id);
                 $product->update($request->validated());
                 if ($request->hasFile('picture') && $request->file('picture')->isValid()) {
-                    // Redimensionnez et stockez la nouvelle image ici
+                    // Resizing picture with INTERVENTION PICTURE
                     $newImage = $request->file('picture');
                     $newImageName = 'product_' . $product->id . '.' . $newImage->getClientOriginalExtension();
-
-                    $path = public_path('storage/product/' . $newImageName); // Chemin de stockage
-
-                    // Redimensionnez l'image en utilisant Intervention Image
+                    //store in a public path
+                    $path = public_path('storage/product/' . $newImageName);
+                    // Resizing Picture with Intreventin IMAGE
                     Image::make($newImage->getRealPath())
-                        ->resize(450, 200) // Redimensionnez selon vos besoins
-                        ->save($path);
-
-                    // Supprimez l'image précédente s'il en existe une
+                                ->resize(450, 200)
+                                ->save($path);
+                    // delete old picture if exists
                     if (!empty($product->picture)) {
                         Storage::disk('public')->delete($product->picture);
                     }
-
-                    // Mettez à jour la colonne 'picture' dans votre modèle Product avec le chemin relatif de la nouvelle image
+                    // Update Picture collumn in our models with relatives directory for new picture
                     $product->picture = 'product/' . $newImageName;
                     $product->save();
                 }

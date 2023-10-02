@@ -47,7 +47,6 @@ class HomeController extends Controller
         try {
             //get the information validated
             $data = $request->validated();
-
             $home = Home::create($data);
             if ($request->hasFile('media')) {
                 foreach ($request->file('media') as $file) {
@@ -103,39 +102,29 @@ class HomeController extends Controller
         try {
             // Validate the incoming request data
             $data = $request->validated();
-
             // Find the existing Home model by its ID
             $home = Home::findOrFail($id);
-
             // Clear all media associated with the Home model
             $home->clearMediaCollection('collection_home');
-
             // Update home information
             $home->update($data);
-
             // Adding new media files (up to a limit of 3)
             if ($request->hasFile('media')) {
                 $mediaCount = 0;
-
                 foreach ($request->file('media') as $file) {
                     // Check the MIME type of the file (image/jpeg, image/png, or video/*)
                     $allowedMimeTypes = ['image/jpeg', 'image/png', 'video/mp4', 'video/quicktime', 'video/x-msvideo'];
-
                     if (!in_array($file->getMimeType(), $allowedMimeTypes)) {
                         return redirect()->route($this->routes().'edit', ['id' => $id])->with('error', 'Unsupported file type.');
                     }
-
-                    // Check the file size (e.g., maximum of 5 MB)
+                    // Check the file size (e.g., maximum of 5 GB)
                     $maxFileSize = 512000000; // 5 GB in bytes
-
                     if ($file->getSize() > $maxFileSize) {
                         return redirect()->route($this->routes().'edit', ['id' => $id])->with('error', 'File size exceeds the allowed limit.');
                     }
-
                     // Add the uploaded file to the media collection
                     $home->addMedia($file)->toMediaCollection('collection_home', 'public');
                     $mediaCount++;
-
                     if ($mediaCount >= 3) {
                         break; // Limit of 3 media files reached
                     }
@@ -150,9 +139,15 @@ class HomeController extends Controller
 
 
 
+    /**
+     * To do when user nedd to delete An element in home Table
+     * @param string $id //id of this elements
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function delete(string $id): RedirectResponse
     {
         $home = Home::findOrFail($id);
+        //required | delete every media who was attached in the models
         $home->clearMediaCollection('collection_home');
         $home->delete();
         return redirect()->route($this->routes().'listing')->with('success', 'Sauvgarde réussi');

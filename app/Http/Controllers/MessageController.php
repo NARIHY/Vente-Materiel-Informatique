@@ -56,18 +56,17 @@ class MessageController extends Controller
                 ->orWhere('destinataire', $userId);
         })
         ->where('id', $participant)
-        ->get(); // Utilisez get() pour récupérer les résultats
-        $diffExpeditorUserId = null; // Initialisez à null
-        $diffSenderUserId = null;
+        ->get(); // Recuperation of all result
+        $diffExpeditorUserId = null; // Null to different expeditor
+        $diffSenderUserId = null;   // it's the same to different sender
         foreach ($participants as $participant) {
             if ($participant->expediteur != $user->id) {
                 $diffExpeditorUserId = $participant->expediteur;
-                break; // Sortez de la boucle dès que l'ID est trouvé
+                break; // getting out the condition if we found users id
             }
-
             if ($participant->destinataire != $user->id) {
                 $diffSenderUserId = $participant->destinataire;
-                break; // Sortez de la boucle dès que l'ID est trouvé
+                break;  // getting out the condition if we found users id
             }
         }
         $diffUserSender = null;
@@ -79,7 +78,6 @@ class MessageController extends Controller
         if (!empty($diffExpeditorUserId)) {
             $diffUserExpeditor = User::findOrFail($diffExpeditorUserId);
         }
-
         return view($this->viewPath().'conversation.users', [
             'message' => $message,
             'user' => $user,
@@ -108,20 +106,18 @@ class MessageController extends Controller
                 ->orWhere('destinataire', $userId);
         })
         ->where('id', $participant)
-        ->get(); // Utilisez get() pour récupérer les résultats
-        $diffUserId = null; // Initialisez à null
+        ->get(); //  Recuperation of all result
+        $diffUserId = null; // Null to different expeditor
         foreach ($participants as $participant) {
             if ($participant->expediteur != $user->id) {
                 $diffUserId = $participant->expediteur;
-                break; // Sortez de la boucle dès que l'ID est trouvé
+                break; // getting out the condition if we found users id
             }
-
             if ($participant->destinataire != $user->id) {
                 $diffUserId = $participant->destinataire;
-                break; // Sortez de la boucle dès que l'ID est trouvé
+                break; // getting out the condition if we found users id
             }
         }
-
         $diffUser = User::findOrFail($diffUserId);
         return view($this->viewPath().'conversation.message', [
             'user' => $user,
@@ -139,7 +135,7 @@ class MessageController extends Controller
      */
     public function send(string $participant, MessageRequest $request): RedirectResponse
     {
-
+        //create an instance of message where there are defiend Expeditor and Sender
         $message = Message::create($request->validated());
         $user = Auth::user();
         $part = Participant::findOrFail($participant);

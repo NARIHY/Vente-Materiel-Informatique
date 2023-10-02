@@ -30,6 +30,7 @@ class ParticipantController extends Controller
     }
 
     /**
+     * to do when user need to talk to another users
      * @param Participantrequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -37,6 +38,7 @@ class ParticipantController extends Controller
     {
         $expediteur = $request->validated('expediteur');
         $destinataire = $request->validated('destinataire');
+        //verify if users already in the participant table
         $verify = Participant::get();
         foreach($verify as $verif) {
             if ($verif->expediteur == $expediteur && $destinataire == $verif->destinataire) {
@@ -46,12 +48,16 @@ class ParticipantController extends Controller
                 return redirect()->route('Admin.Message.discution', ['participant' => $verif->id]);
             }
         }
-
+        // if verify === false create the instance of participant
         $data = $request->validated();
         $participant = Participant::create($data);
         return redirect()->route('Admin.Message.discution', ['participant' => $participant->id]);
     }
 
+    /**
+     * Directory view
+     * @return string
+     */
     private function viewPath(): string
     {
         $view = "admin.message.";

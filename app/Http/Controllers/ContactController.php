@@ -34,7 +34,6 @@ class ContactController extends Controller
                 new RFCValidation(),
                 new DNSCheckValidation()
             ]);
-
             if ($validator->isValid($email, $multipleValidations)) {
                 // The email address is valid
                 // Create an instance of the contact model with the validated data
@@ -47,7 +46,6 @@ class ContactController extends Controller
         } catch (\Exception $e) {
             return redirect()->route('Public.home')->with('Oups', 'il y a eu une erreur lors de l\'envoie du message');
         }
-
     }
 
     /**
@@ -124,7 +122,6 @@ class ContactController extends Controller
     public function productSave(string $id, ContactRequest $request): RedirectResponse
     {
         try {
-
             //get all of information validated
             $data = $request->validated();
             // Get the validated email address from the request
@@ -136,7 +133,6 @@ class ContactController extends Controller
                 new RFCValidation(),
                 new DNSCheckValidation()
             ]);
-
             if ($validator->isValid($email, $multipleValidations)) {
                 // The email address is valid
                 // Create an instance of the contact model with the validated data

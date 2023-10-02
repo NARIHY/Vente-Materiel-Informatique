@@ -9,6 +9,11 @@ use Illuminate\View\View;
 
 class ProductInterfaceController extends Controller
 {
+    /**
+     * Listing product in user //role ===1
+     * @param string $id
+     * @return \Illuminate\View\View
+     */
     public function listing(string $id): View
     {
         $categ = Category::findOrFail($id);
@@ -21,6 +26,11 @@ class ProductInterfaceController extends Controller
         ]);
     }
 
+    /**
+     * view of one product
+     * @param string $id
+     * @return \Illuminate\View\View
+     */
     public function view(string $id): View
     {
         $prod = Product::findOrFail($id);

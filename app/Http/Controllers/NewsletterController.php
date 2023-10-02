@@ -84,14 +84,22 @@ class NewsletterController extends Controller
         }
     }
 
+    /**
+     * To do when user send newletter
+     * @param string $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function sendEmail(string $id): RedirectResponse
     {
         $notification = new NewsLetterMail($id);
+        //get all subscriber
         $subscriber = Subscriber::get();
+        //send email to all of subscriber
         foreach ($subscriber as $subscribers) {
             Mail::to($subscribers->email)->send($notification);
         }
         $newsletter = Newsletter::findOrFail($id);
+        //update news letter to send
         $newsletter->update(['info' => '1']);
         return redirect()->route($this->routes().'listing')->with('success', 'envoye des email aux abonné réussi');
     }
