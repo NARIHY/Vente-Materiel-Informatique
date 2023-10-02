@@ -100,7 +100,7 @@ Pour l'installation:
 
 @NARIHY Malagasy develloper
 
-## Pour les dévelloper
+## Pour les dévelloper ou autres
 Si vous avez des suggestion ou des améliorations, n'hésitez pas à me contacter
 Contact:
 - Tel: **+261-34-12-751-02**
