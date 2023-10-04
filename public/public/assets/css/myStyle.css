@@ -151,7 +151,7 @@
     border-bottom: 3px solid rgb(254, 0, 0);
 }
 .form-nary::placeholder {
-    color: rgb(255, 255, 255);
+    color: rgb(168, 168, 168);
 }
 /*bouton clicked*/
 .form-nary.clicked {
@@ -387,14 +387,14 @@
 /*Product title*/
 .title-product {
     font-size: 24px;
-    color: #421fee;
+    color: #232323;
     margin-bottom: 10px;
 }
 /* Style pour le texte du produit */
 .product-text {
     font-size: 16px;
     text-align: justify;
-    color: #666;
+    color: #242424;
     margin-bottom: 10px;
 }
 /* Style pour la quantité en stock */
@@ -405,7 +405,7 @@
 }
 
 .quantity b {
-    color: green;
+    color: rgb(42, 42, 42);
 }
 
 /* Style pour le prix */
@@ -501,7 +501,7 @@
 .title {
     font-size: 24px;
     font-weight: bold;
-    color: #fc6969;
+    color: #020000;
     text-align: left;
     margin-bottom: 20px;
 }
@@ -521,6 +521,38 @@
 }
 
 /* list of all product */
+/**
+Preloader
+*/
+#preloader {
+    background: #ffffff url(../preloader.gif) no-repeat center center;
+    background-size: auto;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
 
 
+/*card text*/
+/* Styles pour rendre le texte responsive */
+.card-text {
+    font-size: 16px; /* Taille de police de base */
+}
 
+/* Utilisation de media queries pour ajuster la taille du texte en fonction de la largeur de l'écran */
+@media (min-width: 576px) {
+    /* Pour les écrans de largeur minimale de 576px */
+    .card-text {
+        font-size: 18px; /* Augmenter la taille de police */
+    }
+}
+
+@media (min-width: 768px) {
+    /* Pour les écrans de largeur minimale de 768px */
+    .card-text {
+        font-size: 20px; /* Augmenter davantage la taille de police */
+    }
+}
+
+/* Vous pouvez ajouter d'autres media queries pour différentes tailles d'écran si nécessaire */

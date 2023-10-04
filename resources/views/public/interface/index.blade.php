@@ -149,7 +149,7 @@
                             <div class="card" >
                                 <img src="/storage/{{$cat->picture}}" width="100%" height="100%" class="bd-placeholder-img card-img-top" alt="{{$cat->name}}">
                                 <div class="card-body">
-                                    <h2 class="card-text">{{$cat->name}}</h2>
+                                    <h4 class="card-text" >{{$cat->name}}</h4>
                                 </div>
                             </div>
 
@@ -235,7 +235,7 @@
                             @error('email')
                             <p style="color:rgb(158, 0, 0)">{{$message}}</p>
                             @enderror
-                            <label for="content">Votre message*</label>
+                            <label for="content" style="color: rgb(168, 168, 168);">Votre message*</label>
                             <textarea name="content" id="content" class="form-nary" placeholder="Un petit message">
                                 {{ old('content') }}
                             </textarea>
@@ -245,7 +245,7 @@
                             @enderror
 
                             <div class="d-grid gap-2">
-                                <input type="submit" value="Nous contacter" class="btn btn-danger">
+                                <input type="submit" value="Envoyez" class="btn btn-danger">
                             </div>
                         </form>
 

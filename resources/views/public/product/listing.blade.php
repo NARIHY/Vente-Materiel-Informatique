@@ -3,8 +3,8 @@
 
 @section('content')
 <main id="main">
-<div class="container" style="margin-top: 80px">
-    <h2 style="color: rgb(46, 46, 46)">Pour nos {{$categ->name}}, nous avons</h2>
+<div class="container" style="margin-top: 80px; padding:20px">
+    <h2 style="color: rgb(46, 46, 46)">Pour nos {{$categ->name}}, nous avons:</h2>
     <div class="row mb-3">
 
             @forelse ($product as $products)
@@ -19,7 +19,7 @@
 
                     @endphp
                     @if (!empty($sales))
-                    <h4 class="card-title" @if($sales->description == "Promotions") style="color:red" @endif>{{$sales->description}}</h4>
+                    <h4 class="card-title" @if($sales->Description == "1") style="color:red" @endif>{{$sales->Description}}</h4>
                     @endif
 
                     <div class="card-body">

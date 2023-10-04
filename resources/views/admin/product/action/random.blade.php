@@ -71,7 +71,7 @@
                 <p style="color: rgb(190, 4, 4)">{{$message}}</p>
             @enderror
 
-            <label for="picture">Enter une photo du produit</label>
+            <label for="picture">Enter une photo du produit (1280x720)</label>
             <input type="file" name="picture" id="picture" class="form-control @error('picture') is-invalid @enderror">
             @error('picture')
             <p style="color: rgb(190, 4, 4)">{{$message}}</p>
@@ -147,7 +147,7 @@
 
         <div class="row mb-3" style="margin-top: 20px">
             <div class="col-6">
-                <label for="picture">Enter une photo du produit</label>
+                <label for="picture">Enter une photo du produit (1280x720)</label>
                 <input type="file" name="picture" id="picture" class="form-control @error('picture') is-invalid @enderror">
                 @error('picture')
                 <p style="color: rgb(190, 4, 4)">{{$message}}</p>

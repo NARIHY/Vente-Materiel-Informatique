@@ -7,7 +7,7 @@
     <section class="ecriture" style="margin-top: 100px">
         <div class="container">
             <h2 class="title">Explorez le Futur de la Technologie Informatique avec Nos Produits de Pointe!</h2>
-            <p class="message" >
+            <p style="color: black; text-align: justify" >
                 Découvrez notre gamme exceptionnelle de produits informatiques qui répondront à tous vos besoins technologiques. Chez nous, l'informatique devient une expérience passionnante et accessible à tous. Que vous soyez un professionnel à la recherche d'équipements de pointe ou un passionné d'informatique À la recherche de la dernière technologie, nous avons tout ce qu'il vous faut. Des ordinateurs portables ultraperformants aux composants de haute qualité, en passant par une variété de périphériques innovants, nous vous proposons les solutions les plus fiables et les plus modernes. Explorez notre catalogue et plongez dans le monde passionnant de la technologie informatique. Nous sommes là pour vous accompagner dans chaque étape de votre parcours informatique.
             </p>
         </div>
@@ -63,7 +63,8 @@
 
                                       @endphp
                                       @if (!empty($sales))
-                                      <h4  class="card-title" @if($sales->description == "Promotions") style="color:red" @else style="color: black" @endif>{{$sales->description}}</h4>
+
+                                      <h4  class="card-title" @if($sales->id == 1) style="color:red" @else style="color: black" @endif>{{$sales->description}}</h4>
                                       @endif
 
                                       <div class="card-body">

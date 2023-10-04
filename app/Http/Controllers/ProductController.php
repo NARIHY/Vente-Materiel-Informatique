@@ -67,7 +67,7 @@ class ProductController extends Controller
                 $path = public_path('storage/product/' . $imageName);
                 // Resizing picture with Intervention image
                 Image::make($image->getRealPath())
-                            ->resize(450, 200)
+                            ->resize(600, 300)
                             ->save($path);
                 // Update 'picture' collumn in our models
                 $product->picture = 'product/' . $imageName;
@@ -140,7 +140,7 @@ class ProductController extends Controller
                     $path = public_path('storage/product/' . $newImageName);
                     // Resizing Picture with Intreventin IMAGE
                     Image::make($newImage->getRealPath())
-                                ->resize(450, 200)
+                                ->resize(600, 300)
                                 ->save($path);
                     // delete old picture if exists
                     if (!empty($product->picture)) {

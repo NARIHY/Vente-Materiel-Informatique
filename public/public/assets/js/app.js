@@ -1,5 +1,7 @@
 //my js files
+
 document.addEventListener( 'DOMContentLoaded', function () {
+
     new Splide( '#image-carousel' ).mount();
   } );
 
@@ -50,7 +52,8 @@ formElements.forEach(element => {
         updateSliderPosition();
     });
 });
-
+/*
+this is errors
 // Product carroussel infinie defilement
 const carouselWrapper = document.querySelector('.carousel-wrapper');
 const carouselSlides = document.querySelectorAll('.carousel-slide');
@@ -74,7 +77,7 @@ function updateCarousel() {
 
 setInterval(nextSlide, 5000); // Changez l'intervalle de défilement en millisecondes (ici, toutes les 5 secondes)
 
-
+*/
 //supression de name of product ou les produit sont empty
     // Sélectionnez tous les éléments avec la classe "slider-container"
     const sliderContainers = document.querySelectorAll('.slider-container');
@@ -91,8 +94,6 @@ setInterval(nextSlide, 5000); // Changez l'intervalle de défilement en millisec
             }
         }
     });
-
-
 
 
 

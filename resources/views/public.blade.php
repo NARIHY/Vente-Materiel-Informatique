@@ -9,6 +9,7 @@
 
 
 
+  <link rel="icon" href="{{asset('public/img/favico.jpeg')}}" type="image/x-icon">
 
   <!-- Vendor CSS Files -->
   <link href="{{asset('public/assets/vendor/animate.css/animate.min.css')}}" rel="stylesheet">
@@ -24,6 +25,10 @@
 </head>
 
 <body>
+
+    <div id="preloader">
+
+    </div>
 
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
@@ -81,12 +86,14 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
-              <h3 style="color: white">Briqueweb</h3>
+              <img src="{{asset('public/img/white.png')}}" width="200px" alt="logo">
+
               <p>
-                Lot III A 97 A Tsimialonjafy Mahamasina <br>
-                Antananarivo,101<br>
-                <strong>Téléphone:</strong> +261 05 891 97<br>
-                <strong>Email:</strong> contact@briqueweb.com<br>
+              Madagascar Antananarivo,101<br>
+              Andranomena près du terminus 194<br>
+                <strong>Téléphone:</strong> +261 34 60 309 40<br>
+                <strong>Email:</strong>contact@accentic.net
+                <br>
               </p>
               <div class="social-links mt-3">
                 <a href="https://www.briqueweb.com/" class="twitter"><i class="bi bi-globe"></i></a>
@@ -144,6 +151,7 @@
     <!-- fin du body -->
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+
   <!-- Script js -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   <script src="{{asset('public/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
@@ -157,5 +165,10 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="{{asset('public/assets/js/app.js')}}"></script>
   <script src="{{asset('public/assets/js/main.js')}}"></script>
-
+  <script>
+    var loader = document.getElementById("preloader");
+    window.addEventListener("load", function() {
+        loader.style.display = "none";
+    })
+  </script>
 </body>

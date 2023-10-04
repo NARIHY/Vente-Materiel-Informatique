@@ -52,7 +52,7 @@ class CategoryController extends Controller
                 $imagePath = public_path('storage/category/' . $imageName);
                 // Resize and save the image using Intervention Image
                 Image::make($image->getRealPath())
-                    ->resize(450, 200)
+                    ->resize(1280, 720)
                     ->save($imagePath);
                 // Update the 'picture' column in the Category model with the relative path of the new image
                 $category->update(['picture' => 'category/' . $imageName]);
@@ -101,7 +101,7 @@ class CategoryController extends Controller
                 $path = public_path('storage/category/' . $newImageName); // Chemin de stockage
                 // Resizing picture with intervention image
                 Image::make($newImage->getRealPath())
-                    ->resize(450, 200)
+                    ->resize(1280, 720)
                     ->save($path);
                 // Update 'picture' collumn in our models with relatives path
                 $category->picture = 'category/' . $newImageName;
