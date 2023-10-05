@@ -19,7 +19,20 @@ formElements.forEach(element => {
         element.classList.remove('clicked');
     });
 });
+//bouton clicked
+const formElement = document.querySelectorAll('.form-nary-contact');
 
+formElement.forEach(element => {
+    element.addEventListener('click', function() {
+        // Ajoute la classe "clicked" lorsque l'élément est cliqué
+        element.classList.add('clicked');
+    });
+
+    element.addEventListener('blur', function() {
+        // Supprime la classe "clicked" lorsque l'élément perd le focus
+        element.classList.remove('clicked');
+    });
+});
 
  //caroussel
  $(document).ready(function () {

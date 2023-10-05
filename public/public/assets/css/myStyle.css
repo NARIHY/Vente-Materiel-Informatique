@@ -146,15 +146,12 @@
 
 
 
-.form-nary:hover {
-
-    border-bottom: 3px solid rgb(254, 0, 0);
-}
 .form-nary::placeholder {
     color: rgb(168, 168, 168);
 }
 /*bouton clicked*/
 .form-nary.clicked {
+    animation: input 1s linear 1;
     border-bottom: 3px solid rgb(254, 0, 0);
 }
 
@@ -435,11 +432,27 @@
 
 
 
-.form-nary-contact:hover {
-    border-bottom: 3px solid rgb(254, 0, 0);
-}
+
 .form-nary-contact::placeholder {
     color: rgb(255, 255, 255);
+    width: 100%;
+}
+/*bouton clicked*/
+.form-nary-contact.clicked {
+    animation: input 1s linear 1;
+    border-bottom: 3px solid rgb(254, 0, 0);
+}
+
+
+/*ANimation pour les champs*/
+@keyframes input {
+    0% {
+        border-bottom: 3px solid rgb(255, 255, 255);
+    }
+
+    100% {
+        border-bottom: 3px solid rgb(255, 0, 0);
+    }
 }
 
 /* Service */

@@ -105,7 +105,7 @@
                 </div>
                 <div class="col-md-6">
                     <section class="carrousel_text">
-                        <h1 style="color: blue">{{$acceuil->title}}</h1>
+                        <h1 style="color: rgb(35, 35, 35)">{{$acceuil->title}}</h1>
                         <p style="text-align: justify; font-family:'Times New Roman', Times, serif; font-size:20px">{{$acceuil->content}}</p>
                     </section>
 
@@ -140,7 +140,7 @@
 
       @if (!empty($category))
       <section class="category">
-        <h3 class="third-title">Voici tous nos catégorie de nos produits:</h3>
+        <h3 class="third-title" style="color: rgb(41, 41, 41)">Voici tous nos catégorie de nos produits:</h3>
         <div class="container">
             <div class="row mb-3 hidden_container">
                 <div class="slider-container">
