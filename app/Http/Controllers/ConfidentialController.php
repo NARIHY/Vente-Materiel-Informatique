@@ -15,4 +15,9 @@ class ConfidentialController extends Controller
     {
         return view('public.policy.terme');
     }
+
+    public function condition () : View
+    {
+        return view('public.policy.condition');
+    }
 }

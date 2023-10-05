@@ -138,7 +138,7 @@
       </section>
 
 
-
+      @if (!empty($category))
       <section class="category">
         <h3 class="third-title">Voici tous nos catégorie de nos produits:</h3>
         <div class="container">
@@ -181,6 +181,8 @@
 
 
       </section>
+      @endif
+
 
       <section class="contact">
                 @if(session('success'))

@@ -68,6 +68,7 @@ Route::prefix('/')->middleware([VisitCounter::class])->name('Public.')->group( f
     Route::post('/Abonement-newsletter', [SubscriberController::class, 'subscribe'])->name('subscribe');
     //Routes for politique
     Route::get('/Politique', [ConfidentialController::class, 'politique'])->name('politique');
+    Route::get('/Condition-d-utilisation', [ConfidentialController::class, 'condition'])->name('condition');
 });
 
 //Route for administration

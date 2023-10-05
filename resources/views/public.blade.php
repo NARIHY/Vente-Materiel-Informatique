@@ -110,6 +110,7 @@
               <li><i class="bx bx-chevron-right"></i> <a href="#">Information</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('Public.Service.index')}}">Nos services</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="{{route('Public.politique')}}">Terme de notre service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="{{route('Public.condition')}}">Condition générale d'utilisation</a></li>
             </ul>
           </div>
 
