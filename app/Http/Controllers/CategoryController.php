@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -82,11 +83,12 @@ class CategoryController extends Controller
      * @param CategoryRequest $request //for validating information given by users
      * @return RedirectResponse
      */
-    public function update(string $id, CategoryRequest $request): RedirectResponse
+    public function update(string $id, CategoryUpdateRequest $request): RedirectResponse
     {
         try {
             $category = Category::findOrFail($id);
             $data = $request->validated();
+            $category->update($data);
             if ($request->hasFile('picture') && $request->file('picture')->isValid()) {
                 //get the picture validated
                 $newImage = $request->file('picture');

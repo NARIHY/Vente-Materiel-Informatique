@@ -4,7 +4,7 @@
 
 @section('content')
     <main id="main">
-        <div class="container" style="margin-top: 80px">
+        <div class="container" style="margin-top: 80px; @if ($counts > 1) margin-bottom:80px @endif">
             <div class="row mb-3">
                 <div class="col-md-6">
                     <img src="/storage/{{$prod->picture}}" alt="" width="100%">
@@ -24,6 +24,7 @@
             </div>
 
 
+            @if ($counts > 1)
             <section class="splide" aria-label="Exemple HTML de base de Splide">
                 <div class="splide__track">
                       <ul class="splide__list">
@@ -65,6 +66,7 @@
                       </ul>
                 </div>
             </section>
+            @endif
         </div>
 
 

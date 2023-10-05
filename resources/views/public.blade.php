@@ -89,18 +89,25 @@
               <img src="{{asset('public/img/white.png')}}" width="200px" alt="logo">
 
               <p>
-              Madagascar Antananarivo,101<br>
-              Andranomena près du terminus 194<br>
+                Description de accentic technologie
+              </p>
+
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h4>Contacte</h4>
+            <p style="color: white">
                 <strong>Téléphone:</strong> +261 34 60 309 40<br>
                 <strong>Email:</strong>contact@accentic.net
                 <br>
-              </p>
-              <div class="social-links mt-3">
+                Localisation: Madagascar Antananarivo,101<br>
+                        Andranomena près du terminus 194<br>
+            </p>
+            <div class="social-links mt-3">
                 <a href="https://www.briqueweb.com/" class="twitter"><i class="bi bi-globe"></i></a>
                 <a href="https://www.facebook.com/briqueweb" class="facebook"><i class="bx bxl-facebook"></i></a>
 
               </div>
-            </div>
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">

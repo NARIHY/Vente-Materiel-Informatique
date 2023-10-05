@@ -36,9 +36,12 @@ class ProductInterfaceController extends Controller
         $prod = Product::findOrFail($id);
         $product = Product:: where('id', '!=', $prod->id)
                             ->get();
+        $counts = Product:: where('id', '!=', $prod->id)
+                            ->count();
         return view('public.product.view', [
             'prod' => $prod,
-            'product' => $product
+            'product' => $product,
+            'counts' => $counts
         ]);
     }
 }

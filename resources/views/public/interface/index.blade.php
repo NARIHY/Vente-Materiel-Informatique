@@ -24,7 +24,7 @@
         <div class="container">
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <img src="/storage/{{$home->picture}}" alt="" width="100%">
+                    <img src="/storage/{{$home->picture}}" alt="" width="100%" style="margin-top: 20px">
 
                 </div>
                 <div class="col-md-6">
