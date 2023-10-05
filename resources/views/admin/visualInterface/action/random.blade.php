@@ -49,8 +49,8 @@
 
 
         <label for="media">Ajouter une video ou une photo</label>
-        <input type="file" name="media[]" id="media" class="form-control @error('media') is-invalid @enderror" multiple>
-        @error('media')
+        <input type="file" name="picture" id="picture" class="form-control @error('picture') is-invalid @enderror">
+        @error('picture')
             <p style="color:rgb(114, 19, 19)"> {{$message}} </p>
         @enderror
 
@@ -80,111 +80,14 @@
 
         <div class="row mb-3" style="margin-top: 20px">
             <div class="col-6">
-                <label for="media" >Ajouter une video ou une photo</label>
-                <input type="file" name="media[]" id="media" class="form-control @error('media') is-invalid @enderror" multiple>
-                @error('media')
+                <label for="media" >Ajouter une photo</label>
+                <input type="file" name="picture" id="picture" class="form-control @error('picture') is-invalid @enderror">
+                @error('picture')
                     <p style="color:rgb(114, 19, 19)"> {{$message}} </p>
                 @enderror
             </div>
             <div class="col-6">
-                @php
-                    //count element
-                    $count = $mediaCollection->count();
-                    //We were going to count element
-                    if ($count == 1) {
-                        $first = $mediaCollection->get(0);
-                        $type = $mediaCollection->get(0)
-                                                ->value('mime_type');
-                        $f = $first->getUrl();
-                    } else if ($count == 2) {
-                        //get the second picture
-                        $first = $mediaCollection->get(0);
-                        $f = $first->getUrl();
-                        $second = $mediaCollection->get(1);
-                        $s = $second->getUrl();
-                    } else if ($count == 3) {
-                        //get the second picture
-
-                        $first = $mediaCollection->get(0);
-                        $f = $first->getUrl();
-                        $second = $mediaCollection->get(1);
-                        $s = $second->getUrl();
-                        //get the third picture
-                        $third = $mediaCollection->get(2);
-                        $t = $third->getUrl();
-                    } else {
-                        return null;
-                    }
-
-
-
-                @endphp
-
-
-
-
-
-                        @if ($count < 2)
-                            @if ($type == 'image/jpeg' || $type == 'image/jpg' || $type = 'image/png')
-                            <img src="{{$f}}" class="d-block w-100" alt="...">
-                            @else
-                            <video controls>
-                                <source src="{{$f}}" type="video/mp4" width="100%">
-                           </video>
-                            @endif
-
-                        @elseif($count >= 2 && $count < 3)
-
-                        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                              <div class="carousel-item active">
-                                <img src="{{$f}}" class="d-block w-100" alt="..." height="350px">
-                              </div>
-                              <div class="carousel-item">
-                                <img src="{{$s}}" class="d-block w-100" alt="..." height="350px">
-                              </div>
-
-                            </div>
-
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Next</span>
-                            </button>
-
-                          </div><!-- End Slides with fade transition -->
-
-                        </div>
-                        @else
-                        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                              <div class="carousel-item active">
-                                <img src="{{$f}}" class="d-block w-100" alt="..." height="350px">
-                              </div>
-                              <div class="carousel-item">
-                                <img src="{{$s}}" class="d-block w-100" alt="..." height="350px">
-                              </div>
-                              <div class="carousel-item">
-                                <img src="{{$t}}" class="d-block w-100" alt="..." height="350px">
-                              </div>
-                            </div>
-
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Next</span>
-                            </button>
-
-                          </div><!-- End Slides with fade transition -->
-
-                        </div>
-                        @endif
+                <img src="/storage/{{$home->picture}}" alt="" width="100%">
 
 
             </div>

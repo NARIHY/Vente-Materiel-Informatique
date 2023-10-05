@@ -20,12 +20,14 @@ class HomeInterfaceController extends Controller
      */
     public function index() : View
     {
-        $home = Home::latest()
+        $h = Home::latest()
                         ->value('id');
+        $home = Home::findOrFail($h);
         $category = Category::orderBy('created_at', 'desc')
                                 ->get();
         $categoryCount = Category::orderBy('created_at', 'desc')
                                 ->count();
+
         return view($this->viewPath().'interface.index',[
             'home' => $home,
             'category' => $category,

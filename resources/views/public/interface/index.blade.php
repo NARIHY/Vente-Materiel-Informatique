@@ -18,95 +18,19 @@
 </section>
 
 <main id="main">
-    @php
 
-
-    $mediaCollection = Spatie\MediaLibrary\MediaCollections\Models\Media::where('collection_name', 'collection_home')
-            ->where('model_type', App\Models\Home::class)
-            ->where('model_id', $home)
-            ->get();
-
-
-            $count = $mediaCollection->count();
-                    //We were going to count element
-                    if ($count == 1) {
-                        $first = $mediaCollection->get(0);
-                        $type = $mediaCollection->get(0)
-                                                ->value('mime_type');
-                        $f = $first->getUrl();
-                    } else if ($count == 2) {
-                        //get the second picture
-                        $first = $mediaCollection->get(0);
-                        $f = $first->getUrl();
-                        $second = $mediaCollection->get(1);
-                        $s = $second->getUrl();
-                    } else if ($count == 3) {
-                        //get the second picture
-
-                        $first = $mediaCollection->get(0);
-                        $f = $first->getUrl();
-                        $second = $mediaCollection->get(1);
-                        $s = $second->getUrl();
-                        //get the third picture
-                        $third = $mediaCollection->get(2);
-                        $t = $third->getUrl();
-                    } else {
-                        return null;
-                    }
-                    //get posted home
-                    $acceuil = App\Models\Home::findOrFail($home);
-    @endphp
 
     <section class="information">
         <div class="container">
             <div class="row mb-3">
                 <div class="col-md-6">
-                    @if ($count == 1)
-                        @if ($type == 'image/jpeg' || $type == 'image/jpg' || $type = 'image/png')
-                            <img src="{{$f}}" class="d-block w-100" alt="...">
-                        @else
-                        <video controls>
-                            <source src="{{$f}}" type="video/mp4" width="100%">
-                    </video>
-                        @endif
-
-                    @elseif($count == 2)
-                    <section id="image-carousel" class="splide" aria-label="Belles images">
-                        <div class="splide__track">
-                              <ul class="splide__list">
-                                  <li class="splide__slide">
-                                      <img width="100%" height="400px" src="{{$f}}" alt="caroussel_1">
-                                  </li>
-                                  <li class="splide__slide">
-                                      <img width="100%" height="400px" src="{{$s}}" alt="caroussel_2">
-                                  </li>
-
-                              </ul>
-                        </div>
-                    </section>
-                    @else
-                    <section id="image-carousel" class="splide" aria-label="Belles images">
-                        <div class="splide__track">
-                              <ul class="splide__list">
-                                  <li class="splide__slide">
-                                      <img width="100%" height="400px" src="{{$f}}" alt="caroussel_1">
-                                  </li>
-                                  <li class="splide__slide">
-                                      <img width="100%" height="400px" src="{{$s}}" alt="caroussel_2">
-                                  </li>
-                                  <li class="splide__slide">
-                                      <img width="100%" height="400px" src="{{$t}}" alt="caroussel_3">
-                                  </li>
-                              </ul>
-                        </div>
-                    </section>
-                    @endif
+                    <img src="/storage/{{$home->picture}}" alt="" width="100%">
 
                 </div>
                 <div class="col-md-6">
                     <section class="carrousel_text">
-                        <h1 style="color: rgb(35, 35, 35)">{{$acceuil->title}}</h1>
-                        <p style="text-align: justify; font-family:'Times New Roman', Times, serif; font-size:20px">{{$acceuil->content}}</p>
+                        <h1 style="color: rgb(35, 35, 35)">{{$home->title}}</h1>
+                        <p style="text-align: justify; font-family:'Times New Roman', Times, serif; font-size:20px">{{$home->content}}</p>
                     </section>
 
 

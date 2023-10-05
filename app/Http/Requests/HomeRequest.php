@@ -24,12 +24,9 @@ class HomeRequest extends FormRequest
         return [
             'title' => ['required', 'min:3', 'max:255'],
             'content' => ['required', 'min:3'],
-            'media[]' => [
-                'required_without_all:media', // Au moins un média (image ou vidéo) doit être présent
-                'array', //for uploading many files
-                'min:1',
-                'max:3',
-                'mimetypes:video/mp4,video/quicktime,video/x-msvideo,image/jpeg,image/png,image/jpg', // Types de médias acceptés
+            'picture' => [
+                'required', // Au moins un média (image ou vidéo) doit être présent
+                'image', // Types de médias acceptés
                 'max:512000000', // Taille maximale des médias (5 Go)
             ],
         ];

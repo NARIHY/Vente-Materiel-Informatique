@@ -48,20 +48,28 @@ class HomeController extends Controller
             //get the information validated
             $data = $request->validated();
             $home = Home::create($data);
-            if ($request->hasFile('media')) {
-                foreach ($request->file('media') as $file) {
-                    //count file type image
-                    $pictureType =  ['image/jpeg', 'image/png'];
-                    $picture = in_array($file->getMimeType(), $pictureType);
-                    //count video files
-                    $videoType = ['video/mp4','video/quicktime','video/x-msvideo'];
-                    $video = in_array($file->getMimeType(), $videoType);
-                    if ($picture === true && $video === true) {
-                        return redirect()->route($this->routes().'create')->with('error', 'Desoler on ne peut pas importer des photo ou des video à la fois');
-                    }
-                    // adding files upload to the collection
-                    $home->addMedia($file)->toMediaCollection('collection_home', 'public');
+            if ($request->hasFile('picture') && $request->file('picture')->isValid()) {
+                // Resizing picture
+                $picture = $request->validated('picture');
+                if ($picture !== null && !$picture->getError()) {
+                    $data['picture'] = $picture->store('home', 'public');
                 }
+                $home->update($data);
+                $image = $request->file('picture');
+                $imageName = 'product_' . $home->id . '.' . $image->getClientOriginalExtension();
+                //store in a public path
+                $path = public_path('storage/home/' . $imageName);
+                // Resizing picture with Intervention image
+                /*
+                Image::make($image->getRealPath())
+                            ->resize(600, 300)
+                            ->save($path);
+                // Update 'picture' collumn in our models
+                */
+                /*
+                $home->picture = 'home/' . $imageName;
+                $home->save();
+*/
             }
             return redirect()->route($this->routes().'listing')->with('success', 'Sauvgarde réussi');
 
@@ -79,15 +87,10 @@ class HomeController extends Controller
     public function edit(string $id): View
     {
         $home = Home::findOrFail($id);
-        //get the media
-        $mediaCollection = Media::where('collection_name', 'collection_home')
-            ->where('model_type', Home::class)
-            ->where('model_id', $id)
-            ->get();
 
         return view($this->viewPath().'action.random', [
             'home' => $home,
-            'mediaCollection' => $mediaCollection
+
         ]);
     }
     /**
@@ -104,33 +107,24 @@ class HomeController extends Controller
             $data = $request->validated();
             // Find the existing Home model by its ID
             $home = Home::findOrFail($id);
-            // Clear all media associated with the Home model
-            $home->clearMediaCollection('collection_home');
-            // Update home information
-            $home->update($data);
-            // Adding new media files (up to a limit of 3)
-            if ($request->hasFile('media')) {
-                $mediaCount = 0;
-                foreach ($request->file('media') as $file) {
-                    // Check the MIME type of the file (image/jpeg, image/png, or video/*)
-                    $allowedMimeTypes = ['image/jpeg', 'image/png', 'video/mp4', 'video/quicktime', 'video/x-msvideo'];
-                    if (!in_array($file->getMimeType(), $allowedMimeTypes)) {
-                        return redirect()->route($this->routes().'edit', ['id' => $id])->with('error', 'Unsupported file type.');
-                    }
-                    // Check the file size (e.g., maximum of 5 GB)
-                    $maxFileSize = 512000000; // 5 GB in bytes
-                    if ($file->getSize() > $maxFileSize) {
-                        return redirect()->route($this->routes().'edit', ['id' => $id])->with('error', 'File size exceeds the allowed limit.');
-                    }
-                    // Add the uploaded file to the media collection
-                    $home->addMedia($file)->toMediaCollection('collection_home', 'public');
-                    $mediaCount++;
-                    if ($mediaCount >= 3) {
-                        break; // Limit of 3 media files reached
-                    }
-                }
-            }
+            if ($request->hasFile('picture') && $request->file('picture')->isValid()) {
 
+                $picture = $request->validated('picture');
+                if (empty($picture)){
+                    $picture = $home->picture;
+                } else {
+                    //image 1
+                    $data['picture'] = $picture->store('home', 'public');
+
+                    $home->update($data);
+                }
+                // Resizing picture with INTERVENTION PICTURE
+                $newImage = $request->file('picture');
+                $newImageName = 'product_' . $home->id . '.' . $newImage->getClientOriginalExtension();
+                //store in a public path
+                $path = public_path('storage/home/' . $newImageName);
+
+            }
             return redirect()->route($this->routes().'edit', ['id' => $id])->with('success', 'Update successful');
         } catch (\Exception $e) {
             return redirect()->route($this->routes().'edit', ['id' => $id])->with('error', 'Oops, there was an error: '.$e->getMessage());
@@ -147,8 +141,6 @@ class HomeController extends Controller
     public function delete(string $id): RedirectResponse
     {
         $home = Home::findOrFail($id);
-        //required | delete every media who was attached in the models
-        $home->clearMediaCollection('collection_home');
         $home->delete();
         return redirect()->route($this->routes().'listing')->with('success', 'Sauvgarde réussi');
     }

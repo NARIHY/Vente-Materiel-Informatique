@@ -66,10 +66,12 @@ class ProductController extends Controller
                 //store in a public path
                 $path = public_path('storage/product/' . $imageName);
                 // Resizing picture with Intervention image
+                /*
                 Image::make($image->getRealPath())
                             ->resize(600, 300)
                             ->save($path);
                 // Update 'picture' collumn in our models
+                */
                 $product->picture = 'product/' . $imageName;
                 $product->save();
                 //Send mail to subscriber
@@ -138,10 +140,13 @@ class ProductController extends Controller
                     $newImageName = 'product_' . $product->id . '.' . $newImage->getClientOriginalExtension();
                     //store in a public path
                     $path = public_path('storage/product/' . $newImageName);
+                    /*
+
                     // Resizing Picture with Intreventin IMAGE
                     Image::make($newImage->getRealPath())
                                 ->resize(600, 300)
                                 ->save($path);
+                                */
                     // delete old picture if exists
                     if (!empty($product->picture)) {
                         Storage::disk('public')->delete($product->picture);
