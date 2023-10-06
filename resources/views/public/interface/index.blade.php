@@ -169,10 +169,11 @@
                             @error('content')
                             <p style="color:rgb(158, 0, 0)">{{$message}}</p>
                             @enderror
-
-                            <div class="d-grid gap-2">
+                            <div class="text-center">
                                 <input type="submit" value="Envoyez" class="btn btn-danger">
                             </div>
+
+
                         </form>
 
                 </div>
