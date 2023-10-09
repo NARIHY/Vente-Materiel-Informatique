@@ -12,11 +12,11 @@
 @section('content')
 
 <div class="pagetitle">
-    <h1>Acceuil du site</h1>
+    <h1>Home site</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="">Tableau de bord</a></li>
-        <li class="breadcrumb-item"><a href="">Gestion de proudit</a></li>
+        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="">Product management</a></li>
     </nav>
 </div>
 
@@ -34,7 +34,7 @@
     @if (request()->routeIS('Admin.Product.create'))
         <form action="" method="post" enctype="multipart/form-data">
             @csrf
-            <label for="name">Nom du produit</label>
+            <label for="name">Product Name</label>
             <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{@old('name')}}">
             @error('name')
                 <p style="color: rgb(190, 4, 4)">{{$message}}</p>
@@ -42,7 +42,7 @@
 
             <div class="row mb-3">
                 <div class="col-6">
-                    <label for="Price">Prix</label>
+                    <label for="Price">Price</label>
                     <div class="input-group has-validation">
                         <span class="input-group-text">Ar</span>
                         <input type="number" name="Price" id="Price" class="form-control @error('Price') is-invalid @enderror" value="{{@old('Price')}}">
@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="col-6">
-                    <label for="quantityInStock">Quantité en stock</label>
+                    <label for="quantityInStock">Quantity in stock</label>
                     <input type="number" name="quantityInStock" id="quantityInStock" class="form-control @error('quantityInStock') is-invalid @enderror" value="{{@old('quantityInStock')}}">
                     @error('quantityInStock')
                         <p style="color: rgb(190, 4, 4)">{{$message}}</p>
@@ -63,7 +63,7 @@
 
 
             </div>
-            <label for="Description">Petite description du produit</label>
+            <label for="Description">Short description of the product</label>
             <textarea name="Description"  height="30px" id="Description" class="form-control @error('Description') is-invalid @enderror" >
             {{@old('Description')}}
             </textarea>
@@ -71,15 +71,15 @@
                 <p style="color: rgb(190, 4, 4)">{{$message}}</p>
             @enderror
 
-            <label for="picture">Enter une photo du produit (1280x720)</label>
+            <label for="picture">Enter a photo of the product (1280x720)</label>
             <input type="file" name="picture" id="picture" class="form-control @error('picture') is-invalid @enderror">
             @error('picture')
             <p style="color: rgb(190, 4, 4)">{{$message}}</p>
             @enderror
 
-            <label for="categoryId">Selectionner une category</label>
+            <label for="categoryId">Select a category</label>
             <select name="categoryId" id="categoryId" class="form-control @error('categoryId') is-invalid @enderror">
-                <option value="">Choisir une catégorie</option>
+                <option value="">Select a category</option>
                 @foreach ($category as $k => $v)
                 <option value="{{$v}}">{{$k}}</option>
                 @endforeach
@@ -88,9 +88,9 @@
             <p style="color: rgb(190, 4, 4)">{{$message}}</p>
             @enderror
 
-            <label for="sales_information">Selectionner l'information adéquat pour l'article</label>
+            <label for="sales_information">Select the correct information for the article</label>
             <select name="sales_information" id="sales_information" class="form-control @error('sales_information') is-invalid @enderror">
-                <option value="">Choisir ...</option>
+                <option value="">Choose ...</option>
                 @foreach ($sales as $s => $i)
                 <option value="{{$i}}">{{$s}}</option>
                 @endforeach
@@ -99,7 +99,7 @@
             <p style="color: rgb(190, 4, 4)">{{$message}}</p>
             @enderror
             <div class="d-grid gap-2" style="margin-top: 20px">
-                <input type="submit" value="Enregistrer" class="btn btn-primary">
+                <input type="submit" value="Save" class="btn btn-primary">
             </div>
 
 
@@ -108,7 +108,7 @@
     <form action="" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <label for="name">Nom du produit</label>
+        <label for="name">Product Name</label>
         <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{$product->name}}">
         @error('name')
             <p style="color: rgb(190, 4, 4)">{{$message}}</p>
@@ -128,7 +128,7 @@
             </div>
 
             <div class="col-6">
-                <label for="quantityInStock">Quantité en stock</label>
+                <label for="quantityInStock">Quantity in stock</label>
                 <input type="number" name="quantityInStock" id="quantityInStock" class="form-control @error('quantityInStock') is-invalid @enderror" value="{{$product->quantityInStock}}">
                 @error('quantityInStock')
                     <p style="color: rgb(190, 4, 4)">{{$message}}</p>
@@ -137,7 +137,7 @@
 
 
         </div>
-        <label for="Description">Petite description du produit</label>
+        <label for="Description">Short description of the product</label>
         <textarea name="Description"  height="30px" id="Description" class="form-control @error('Description') is-invalid @enderror" >
         {{@$product->Description}}
         </textarea>
@@ -147,7 +147,7 @@
 
         <div class="row mb-3" style="margin-top: 20px">
             <div class="col-6">
-                <label for="picture">Enter une photo du produit (1280x720)</label>
+                <label for="picture">Enter a photo of the product (1280x720)</label>
                 <input type="file" name="picture" id="picture" class="form-control @error('picture') is-invalid @enderror">
                 @error('picture')
                 <p style="color: rgb(190, 4, 4)">{{$message}}</p>
@@ -164,9 +164,9 @@
 
 
 
-        <label for="categoryId">Selectionner une category</label>
+        <label for="categoryId">Select a category</label>
         <select name="categoryId" id="categoryId" class="form-control @error('categoryId') is-invalid @enderror">
-            <option value="">Choisir une catégorie</option>
+            <option value="">Choose a category</option>
             @foreach ($category as $k => $v)
 
             <option value="{{$v}}" @if ($v == $product->categoryId) selected @endif>{{$k}}</option>
@@ -175,9 +175,9 @@
         @error('categoryId')
             <p style="color: rgb(190, 4, 4)">{{$message}}</p>
             @enderror
-        <label for="sales_information">Selectionner l'information adéquat pour l'article</label>
+        <label for="sales_information">Select the correct information for the article</label>
             <select name="sales_information" id="sales_information" class="form-control @error('sales_information') is-invalid @enderror">
-                <option value="">Choisir ...</option>
+                <option value="">Choose ...</option>
                 @foreach ($sales as $s => $i)
                 <option value="{{$i}}" @if ($i == $product->sales_information) selected @endif>{{$s}}</option>
                 @endforeach
@@ -187,7 +187,7 @@
             @enderror
 
         <div class="d-grid gap-2" style="margin-top: 20px">
-            <input type="submit" value="Enregistrer" class="btn btn-primary">
+            <input type="submit" value="Save" class="btn btn-primary">
         </div>
 
 

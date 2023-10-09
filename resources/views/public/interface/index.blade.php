@@ -1,6 +1,6 @@
 @extends('public')
 
-@section('title', 'Acceuil du site')
+@section('title', 'Home site')
 
 @section('content')
 <section id="hero">
@@ -77,7 +77,7 @@
                                 </div>
                             </div>
 
-                        <!-- decommenter pour avoir une aperçu lors du slide
+                        <!-- decommenter pour aShow une aperçu lors du slide
                         <div class="card shadow-sm col-md-6">
                             <img src="/storage/category/category_4.jpg" width="100%" height="100%" class="bd-placeholder-img card-img-top" alt="sssssssssss">
                             <div class="card-body">

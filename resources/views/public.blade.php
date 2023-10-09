@@ -33,12 +33,12 @@
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"> <img src="https://www.accentic.net/wp-content/uploads/2023/08/cropped-accentic-logo-1-160x53.png" alt="Accentic" width="160px" width="53px"> </h1>
+      <h1 class="logo me-auto"> <img src="{{asset('public/img/acc.png')}}" alt="Accentic" width="auto" height="auto" > </h1>
 
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="{{route('Public.home')}}" class="@if(request()->routeIS('Public.home')) active @endif">Acceuil</a></li>
+          <li><a href="{{route('Public.home')}}" class="@if(request()->routeIS('Public.home')) active @endif">Home</a></li>
           <li><a href="{{route('Public.Product.listing')}}" class="@if(request()->routeIS('Public.Product.listing')) active @endif">Nos produits</a></li>
           <li><a href="{{route('Public.Service.index')}}" class="@if(request()->routeIS('Public.Service.index')) active @endif">Nos services</a></li>
           <li><a href="{{route('Public.Contact.contacts')}}" class="@if(request()->routeIS('Public.Contact.contacts')) active @endif">Contact</a></li>

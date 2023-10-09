@@ -3,11 +3,11 @@
 
 @section('content')
 <div class="pagetitle">
-    <h1>Mon espace personnelle</h1>
+    <h1>My personal space</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{route('Admin.index')}}">Tableau de bord</a></li>
-        <li class="breadcrumb-item">Mon profile</li>
+        <li class="breadcrumb-item"><a href="{{route('Admin.index')}}">Dashboard</a></li>
+        <li class="breadcrumb-item">My profile</li>
       </ol>
     </nav>
   </div>
@@ -40,6 +40,7 @@
             @error('email')
                 <p style="color: red">{{$message}}</p>
             @enderror
+            <!--
             <div class="row mb-3" style="margin-top: 20px; margin-bottom:20px">
                     <div class="col-md-6">
                         <input type="file" name="picture" id="picture" class="form-control" disabled>
@@ -60,6 +61,7 @@
 
                 </div>
             </div>
+        -->
             <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
@@ -71,18 +73,18 @@
                         <form action="{{route('Admin.Utilisateur.update')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            <label for="name">Nom d'utilisateur</label>
+                            <label for="name">Username</label>
                             <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{$user->name}}"/>
 
-                            <label for="email">Addresse email</label>
+                            <label for="email">E-mail address</label>
                             <input type="text" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{$user->email}}"/>
-
+                            <!--
                             <label for="picture">Photo de profil</label>
-                            <input type="file" name="picture" id="picture" class="form-control"/>
+                            <input type="file" name="picture" id="picture" class="form-control"/>-->
                             <label for="password">Mots de passe</label>
                             <input type="password" name="password" id="password" class="form-control"/>
 
-                            <input type="submit" class="btn btn-primary" style="width: 100%; margin-top: 15px" value="Sauvgarder"/>
+                            <input type="submit" class="btn btn-primary" style="width: 100%; margin-top: 15px" value="Save"/>
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -91,7 +93,7 @@
                   </div>
                 </div>
               </div>
-              <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Modifier</a>
+              <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style="margin-top: 20px">Modify</a>
         </div>
 
 

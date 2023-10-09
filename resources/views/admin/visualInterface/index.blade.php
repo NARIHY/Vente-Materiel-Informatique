@@ -1,16 +1,16 @@
 @extends('admin')
 
-@section('title', 'Information sur la partie Acceuil du site')
+@section('title', 'Information sur la partie Home site')
 
 @section('content')
 
 <div class="pagetitle">
-    <a href="{{route('Admin.Interface.Home.create')}}" class="btn btn-success" style="float: right">Ajouter une publication</a>
-    <h1>Interface visuelle</h1>
+    <a href="{{route('Admin.Interface.Home.create')}}" class="btn btn-success" style="float: right">Add a post</a>
+    <h1>Visual Interface</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="">Tableau de bord</a></li>
-        <li class="breadcrumb-item"><a href="">acceuil du site</a></li>
+        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="">Home site</a></li>
       </ol>
     </nav>
   </div>
@@ -33,7 +33,7 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Titre</th>
+                <th scope="col">Title</th>
                 <th scope="col">Action</th>
 
               </tr>
@@ -63,7 +63,7 @@
                 @empty
                     <tr>
                         <th scope="row"></th>
-                        <td style="text-align: center">Aucune publication pour le moment</td>
+                        <td style="text-align: center">No publications yet</td>
                         <td>
 
                         </td>

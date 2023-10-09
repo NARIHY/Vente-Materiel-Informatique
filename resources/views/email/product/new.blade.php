@@ -92,7 +92,7 @@
         </p>
         <div class="product-details">
             <p>
-                <strong>Nom du produit:</strong> {{$product->name}}<br>
+                <strong>Product Name:</strong> {{$product->name}}<br>
                 <strong>Quantité en Stock :</strong> {{$product->quantityInStock}} unités disponibles<br>
                 <strong>Petite Description du Produit:</strong> {{$product->Description}}<br>
                 <strong>Prix :</strong> {{number_format($product->Price, 0, '.', ' ')}} Ar<br>

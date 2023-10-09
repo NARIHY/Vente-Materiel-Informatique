@@ -4,12 +4,12 @@
 
 @section('content')
 <div class="pagetitle">
-    <a href="{{route('Admin.Category.create')}}" class="btn btn-success" style="float: right">Ajouter une catégorie</a>
-    <h1>Gestion de produit</h1>
+    <a href="{{route('Admin.Category.create')}}" class="btn btn-success" style="float: right">Add new category</a>
+    <h1>Product management</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active">Gestion de catégorie</li>
+        <li class="breadcrumb-item active">Category management</li>
       </ol>
     </nav>
   </div>
@@ -30,7 +30,7 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Nom du catégorie</th>
+            <th scope="col">Category name</th>
             <th scope="col">Action</th>
 
           </tr>
@@ -46,13 +46,13 @@
           <td>
             <div class="row mb-3">
                 <div class="col-6">
-                    <a href="{{route('Admin.Category.edit', ['id' => $c->id])}}" class="btn btn-primary"> Editer</a>
+                    <a href="{{route('Admin.Category.edit', ['id' => $c->id])}}" class="btn btn-primary"> Edit</a>
                 </div>
                 <div class="col-6">
                     <form action="{{route('Admin.Category.delete', ['id' => $c->id])}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" class="btn btn-danger" value="Suprimer">
+                        <input type="submit" class="btn btn-danger" value="Delete">
                     </form>
 
                 </div>
@@ -65,7 +65,7 @@
 
         <tr>
             <th scope="row"></th>
-            <td>Aucune catégorie pour le moment</td>
+            <td>No categories at the moment</td>
             <td></td>
         </tr>
 

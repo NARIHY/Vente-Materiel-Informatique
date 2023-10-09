@@ -7,7 +7,7 @@
     <h1>Messagerie</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{route('Admin.index')}}">Tableau de bord</a></li>
+        <li class="breadcrumb-item"><a href="{{route('Admin.index')}}">Dashboard</a></li>
         <li class="breadcrumb-item">Liste de tous les messages reçu</li>
       </ol>
     </nav>

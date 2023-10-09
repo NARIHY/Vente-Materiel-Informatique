@@ -12,11 +12,11 @@
 @section('content')
 
 <div class="pagetitle">
-    <h1>Acceuil du site</h1>
+    <h1>Home site</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="">Tableau de bord</a></li>
-        <li class="breadcrumb-item"><a href="">acceuil du site</a></li>
+        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="">Home site</a></li>
       </ol>
     </nav>
 </div>
@@ -40,7 +40,7 @@
 
     <form action="" method="post" enctype="multipart/form-data">
         @csrf
-        <label for="title">Titre du publication</label>
+        <label for="title">Publication title</label>
         <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{@old('title')}}">
         @error('title')
             <p style="color:rgb(114, 19, 19)"> {{$message}} </p>
@@ -48,13 +48,13 @@
 
 
 
-        <label for="media">Ajouter une video ou une photo</label>
+        <label for="media">Add picture</label>
         <input type="file" name="picture" id="picture" class="form-control @error('picture') is-invalid @enderror">
         @error('picture')
             <p style="color:rgb(114, 19, 19)"> {{$message}} </p>
         @enderror
 
-        <label for="content">Contenu de la publication</label>
+        <label for="content">Content of the post</label>
         <textarea name="content" id="content" cols="30" rows="10" class="form-control @error('content') is-invalid @enderror">
             {{@old('content')}}
         </textarea>
@@ -64,7 +64,7 @@
 
         <div class="d-grid gap-2" style="margin-top: 20px">
 
-            <button class="btn btn-primary" type="submit">Créer</button>
+            <button class="btn btn-primary" type="submit">Create</button>
         </div>
     </form>
     @else
@@ -72,7 +72,7 @@
     <form action="" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <label for="title">Titre du publication</label>
+        <label for="title">Publication title</label>
         <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{$home->title}}">
         @error('title')
             <p style="color:rgb(114, 19, 19)"> {{$message}} </p>
@@ -80,7 +80,7 @@
 
         <div class="row mb-3" style="margin-top: 20px">
             <div class="col-6">
-                <label for="media" >Ajouter une photo</label>
+                <label for="media" >Add picture</label>
                 <input type="file" name="picture" id="picture" class="form-control @error('picture') is-invalid @enderror">
                 @error('picture')
                     <p style="color:rgb(114, 19, 19)"> {{$message}} </p>
@@ -92,7 +92,7 @@
 
             </div>
         </div>
-        <label for="content" style="margin-top: 20px">Contenu de la publication</label>
+        <label for="content" style="margin-top: 20px">Content of the post</label>
                         <textarea name="content" id="content" cols="30" rows="10" class="form-control @error('content') is-invalid @enderror">
                             {{$home->content}}
                         </textarea>
@@ -100,7 +100,7 @@
                         <p style="color:rgb(114, 19, 19)"> {{$message}} </p>
                         @enderror
                         <div class="d-grid gap-2" style="margin-top: 20px">
-                            <button class="btn btn-primary" type="submit">Modifier</button>
+                            <button class="btn btn-primary" type="submit">Modify</button>
                         </div>
     </form>
 

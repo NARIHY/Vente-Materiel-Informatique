@@ -55,7 +55,7 @@
     <div class="newsletter-container">
         <img src="https://www.accentic.net/wp-content/uploads/2023/08/cropped-accentic-logo-1-160x53.png" alt="Logo de l'entreprise" class="newsletter-logo">
         <h1 class="newsletter-title">Abonnement à notre newsletter</h1>
-        <p class="newsletter-subtitle">Merci de nous avoir rejoint !</p>
+        <p class="newsletter-subtitle">Merci de nous aShow rejoint !</p>
 
         <div class="social-links">
             <a href="https://www.facebook.com/briqueweb" class="social-link">Suivez-nous sur Facebook</a>

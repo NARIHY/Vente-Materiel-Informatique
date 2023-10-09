@@ -121,7 +121,7 @@
 
         </div>
         <div style="text-align: center">
-            <a href="{{route('Public.Product.listing')}}">Voir plus</a>
+            <a href="{{route('Public.Product.listing')}}">Show plus</a>
         </div>
       </section>
 </main>

@@ -38,7 +38,7 @@ class ContactController extends Controller
                 // The email address is valid
                 // Create an instance of the contact model with the validated data
                 $contact = Contact::create($data);
-                return redirect()->route('Public.home')->with('success', 'Merci, de nous avoir contacter');
+                return redirect()->route('Public.home')->with('success', 'Merci, de nous aShow contacter');
             } else {
                 // The email address is not valid
                 return redirect()->route('Public.home')->with('Oups', 'Votre email n\'existe pas ou n\'est pas valide');
@@ -93,7 +93,7 @@ class ContactController extends Controller
                 // The email address is valid
                 // Create an instance of the contact model with the validated data
                 $contact = Contact::create($data);
-                return redirect()->route('Public.Contact.contacts')->with('success', 'Merci, de nous avoir contacter');
+                return redirect()->route('Public.Contact.contacts')->with('success', 'Merci, de nous aShow contacter');
             } else {
                 // The email address is not valid
                 return redirect()->route('Public.Contact.contacts')->with('Oups', 'Votre email n\'existe pas ou n\'est pas valide');
@@ -139,7 +139,7 @@ class ContactController extends Controller
                 $contact = Contact::create($data);
                 //insert product id in the table
                 $contact->update(['product' => $id]);
-                return redirect()->route('Public.Contact.interface')->with('success', 'Merci, de nous avoir contacter');
+                return redirect()->route('Public.Contact.interface')->with('success', 'Merci, de nous aShow contacter');
             } else {
                 // The email address is not valid
                 return redirect()->route('Public.Contact.product', ['id' => $id])->with('Oups', 'Votre email n\'existe pas ou n\'est pas valide');

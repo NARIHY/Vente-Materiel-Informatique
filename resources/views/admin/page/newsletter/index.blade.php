@@ -5,12 +5,12 @@
 @section('content')
 
   <div class="pagetitle">
-    <a href="{{route('Admin.Newsletter.create')}}" class="btn btn-success" style="float: right">Ajouter une newsletter</a>
+    <a href="{{route('Admin.Newsletter.create')}}" class="btn btn-success" style="float: right">Add a newsletter</a>
     <h1>NewsLetter</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="">Tableau de bord</a></li>
-        <li class="breadcrumb-item"><a href="">Gestion de newsletter</a></li>
+        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="">Newsletter management</a></li>
     </nav>
 </div>
 
@@ -30,7 +30,7 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Titre</th>
+            <th scope="col">Title</th>
             <th scope="col">Action</th>
 
           </tr>
@@ -49,11 +49,11 @@
 
                     <form action="{{route('Admin.Newsletter.send', ['id' => $c->id])}}" method="post">
                     @csrf
-                    <input type="submit" class="btn btn-secondary" value="Poster">
+                    <input type="submit" class="btn btn-secondary" value="Posts">
                     </form>
                 </div>
                 <div class="col-6">
-                    <a href="{{route('Admin.Newsletter.edit', ['id' => $c->id])}}" class="btn btn-primary"> Editer</a>
+                    <a href="{{route('Admin.Newsletter.edit', ['id' => $c->id])}}" class="btn btn-primary"> Edit</a>
 
                 </div>
             </div>
@@ -65,7 +65,7 @@
 
         <tr>
             <th scope="row"></th>
-            <td>Aucune newletter pour le moment</td>
+            <td>No newsletter at the moment</td>
             <td></td>
         </tr>
 

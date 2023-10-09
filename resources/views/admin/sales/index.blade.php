@@ -4,8 +4,8 @@
 
 @section('content')
 <div class="pagetitle">
-    <a href="{{route('Admin.Sales.create')}}" class="btn btn-success" style="float: right">Ajouter une information</a>
-    <h1>Gestion de produit</h1>
+    <a href="{{route('Admin.Sales.create')}}" class="btn btn-success" style="float: right">Add new iformation</a>
+    <h1>Product management</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -29,7 +29,7 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Contenu</th>
+            <th scope="col">Content</th>
 
             <th scope="col">Action</th>
           </tr>
@@ -43,13 +43,13 @@
           <td>
             <div class="row mb-3">
                 <div class="col-6">
-                    <a href="{{route('Admin.Sales.edit', ['id' =>$s->id])}}" class="btn btn-primary"> Editer</a>
+                    <a href="{{route('Admin.Sales.edit', ['id' =>$s->id])}}" class="btn btn-primary"> Edit</a>
                 </div>
                 <div class="col-6">
                     <form action="{{route('Admin.Sales.delete', ['id' =>$s->id])}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" class="btn btn-danger" value="Suprimer">
+                        <input type="submit" class="btn btn-danger" value="Delete">
                     </form>
 
                 </div>
@@ -62,7 +62,7 @@
             <th scope="row"></th>
 
 
-            <td>Vide pour le moment</td>
+            <td>Empty</td>
 
             <td></td>
         </tr>

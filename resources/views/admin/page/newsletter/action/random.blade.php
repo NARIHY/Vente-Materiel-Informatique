@@ -15,8 +15,8 @@
     <h1>NewsLetter</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="">Tableau de bord</a></li>
-        <li class="breadcrumb-item"><a href="">Gestion de newsletter</a></li>
+        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="">Newsletter management</a></li>
     </nav>
 </div>
 <div class="container">
@@ -33,12 +33,12 @@
     @if (request()->routeIS('Admin.Newsletter.create'))
         <form action="" method="post">
             @csrf
-            <label for="title">Titre (*)</label>
+            <label for="title">Title (*)</label>
             <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{@old('title')}}">
             @error('title')
                 <p style="color: red">{{$message}}</p>
             @enderror
-            <label for="content">Contenu de la lettre (*)</label>
+            <label for="content">Content of the letter (*)</label>
             <textarea name="content" id="content" cols="30" rows="10" class="form-control @error('content') is-invalid @enderror">
             {{@old('content')}}
             </textarea>
@@ -47,19 +47,19 @@
             @enderror
             <div class="d-grid gap-2" style="margin-top: 10px">
 
-                <button class="btn btn-primary" type="submit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enregistrer</font></font></button>
+                <button class="btn btn-primary" type="submit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Save</font></font></button>
               </div>
         </form>
     @else
     <form action="" method="post">
         @csrf
         @method('PUT')
-        <label for="title">Titre (*)</label>
+        <label for="title">Title (*)</label>
         <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{$newsletter->title}}">
         @error('title')
             <p style="color: red">{{$message}}</p>
         @enderror
-        <label for="content">Contenu de la lettre (*)</label>
+        <label for="content">Content of the letter (*)</label>
         <textarea name="content" id="content" cols="30" rows="10" class="form-control @error('content') is-invalid @enderror">
         {{$newsletter->content}}
         </textarea>
@@ -68,7 +68,7 @@
         @enderror
         <div class="d-grid gap-2" style="margin-top: 10px">
 
-            <button class="btn btn-primary" type="submit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sauvgarder</font></font></button>
+            <button class="btn btn-primary" type="submit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Save</font></font></button>
           </div>
     </form>
     @endif

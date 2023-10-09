@@ -81,8 +81,8 @@ $roli->redirect();
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
             <li class="dropdown-header">
-              Messagerie de l'application
-              <a href="{{route('Admin.Message.Creation.index')}}"><span class="badge rounded-pill bg-primary p-2 ms-2">Commencer</span></a>
+                Application messaging
+              <a href="{{route('Admin.Message.Creation.index')}}"><span class="badge rounded-pill bg-primary p-2 ms-2">Start</span></a>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -153,7 +153,7 @@ $roli->redirect();
 
                   <div>
                     <h4></h4>
-                    <p>Aucun message pour le moment</p>
+                    <p>No message for the moment</p>
                     <p></p>
                   </div>
                 </a>
@@ -167,7 +167,7 @@ $roli->redirect();
 
 
             <li class="dropdown-footer">
-              <a href="{{route('Admin.Message.allMessage')}}">Voir tous les message</a>
+              <a href="{{route('Admin.Message.allMessage')}}">View all messages</a>
             </li>
 
           </ul><!-- End Messages Dropdown Items -->
@@ -201,7 +201,7 @@ $roli->redirect();
               <li>
                 <a class="dropdown-item d-flex align-items-center" href="{{route('Admin.Utilisateur.profile')}}">
                   <i class="bi bi-person"></i>
-                  <span>Mon Profile</span>
+                  <span>My profile</span>
                 </a>
               </li>
               <li>
@@ -211,7 +211,7 @@ $roli->redirect();
               <li>
                 <a class="dropdown-item d-flex align-items-center" href="{{route('Admin.Utilisateur.edit')}}">
                   <i class="bi bi-gear"></i>
-                  <span>Paramètre</span>
+                  <span>Setting</span>
                 </a>
               </li>
               <li>
@@ -221,7 +221,7 @@ $roli->redirect();
               <li>
                 <a class="dropdown-item d-flex align-items-center" href="">
                   <i class="bi bi-question-circle"></i>
-                  <span>Besoin d'aide</span>
+                  <span>Need help?</span>
                 </a>
               </li>
               <li>
@@ -233,7 +233,7 @@ $roli->redirect();
                       @csrf
                       <div class="dropdown-item d-flex align-items-center">
                           <i class="bi bi-box-arrow-right"></i>
-                        <input type="submit" value="Déconnexion" style="background: transparent; border:transparent">
+                        <input type="submit" value="Log out" style="background: transparent; border:transparent">
                       </div>
 
                   </form>
@@ -256,30 +256,30 @@ $roli->redirect();
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('Admin.index')}}">
           <i class="bi bi-grid"></i>
-          <span>Tableau de bord</span>
+          <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Gestion de produit</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-menu-button-wide"></i><span>Product management</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
           <li>
             <a href="{{route('Admin.Product.listing')}}">
-              <i class="bi bi-circle"></i><span>Nos produits</span>
+              <i class="bi bi-circle"></i><span>Our products</span>
             </a>
           </li>
 
           <li>
             <a href="{{route('Admin.Category.listing')}}">
-              <i class="bi bi-circle"></i><span>Liste de tous nos categorie</span>
+              <i class="bi bi-circle"></i><span>List of all our categories</span>
             </a>
           </li>
           <li>
             <a href="{{route('Admin.Sales.listing')}}">
-              <i class="bi bi-circle"></i><span>Information sur les produits</span>
+              <i class="bi bi-circle"></i><span>Product information</span>
             </a>
           </li>
 
@@ -288,12 +288,12 @@ $roli->redirect();
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Interface Visuelle</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-journal-text"></i><span>Visual Interface</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="{{route('Admin.Interface.Home.listing')}}">
-              <i class="bi bi-circle"></i><span>Acceuil</span>
+              <i class="bi bi-circle"></i><span>Home</span>
             </a>
           </li>
 
@@ -318,7 +318,7 @@ $roli->redirect();
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('Admin.Compte.listing')}}">
             <i class="bi bi-person"></i>
-          <span>Gestion des comptes</span>
+          <span>Account management</span>
         </a>
       </li>
       @endif
@@ -363,7 +363,7 @@ $roli->redirect();
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span> Mahenina Randrianarisoa</span></strong>
+      &copy; Copyright <strong><span> Narihy</span></strong>
     </div>
 
   </footer><!-- End Footer -->

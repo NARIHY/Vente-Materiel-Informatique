@@ -9,11 +9,11 @@ $roli = new Nari\Role($use);
 $roles = $roli->roles();
 @endphp
 <div class="pagetitle">
-    <h1>Gestion des comptes</h1>
+    <h1>Account management</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active">Gestion des comptes</li>
+        <li class="breadcrumb-item active">Account management</li>
       </ol>
     </nav>
   </div>
@@ -35,9 +35,9 @@ $roles = $roli->roles();
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Nom d'utilisateur</th>
-            <th scope="col">Addresse email</th>
-            <th scope="col">date de création</th>
+            <th scope="col">username</th>
+            <th scope="col">E-mail address</th>
+            <th scope="col">creation date</th>
             <th scope="col">Role</th>
             <th scope="col">Action</th>
           </tr>
@@ -65,13 +65,13 @@ $roles = $roli->roles();
           <td>
             <div class="row mb-3">
                 <div class="col-md-6">
-                    <a href="{{route('Admin.Compte.edit', ['id' => $users->id])}}" class="btn btn-primary">Editer</a>
+                    <a href="{{route('Admin.Compte.edit', ['id' => $users->id])}}" class="btn btn-primary">Edit</a>
                 </div>
                 <div class="col-md-6">
                     <form action="{{route('Admin.Compte.deleteUser',['id' => $users->id])}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <input type="submit" value="Suprimer" class="btn btn-danger">
+                        <input type="submit" value="Delete" class="btn btn-danger">
                     </form>
                 </div>
             </div>
@@ -83,7 +83,7 @@ $roles = $roli->roles();
         <tr>
             <th scope="row"></th>
             <td></td>
-            <td>Aucun compte inscrit pour le moment</td>
+            <td>No account registered at the moment</td>
             <td></td>
             <td></td>
         </tr>

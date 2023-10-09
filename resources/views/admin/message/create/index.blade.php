@@ -21,7 +21,7 @@ $user = Auth::user();
         </select>
 
         <div class="d-grid gap-2" style="margin-top: 10px">
-            <button class="btn btn-primary" type="submit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Créer</font></font></button>
+            <button class="btn btn-primary" type="submit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">create</font></font></button>
         </div>
     </form>
 @endsection

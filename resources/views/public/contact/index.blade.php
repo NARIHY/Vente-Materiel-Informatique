@@ -70,7 +70,7 @@
                     @enderror
 
                     <div class="d-grid gap-2" style="margin-top: 20px">
-                        <input type="submit" value="Envoyer" width="100%" class="btn btn-danger">
+                        <input type="submit" value="Send" width="100%" class="btn btn-danger">
                     </div>
                 </form>
                 @endif
@@ -116,7 +116,7 @@
                     @enderror
 
                     <div class="d-grid gap-2" style="margin-top: 20px">
-                        <input type="submit" value="Envoyer" class="btn btn-primary">
+                        <input type="submit" value="Send" class="btn btn-primary">
                     </div>
                 </form>
                 @endif
