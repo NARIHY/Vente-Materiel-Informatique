@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Compteur;
 use App\Models\Home;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -27,7 +28,8 @@ class HomeInterfaceController extends Controller
                                 ->get();
         $categoryCount = Category::orderBy('created_at', 'desc')
                                 ->count();
-
+        //add count to visits when people go the home page
+        $visits = Compteur::create();
         return view($this->viewPath().'interface.index',[
             'home' => $home,
             'category' => $category,

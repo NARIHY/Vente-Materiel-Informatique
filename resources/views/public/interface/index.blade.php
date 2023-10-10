@@ -161,19 +161,15 @@
                             @error('email')
                             <p style="color:rgb(158, 0, 0)">{{$message}}</p>
                             @enderror
-                            <label for="content" style="color: rgb(168, 168, 168);">Votre message*</label>
-                            <textarea name="content" id="content" class="form-nary" placeholder="Un petit message">
+
+                            <textarea name="content" id="content" class="form-nary" placeholder="Votre message*" onclick="supprimerEspaces()" style="padding: 0.73px; margin: 0; height: 45px; font-size:16px" cols="30" rows="10">
                                 {{ old('content') }}
                             </textarea>
 
                             @error('content')
                             <p style="color:rgb(158, 0, 0)">{{$message}}</p>
                             @enderror
-                            <div class="text-center">
-                                <input type="submit" value="Envoyez" class="btn btn-danger">
-                            </div>
-
-
+                            <input type="submit" value="Envoyez" class="btn btn-danger">
                         </form>
 
                 </div>
@@ -184,6 +180,17 @@
 </main>
 
 
+<script>
+    function supprimerEspaces() {
+        // Récupérer le texte du textarea
+        var texte = document.getElementById("content").value;
 
+        // Supprimer les espaces en utilisant la méthode replace()
+        var texteSansEspaces = texte.replace(/\s+/g, "");
+
+        // Réattribuer le texte au textarea
+        document.getElementById("content").value = texteSansEspaces;
+    }
+</script>
 
 @endsection
