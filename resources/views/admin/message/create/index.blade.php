@@ -8,13 +8,13 @@ $user = Auth::user();
 @endphp
     <form action="" method="post">
         @csrf
-        <label for="expediteur">L'expéditeur du message</label>
+        <label for="expediteur">The sender of the message</label>
         <select name="expediteur" id="expediteur" class="form-control">
             <option value="{{$user->id}}">{{$user->name}}</option>
         </select>
-        <label for="destinataire">L'expéditeur du message</label>
+        <label for="destinataire">The receiver of the message</label>
         <select name="destinataire" id="destinataire" class="form-control">
-            <option value="">Choisir un utilisateur</option>
+            <option value="">Choose an user</option>
             @foreach ($allUser as $k => $v)
                 <option value="{{$v}}">{{$k}}</option>
             @endforeach

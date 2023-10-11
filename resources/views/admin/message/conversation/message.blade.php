@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="pagetitle">
-    <h1>Messagerie</h1>
+    <h1>Messaging</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{route('Admin.index')}}">Dashboard</a></li>

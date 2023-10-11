@@ -8,7 +8,7 @@
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{route('Admin.index')}}">Dashboard</a></li>
-        <li class="breadcrumb-item">Liste de tous les messages reçu</li>
+        <li class="breadcrumb-item">List of all messages received</li>
       </ol>
     </nav>
   </div>
@@ -80,7 +80,7 @@
 
                 @endif
             @empty
-                Aucun message pour le moments
+                No messages at the moment
             @endforelse
         </ul>
         {{$participantId->links()}}

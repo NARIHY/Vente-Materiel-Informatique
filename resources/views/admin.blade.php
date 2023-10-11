@@ -219,7 +219,7 @@ $roli->redirect();
               </li>
 
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="">
+                <a class="dropdown-item d-flex align-items-center" href="#" onclick="administration()">
                   <i class="bi bi-question-circle"></i>
                   <span>Need help?</span>
                 </a>
@@ -369,7 +369,11 @@ $roli->redirect();
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
+  <script>
+        function administration () {
+            window.alert('Contacter l\'administrateur du site \n maheninarandrianarisoa@gmail.com')
+        }
+  </script>
   <!-- Vendor JS Files -->
   <script src="{{ asset('admin/assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
   <script src="{{ asset('admin/assets/vendor/chart.js/chart.umd.js')}}"></script>
