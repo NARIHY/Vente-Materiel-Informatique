@@ -24,7 +24,7 @@ La création d'un site vitrine pour la vente de matériel avec Laravel implique 
    - Profils utilisateur avec informations personnelles.
    - Historique des commandes pour les utilisateurs enregistrés.
 
-6. **Système de notation et de commentaires** :
+6. **Système de notation et de commentaires** : (Pour retour en vrai site)
    - Permettre aux clients de noter et de laisser des commentaires sur les produits.
 
 7. **Page d'accueil personnalisée** : x
@@ -42,13 +42,13 @@ La création d'un site vitrine pour la vente de matériel avec Laravel implique 
 11. **Système de sécurité** : x
     - Authentification et autorisation des utilisateurs.
     - Protection contre les attaques CSRF et XSS.
-    - Sécurité des paiements en ligne.
+    - Sécurité des paiements en ligne. (Non inclus dans la version test)
 
-12. **Performance** :
+12. **Performance** : (Pour retour en vrai site)
     - Optimisation des performances pour des temps de chargement rapides.
     - Mise en cache des données fréquemment utilisées.
 
-13. **SEO (Optimisation pour les moteurs de recherche)** :
+13. **SEO (Optimisation pour les moteurs de recherche)** : (Pour retour en vrai site)
     - Gestion des balises meta, des URL conviviales, etc.
 
 14. **Langues et localisation** : x
@@ -64,13 +64,13 @@ La création d'un site vitrine pour la vente de matériel avec Laravel implique 
 17. **Système de notifications** : x
     - Notifications par e-mail pour les commandes, les mises à jour de compte, etc.
 
-18. **Intégration de médias sociaux** :
+18. **Intégration de médias sociaux** : (Création d'un api nécessaire || non)
     - Partage de produits sur les réseaux sociaux.
 
-19. **Système de retour et de remboursement** :
+19. **Système de retour et de remboursement** : (Pour retour vrai site)
     - Politique de retour et processus de remboursement clairs.
 
-20. **Analyse des données** :
+20. **Analyse des données** : (Google analytics pour vrai site)
     - Utilisation d'outils d'analyse pour suivre le comportement des utilisateurs et les performances du site.
 
 N'oubliez pas de mettre en place des mesures de sécurité robustes, de tester régulièrement votre site et de suivre les meilleures pratiques en matière de développement web. Laravel offre de nombreuses fonctionnalités et packages qui peuvent faciliter la création de ces fonctionnalités. Assurez-vous également de respecter les lois locales et les réglementations en matière de vente en ligne.
@@ -94,9 +94,33 @@ Chaque newsletter sera publié par email au abonnée
 Pour l'installation:
 1) **Cloner le depots**
 2) **Installer les dépendances**
-3) **Migrer la base de données, en cas d'erreur contacter moi via email**
-4) **lancer votre server**
+3) **Generer la clé de l'application**
+4) **Migrer la base de données, en cas d'erreur contacter moi via email**
+5) **lancer votre server**
 **Enjoy**
+
+## Attention
+Vente matériels Informatique regorge 2 version:
+V1.x pour la branch master (Instable)
+    -> V1.x pour divers amélioration personnelle
+    -> langue composée (fr et en)
+    -> Tout composant est modifiable 
+V2.x -> V+2.x pour la branche briqueweb (V2.x Stable -> V+2.x (instable))
+    -> V2.x peut-être utilisé directement
+    -> V2.x version stable
+    -> V+2.x instable si existe
+
+## Verison
+- Important:
+Php : 8.1 -> ++
+Laravel: 10.x
+Composer
+Mysql ou MariaDb ou divers Base de donnée
+
+- Si il y a des problèmes lors de l'upload de fichier, tapez les commande suivante dans votre terminale :
+* php artisan storage:link
+le problème pourrait être le lien dynamique entre le dossier storage et public
+
 
 @NARIHY Malagasy develloper
 
