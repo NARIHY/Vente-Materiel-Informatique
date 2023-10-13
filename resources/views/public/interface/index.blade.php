@@ -1,6 +1,6 @@
 @extends('public')
 
-@section('title', 'Home site')
+@section('title', 'Acceuil du site')
 
 @section('content')
 <section id="hero">
@@ -10,8 +10,8 @@
             <source src="{{asset('public/assets/video/fond.mp4')}}" type="video/mp4" muted="">
 
         </video>
-        <h1 class="animated-text">Technology Accentic</h1>
-        <p class="text_small">Bienvenue chez Accentix Solutions, votre destination de confiance pour les besoins en matériel informatique. Nous sommes fiers de vous offrir une gamme complète de produits informatiques de haute qualité, conçus pour répondre à vos besoins professionnels et personnels.</p>
+        <h1 class="animated-text"> Accentic Technology</h1>
+        <p class="text_small">Welcome to Accentix Solutions, your trusted destination for IT hardware needs. We are proud to offer you a complete line of high-quality IT products, designed to meet your professional and personal needs.</p>
 
     </div>
 </div>
@@ -22,12 +22,12 @@
 
     <section class="information">
         <div class="container">
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <img src="/storage/{{$home->picture}}" alt="" width="100%" style="margin-top: 20px">
+            <div class="row mb-2">
+                <div class="col-md-6 mx-auto text-center">
+                    <img src="/storage/{{$home->picture}}" alt="" width="100%" style="margin-top: 30px">
 
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mx-auto text-center">
                     <section class="carrousel_text">
                         <h1 style="color: rgb(35, 35, 35)">{{$home->title}}</h1>
                         <p style="text-align: justify; font-family:'Times New Roman', Times, serif; font-size:20px">{{$home->content}}</p>
@@ -36,13 +36,13 @@
 
                 </div>
 
-              </div>
+            </div>
         </div>
     </section>
 
     <section id="clients" class="clients section-bg">
         <div class="container">
-            <h1 style="color:red;">Nos sponsors</h1>
+            <h1 style="color:red;">Our sponsors</h1>
 
             <div class="row">
                 <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center mx-auto">
@@ -64,7 +64,7 @@
 
       @if (!empty($category))
       <section class="category">
-        <h3 class="third-title" style="color: rgb(41, 41, 41)">Voici tous nos catégorie de nos produits:</h3>
+        <h3 class="third-title" style="color: rgb(41, 41, 41)">Here are all our categories of our products:</h3>
         <div class="container">
             <div class="row mb-3 hidden_container">
                 <div class="slider-container">
@@ -77,7 +77,7 @@
                                 </div>
                             </div>
 
-                        <!-- decommenter pour aShow une aperçu lors du slide
+                        <!-- decommenter pour avoir une aperçu lors du slide
                         <div class="card shadow-sm col-md-6">
                             <img src="/storage/category/category_4.jpg" width="100%" height="100%" class="bd-placeholder-img card-img-top" alt="sssssssssss">
                             <div class="card-body">
@@ -129,48 +129,48 @@
                 <div class="container">
 
 
-                        <form action="{{route('Public.contact.store')}}" method="post">
-                            <h1 class="text-center" style="color: rgb(255, 255, 255)" style="margin-top: -15px">Nous contacter</h1>
-                            @csrf
-                            <div class="row mb-3">
-                                <div class="col-md-6">
+                    <form action="{{route('Public.contact.store')}}" method="post">
+                        <h1 class="text-center" style="color: rgb(255, 255, 255)" style="margin-top: -15px">Contact us</h1>
+                        @csrf
+                        <div class="row mb-3">
+                            <div class="col-md-6">
 
-                                    <input type="text" name="name" id="name" class="form-nary" placeholder="Votre nom*" value="{{@old('name')}}">
-                                    @error('name')
-                                    <p style="color:rgb(158, 0, 0)">{{$message}}</p>
-                                    @enderror
-                                </div>
-                                <div class="col-md-6">
-
-                                    <input type="text" name="last_name" id="last_name" class="form-nary" placeholder="Votre prénon*" value="{{@old('last_name')}}">
-                                    @error('last_name')
-                                    <p style="color:rgb(158, 0, 0)">{{$message}}</p>
-                                    @enderror
-                                </div>
-                            </div>
-
-
-
-                            <input type="text" name="subject" id="subject" class="form-nary" placeholder="Votre sujet de conversation*" value="{{@old('subject')}}">
-                            @error('subject')
+                                <input type="text" name="name" id="name" class="form-nary" placeholder="Your name*" value="{{@old('name')}}">
+                                @error('name')
                                 <p style="color:rgb(158, 0, 0)">{{$message}}</p>
-                            @enderror
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+
+                                <input type="text" name="last_name" id="last_name" class="form-nary" placeholder="Your lastname*" value="{{@old('last_name')}}">
+                                @error('last_name')
+                                <p style="color:rgb(158, 0, 0)">{{$message}}</p>
+                                @enderror
+                            </div>
+                        </div>
 
 
-                            <input type="email" name="email" id="email" class="form-nary" placeholder="Votre addresse email*" value="{{@old('email')}}">
-                            @error('email')
+
+                        <input type="text" name="subject" id="subject" class="form-nary" placeholder="Your topic of conversation*" value="{{@old('subject')}}">
+                        @error('subject')
                             <p style="color:rgb(158, 0, 0)">{{$message}}</p>
-                            @enderror
+                        @enderror
 
-                            <textarea name="content" id="content" class="form-nary" placeholder="Votre message*" onclick="supprimerEspaces()" style="padding: 0.73px; margin: 0; height: 45px; font-size:16px" cols="30" rows="10">
-                                {{ old('content') }}
-                            </textarea>
 
-                            @error('content')
-                            <p style="color:rgb(158, 0, 0)">{{$message}}</p>
-                            @enderror
-                            <input type="submit" value="Envoyez" class="btn btn-danger">
-                        </form>
+                        <input type="email" name="email" id="email" class="form-nary" placeholder="Your email address*" value="{{@old('email')}}">
+                        @error('email')
+                        <p style="color:rgb(158, 0, 0)">{{$message}}</p>
+                        @enderror
+
+                        <textarea name="content" id="content" class="form-nary" placeholder="Your message*" onclick="supprimerEspaces()" style="padding: 0.73px; margin: 0; height: 45px; font-size:16px" cols="30" rows="10">
+                            {{ old('content') }}
+                        </textarea>
+
+                        @error('content')
+                        <p style="color:rgb(158, 0, 0)">{{$message}}</p>
+                        @enderror
+                        <input type="submit" value="Send" class="btn btn-danger">
+                    </form>
 
                 </div>
 
@@ -178,7 +178,6 @@
       </section>
 
 </main>
-
 
 <script>
     function supprimerEspaces() {
@@ -192,5 +191,6 @@
         document.getElementById("content").value = texteSansEspaces;
     }
 </script>
+
 
 @endsection

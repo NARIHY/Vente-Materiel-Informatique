@@ -6,9 +6,9 @@
 
     <section class="ecriture" style="margin-top: 100px">
         <div class="container">
-            <h2 class="title">Explorez le Futur de la Technologie Informatique avec Nos Produits de Pointe!</h2>
+            <h2 class="title">Explore the Future of Computer Technology with Our Cutting-Edge Products!</h2>
             <p style="color: black; text-align: justify" >
-                Découvrez notre gamme exceptionnelle de produits informatiques qui répondront à tous vos besoins technologiques. Chez nous, l'informatique devient une expérience passionnante et accessible à tous. Que vous soyez un professionnel à la recherche d'équipements de pointe ou un passionné d'informatique À la recherche de la dernière technologie, nous avons tout ce qu'il vous faut. Des ordinateurs portables ultraperformants aux composants de haute qualité, en passant par une variété de périphériques innovants, nous vous proposons les solutions les plus fiables et les plus modernes. Explorez notre catalogue et plongez dans le monde passionnant de la technologie informatique. Nous sommes là pour vous accompagner dans chaque étape de votre parcours informatique.
+            Discover our exceptional range of IT products that will meet all your technological needs. With us, computing becomes an exciting experience accessible to everyone. Whether you're a professional looking for cutting-edge equipment or an IT enthusiast looking for the latest technology, we've got you covered. From high-performance laptops to high-quality components and a variety of innovative peripherals, we offer you the most reliable and modern solutions. Explore our catalog and immerse yourself in the exciting world of computer technology. We are here to support you every step of your IT journey.
             </p>
         </div>
     </section>
@@ -80,7 +80,7 @@
                                           </p>
                                           <p class="quantity">Quantité en stock: <b class="quantity-stock" @if ($products->quantityInStock < 5) style="color: red" @endif>{{$products->quantityInStock}}</b></p>
                                           <h4 class="price">Prix: <b class="price-price">{{number_format($products->Price, 0, '.', ' ')}} Ar</b></h4>
-                                          <a href="{{route('Public.Product.view', ['id' => $products->id])}}" class="btn btn-primary" style="float: right; margin-right:10px;">Show plus</a>
+                                          <a href="{{route('Public.Product.view', ['id' => $products->id])}}" class="btn btn-primary" style="float: right; margin-right:10px;">Show all</a>
                                       </div>
 
                                   </div>
@@ -91,7 +91,7 @@
                       </div>
                         @if(!empty($products))
                             <div class="text-center">
-                                <a href="{{route('Public.Product.listOfProduct', ['id' => $categories->id])}}" style="text-align: center">Show plus</a>
+                                <a href="{{route('Public.Product.listOfProduct', ['id' => $categories->id])}}" style="text-align: center">Show all</a>
                             </div>
                         @endif
                 </section>
