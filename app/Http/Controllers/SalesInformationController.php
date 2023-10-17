@@ -37,9 +37,9 @@ class SalesInformationController extends Controller
         try {
             $data = $salesInformationRequest->validated();
             $sales = SaleInformation::create($data);
-            return redirect()->route($this->routes().'listing')->with('success', 'ajout de l\'infrmation réussi');
+            return redirect()->route($this->routes().'listing')->with('success', 'successful addition of information');
         } catch (\Exception $e) {
-            return redirect()->route($this->routes().'create')->with('error', 'Oups, il y a eu une érreur'.$e->getMessage());
+            return redirect()->route($this->routes().'create')->with('error', 'Oops, there was a mistake'.$e->getMessage());
         }
     }
 
@@ -68,9 +68,9 @@ class SalesInformationController extends Controller
             $data = $salesInformationRequest->validated();
             $sales = SaleInformation::findOrFail($id);
             $sales->update($data);
-            return redirect()->route($this->routes().'edit',['id' => $sales->id])->with('success', 'ajout de l\'infrmation réussi');
+            return redirect()->route($this->routes().'edit',['id' => $sales->id])->with('success', 'successful addition of information');
         } catch (\Exception $e) {
-            return redirect()->route($this->routes().'edit',['id' => $sales->id])->with('error', 'Oups, il y a eu une érreur'.$e->getMessage());
+            return redirect()->route($this->routes().'edit',['id' => $sales->id])->with('error', 'Oops, there was a mistake'.$e->getMessage());
         }
     }
 
@@ -83,7 +83,7 @@ class SalesInformationController extends Controller
     {
         $sales = SaleInformation::findOrFail($id);
         $sales->delete();
-        return redirect()->route($this->routes().'listing')->with('success', 'Supréssion de l\'infrmation réussi');
+        return redirect()->route($this->routes().'listing')->with('success', 'Deletion of information successful');
     }
     /**
      * Routes directory

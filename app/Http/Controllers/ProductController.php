@@ -79,9 +79,9 @@ class ProductController extends Controller
                     Mail::to($subscribers->email)->send($productLetter);
                 }
             }
-            return redirect()->route($this->routes().'listing')->with('success', 'Félicitation, le produit a bien été ajouter');
+            return redirect()->route($this->routes().'listing')->with('success', 'Congratulations, the product has been added');
         } catch (\Exception $e){
-            return redirect()->route($this->routes().'create')->with('error', 'Oups, il y a eu une erreur'.$e->getMessage());
+            return redirect()->route($this->routes().'create')->with('error', 'Oops, there was a mistake'.$e->getMessage());
         }
 
     }
@@ -98,7 +98,7 @@ class ProductController extends Controller
             Storage::disk('public')->delete($product->picture);
         }
         $product->delete();
-        return redirect()->route($this->routes().'listing')->with('success', 'Félicitation, le produit a bien été suprimer');
+        return redirect()->route($this->routes().'listing')->with('success', 'Congratulations, the product has been deleted');
     }
 
 
@@ -150,9 +150,9 @@ class ProductController extends Controller
                     $product->picture = 'product/' . $newImageName;
                     $product->save();
                 }
-            return redirect()->route($this->routes().'edit',['id' =>$product->id])->with('success', 'Modification réussi');
+            return redirect()->route($this->routes().'edit',['id' =>$product->id])->with('success', 'Modification successful');
         } catch (\Exception $e) {
-            return redirect()->route($this->routes().'edit',['id' =>$product->id])->with('error', 'Oups, il y a eu une erreur'.$e->getMessage());
+            return redirect()->route($this->routes().'edit',['id' =>$product->id])->with('error', 'Oops, there was a mistake'.$e->getMessage());
         }
     }
     /**

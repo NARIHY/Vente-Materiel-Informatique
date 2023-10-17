@@ -47,9 +47,9 @@ class NewsletterController extends Controller
             $data = $request->validated();
             $newsletter = Newsletter::create($data);
             $newsletter->update(['info' => 0]);
-            return redirect()->route($this->routes().'listing')->with('success', 'ajout de la lettre réussi');
+            return redirect()->route($this->routes().'listing')->with('success', 'successfully added letter');
         } catch (\Exception $e) {
-            return redirect()->route($this->routes().'create')->with('error', 'oups il y a eu une erreur');
+            return redirect()->route($this->routes().'create')->with('error', 'Oops, there was a mistake');
         }
     }
 
@@ -78,9 +78,9 @@ class NewsletterController extends Controller
             $data = $request->validated();
             $newsletter = Newsletter::findOrFail($id);
             $newsletter->update($data);
-            return redirect()->route($this->routes().'edit', ['id' => $newsletter->id])->with('success', 'modification de la lettre réussi');
+            return redirect()->route($this->routes().'edit', ['id' => $newsletter->id])->with('success', 'modification of letter successful');
         } catch (\Exception $e) {
-            return redirect()->route($this->routes().'edit', ['id' => $newsletter->id])->with('error', 'oups il y a eu une erreur');
+            return redirect()->route($this->routes().'edit', ['id' => $newsletter->id])->with('error', 'Oops, there was a mistake');
         }
     }
 
@@ -101,7 +101,7 @@ class NewsletterController extends Controller
         $newsletter = Newsletter::findOrFail($id);
         //update news letter to send
         $newsletter->update(['info' => '1']);
-        return redirect()->route($this->routes().'listing')->with('success', 'envoye des email aux abonné réussi');
+        return redirect()->route($this->routes().'listing')->with('success', 'send emails to subscribers successfully');
     }
     /**
      * return view path of newsletter

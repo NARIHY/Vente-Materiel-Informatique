@@ -84,16 +84,16 @@ class UsersController extends Controller
                         $data['picture'] = $picture->store('users', 'public');
                         $user->update($data);
                     }
-                    return redirect()->route($this->routes() . 'edit')->with('success', 'Modification réussie');
+                    return redirect()->route($this->routes() . 'edit')->with('success', 'Edit successful');
                 } else {
-                    return redirect()->route($this->routes() . 'edit')->with('error', 'L\'email que vous avez entré n\'existe pas ou est invalide');
+                    return redirect()->route($this->routes() . 'edit')->with('error', 'The email you entered does not exist or is invalid');
                 }
             } else {
-                return redirect()->route($this->routes() . 'edit')->with('error', 'le mots de passe que vous avez entrée ne correspond à aucun compte');
+                return redirect()->route($this->routes() . 'edit')->with('error', 'The password you entered does not match any account');
             }
         } catch (\Exception $e) {
             // Gérer les erreurs de validation ici (si nécessaire)
-            return redirect()->route($this->routes() . 'edit')->with('error', 'Erreur de validation : ' . $e->getMessage());
+            return redirect()->route($this->routes() . 'edit')->with('error', 'Validation error: ' . $e->getMessage());
         }
     }
 

@@ -47,9 +47,9 @@ class SubscriberController extends Controller
                 $user->notify(new SubscriberNotification());
             }
 
-            return Redirect::back()->with('good', 'Vous avez été inscrit avec succès à la newsletter.');
+            return Redirect::back()->with('good', 'You have been successfully subscribed to the newsletter.');
         } else {
-            return Redirect::back()->with('bad', 'Il  a eu une erreur, ou votre email est invalid');
+            return Redirect::back()->with('bad', 'There was an error, or your email is invalid');
         }
 
     }

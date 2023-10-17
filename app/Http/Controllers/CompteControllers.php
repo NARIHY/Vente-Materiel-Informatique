@@ -55,9 +55,9 @@ class CompteControllers extends Controller
         try {
             $user = User::findOrFail($id);
             $user->update($request->validated());
-            return redirect()->route($this->routes().'updateRole', ['id' => $user->id])->with('success', 'Modification réussi');
+            return redirect()->route($this->routes().'updateRole', ['id' => $user->id])->with('success', 'Modification successful');
         } catch (\Exception $e) {
-            return redirect()->route($this->routes().'updateRole', ['id' => $user->id])->with('error', 'Oups, il y a eu une erreur');
+            return redirect()->route($this->routes().'updateRole', ['id' => $user->id])->with('error', 'Oops, there was a mistake');
         }
 
     }
@@ -91,7 +91,7 @@ class CompteControllers extends Controller
             $messages->delete();
         }
         $user->delete();
-        return redirect()->route($this->routes().'listing')->with('success', 'Suppréssion de l\'utilisateur réussi');
+        return redirect()->route($this->routes().'listing')->with('success', 'User deletion successful');
     }
 
     /**

@@ -93,13 +93,13 @@ class ContactController extends Controller
                 // The email address is valid
                 // Create an instance of the contact model with the validated data
                 $contact = Contact::create($data);
-                return redirect()->route('Public.Contact.contacts')->with('success', 'Merci, de nous aShow contacter');
+                return redirect()->route('Public.Contact.contacts')->with('success', 'Thank you for contacting us');
             } else {
                 // The email address is not valid
-                return redirect()->route('Public.Contact.contacts')->with('Oups', 'Votre email n\'existe pas ou n\'est pas valide');
+                return redirect()->route('Public.Contact.contacts')->with('Oups', 'Your email does not exist or is invalid');
             }
         } catch (\Exception $e) {
-            return redirect()->route('Public.Contact.contacts')->with('Oups', 'il y a eu une erreur lors de l\'envoie du message');
+            return redirect()->route('Public.Contact.contacts')->with('Oups', 'there was an error sending the message');
         }
     }
 
@@ -139,13 +139,13 @@ class ContactController extends Controller
                 $contact = Contact::create($data);
                 //insert product id in the table
                 $contact->update(['product' => $id]);
-                return redirect()->route('Public.Contact.interface')->with('success', 'Merci, de nous aShow contacter');
+                return redirect()->route('Public.Contact.interface')->with('success', 'Thank you for contacting us');
             } else {
                 // The email address is not valid
-                return redirect()->route('Public.Contact.product', ['id' => $id])->with('Oups', 'Votre email n\'existe pas ou n\'est pas valide');
+                return redirect()->route('Public.Contact.product', ['id' => $id])->with('Oups', 'Your email does not exist or is invalid');
             }
         } catch (\Exception $e) {
-            return redirect()->route('Public.Contact.product', ['id' => $id])->with('Oups', 'il y a eu une erreur lors de l\'envoie du message');
+            return redirect()->route('Public.Contact.product', ['id' => $id])->with('Oups', 'there was an error sending the message');
         }
     }
     /**

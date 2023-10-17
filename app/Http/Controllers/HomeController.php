@@ -71,10 +71,10 @@ class HomeController extends Controller
                 $home->save();
 */
             }
-            return redirect()->route($this->routes().'listing')->with('success', 'Sauvgarde réussi');
+            return redirect()->route($this->routes().'listing')->with('success', 'Backup successful');
 
         } catch (\Exception $e) {
-            return redirect()->route($this->routes().'create')->with('error', 'Oupss, il y a eu une erreur'.$e->getMessage());
+            return redirect()->route($this->routes().'create')->with('error', 'Oops, there was an error'.$e->getMessage());
         }
 
     }
@@ -142,7 +142,7 @@ class HomeController extends Controller
     {
         $home = Home::findOrFail($id);
         $home->delete();
-        return redirect()->route($this->routes().'listing')->with('success', 'Sauvgarde réussi');
+        return redirect()->route($this->routes().'listing')->with('success', 'Backup successful');
     }
 
 

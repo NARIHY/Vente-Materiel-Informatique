@@ -11,7 +11,7 @@
 
         </video>
         <h1 class="animated-text"> Accentic Technology</h1>
-        <p class="text_small">Welcome to Accentix Solutions, your trusted destination for IT hardware needs. We are proud to offer you a complete line of high-quality IT products, designed to meet your professional and personal needs.</p>
+        <p class="text_small">Welcome to Accentic Solutions, your trusted destination for IT hardware needs. We are proud to offer you a complete line of high-quality IT products, designed to meet your professional and personal needs.</p>
 
     </div>
 </div>

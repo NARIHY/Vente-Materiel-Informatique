@@ -58,9 +58,9 @@ class CategoryController extends Controller
                 // Update the 'picture' column in the Category model with the relative path of the new image
                 $category->update(['picture' => 'category/' . $imageName]);
             }
-            return redirect()->route($this->routes().'listing')->with('success', 'Ajout de la catégory réussi');
+            return redirect()->route($this->routes().'listing')->with('success', 'Added category successfully');
         } catch (\Exception $e) {
-            return redirect()->route($this->routes().'create')->with('error', 'Oupss, il y a eu une erreur'.$e->getMessage());
+            return redirect()->route($this->routes().'create')->with('error', 'Oops, there was an error'.$e->getMessage());
         }
 
     }
@@ -109,9 +109,9 @@ class CategoryController extends Controller
                 $category->picture = 'category/' . $newImageName;
                 $category->save();
             }
-            return redirect()->route($this->routes().'edit',['id'=>$category->id])->with('success', 'Modification réussi');
+            return redirect()->route($this->routes().'edit',['id'=>$category->id])->with('success', 'Modification successful');
         } catch(\Exception $e) {
-            return redirect()->route($this->routes().'edit',['id'=>$category->id])->with('error', 'Oupss, il y a une erreur'. $e->getMessage());
+            return redirect()->route($this->routes().'edit',['id'=>$category->id])->with('error', 'Oops, there is an error'. $e->getMessage());
         }
     }
 
@@ -125,7 +125,7 @@ class CategoryController extends Controller
         $home = Category::findOrFail($id);
 
         $home->delete();
-        return redirect()->route($this->routes().'listing')->with('success', 'Supréssion réussi');
+        return redirect()->route($this->routes().'listing')->with('success', 'Deleting succefful');
     }
 
     //Private function
