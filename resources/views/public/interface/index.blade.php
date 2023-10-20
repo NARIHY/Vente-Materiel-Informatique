@@ -162,7 +162,7 @@
                         <p style="color:rgb(158, 0, 0)">{{$message}}</p>
                         @enderror
 
-                        <textarea name="content" id="content" class="form-nary" placeholder="Your message*" onclick="supprimerEspaces()" style="padding: 0.73px; margin: 0; height: 45px; font-size:16px" cols="30" rows="10">
+                        <textarea name="content" id="content" class="form-nary" placeholder="Your message*" onclick="supprimerEspaces()" style="padding: 0.73px; margin: 0;  font-size:16px" cols="40" rows="5">
                             {{ old('content') }}
                         </textarea>
 

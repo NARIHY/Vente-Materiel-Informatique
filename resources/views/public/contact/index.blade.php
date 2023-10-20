@@ -62,7 +62,7 @@
                     <p style="color:rgb(158, 0, 0)">{{$message}}</p>
                     @enderror
                     <label for="content" style="color: #ffffff; text-align:left">Your message*</label>
-                    <textarea name="content" id="content"  class="form-nary-contact" placeholder="Your message*">
+                    <textarea name="content" id="content"  class="form-nary-contact" placeholder="Your message*" cols="40" rows="5">
                         {{@old('content')}}
                     </textarea>
                     @error('content')
@@ -109,7 +109,7 @@
                     <p style="color:rgb(158, 0, 0)">{{$message}}</p>
                     @enderror
                     <label for="content" style="color: #ffffff; text-align:left">Your message*</label>
-                    <textarea name="content" id="content"  class="form-nary-contact" placeholder="Your message*">
+                    <textarea name="content" id="content"  class="form-nary-contact" placeholder="Your message*" cols="40" rows="5">
                         {{@old('content')}}
                     </textarea>
                     @error('content')
